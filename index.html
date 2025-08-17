@@ -1,0 +1,2372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pearl Essence | Premium Skincare</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Montserrat:wght@300;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    :root {
+      /* Light Mode Colors */
+      --gold: #D4AF37;
+      --pink: #FF9F9F;
+      --black: #1A1A1A;
+      --bg-light: #FFF9F0;
+      --card-light: #FFFFFF;
+      --text-light: #333333;
+      
+      /* Dark Mode Colors */
+      --bg-dark: #1A1A1A;
+      --card-dark: #2D2D2D;
+      --text-dark: #F0F0F0;
+      
+      --triangle-size: 15px;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      transition: background-color 0.5s ease, color 0.3s ease;
+    }
+    
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background-color: var(--bg-light);
+      color: var(--text-light);
+      overflow-x: hidden;
+    }
+    
+    body.dark-mode {
+      background-color: var(--bg-dark);
+      color: var(--text-dark);
+    }
+    
+    /* Navigation Bar */
+    .nav-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      padding: 15px 0;
+      background: rgba(255, 255, 255, 0.15);
+      -webkit-backdrop-filter: blur(12px);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    }
+    
+    .dark-mode .nav-container {
+      background: rgba(26, 26, 26, 0.15);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .nav-logo {
+      margin-left: 30px;
+      margin-right: 20px;
+      display: flex;
+      align-items: center;
+    }
+    
+    .nav-logo-img {
+      height: 45px;
+      width: 45px;
+      border-radius: 50%;
+      object-fit: cover;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      border: 2px solid var(--gold);
+    }
+    
+    .nav-menu {
+      display: flex;
+      gap: 30px;
+    }
+    
+    .nav-link {
+      color: var(--text-light);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 1rem;
+      position: relative;
+      padding: 5px 0;
+      transition: color 0.3s ease;
+    }
+    
+    .dark-mode .nav-link {
+      color: var(--text-dark);
+    }
+    
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--gold);
+      transition: width 0.3s ease;
+    }
+    
+    .nav-link:hover::after {
+      width: 100%;
+    }
+    
+    .nav-link:hover {
+      color: var(--gold);
+    }
+
+    /* Image Carousel */
+    .carousel-container {
+      position: relative;
+      width: 100%;
+      margin-top: 70px; /* Space for fixed nav */
+      overflow: hidden;
+      height: 70vh;
+      min-height: 500px;
+      background: rgba(0,0,0,0.1);
+      -webkit-backdrop-filter: blur(10px);
+      backdrop-filter: blur(10px);
+    }
+
+    .carousel-track {
+      display: flex;
+      height: 100%;
+      transition: transform 0.5s ease-in-out;
+      will-change: transform;
+    }
+
+    .carousel-slide {
+      min-width: 100%;
+      height: 100%;
+      position: relative;
+    }
+
+    .carousel-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: brightness(0.8);
+      will-change: transform;
+      backface-visibility: hidden;
+    }
+
+    .slide-content {
+      position: absolute;
+      bottom: 20%;
+      left: 10%;
+      max-width: 50%;
+      color: white;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+      z-index: 10;
+      transition: opacity 0.3s ease;
+    }
+
+    .slide-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 3rem;
+      font-weight: 700;
+      margin-bottom: 15px;
+      color: var(--gold);
+    }
+
+    .slide-text {
+      font-size: 1.2rem;
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+
+    .slide-button {
+      background-color: var(--gold);
+      color: white;
+      border: none;
+      padding: 12px 30px;
+      font-size: 1rem;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-weight: 500;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .slide-button:hover {
+      background-color: #c19b2e;
+      transform: translateY(-2px);
+    }
+
+    .carousel-nav {
+      position: absolute;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 10px;
+      z-index: 10;
+    }
+
+    .carousel-indicator {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.5);
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .carousel-indicator.active {
+      background: var(--gold);
+      transform: scale(1.2);
+    }
+
+    .owl-indicator {
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 2rem;
+      color: var(--gold);
+      animation: pulse 2s infinite;
+      cursor: pointer;
+      z-index: 10;
+    }
+
+    @keyframes pulse {
+      0% { transform: translateX(-50%) scale(1); }
+      50% { transform: translateX(-50%) scale(1.2); }
+      100% { transform: translateX(-50%) scale(1); }
+    }
+
+    /* Welcome Screen */
+    .welcome-screen {
+      min-height: 100vh;
+      height: auto;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: stretch;
+      text-align: center;
+      padding: 80px 20px 20px;
+      position: relative;
+      overflow-y: auto;
+      background: rgba(255,255,255,0.18);
+      /* Glassy effect */
+      -webkit-backdrop-filter: blur(24px) saturate(180%);
+      backdrop-filter: blur(24px) saturate(180%);
+      border-radius: 0 0 40px 40px;
+      box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.18);
+    }
+    
+    .dark-mode .welcome-screen {
+      background: rgba(26,26,26,0.35);
+      -webkit-backdrop-filter: blur(24px) saturate(180%);
+      backdrop-filter: blur(24px) saturate(180%);
+    }
+    
+    .welcome-bg-image {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('images/image A (6).jpg') center/cover no-repeat;
+      opacity: 0.25;
+      z-index: -1;
+      filter: blur(24px) brightness(1.1);
+    }
+    
+    .welcome-content {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+      animation: fadeIn 1s ease-out;
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    .welcome-logo-text {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--gold);
+      letter-spacing: 1px;
+      margin-bottom: 30px;
+      text-align: center;
+    }
+    
+    .welcome-heading {
+      font-family: 'Playfair Display', serif;
+      font-size: 3.5rem;
+      font-weight: 700;
+      margin-bottom: 20px;
+      color: var(--black);
+    }
+    
+    .dark-mode .welcome-heading {
+      color: var(--text-dark);
+    }
+    
+    .welcome-subheading {
+      font-size: 1.8rem;
+      color: var(--gold);
+      margin-bottom: 30px;
+      font-weight: 500;
+    }
+    
+    .welcome-message {
+      max-width: 600px;
+      margin: 0 auto 40px;
+      line-height: 1.6;
+      font-size: 1.1rem;
+    }
+    
+    /* Liquid Glass Button Effect */
+    .glass-btn {
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
+    }
+    
+    .glass-btn::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(
+        to bottom right,
+        rgba(255, 255, 255, 0.3),
+        rgba(255, 255, 255, 0.1)
+      );
+      transform: rotate(30deg);
+      z-index: -1;
+      transition: all 0.5s ease;
+    }
+    
+    .glass-btn:hover::before {
+      transform: rotate(30deg) translate(20%, 20%);
+    }
+    
+    .shop-now-btn {
+      background-color: var(--gold);
+      color: white;
+      border: none;
+      padding: 18px 45px;
+      font-size: 1.2rem;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+      font-weight: 500;
+      letter-spacing: 1px;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .shop-now-btn:hover {
+      background-color: #c19b2e;
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
+    }
+    
+    /* Transition animation */
+    .page-transition {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: var(--gold);
+      z-index: 1000;
+      transform: scaleY(0);
+      transform-origin: bottom;
+      pointer-events: none;
+    }
+    
+    /* Footer */
+    .welcome-footer {
+      position: static;
+      margin-top: 40px;
+      text-align: center;
+      padding: 20px;
+      animation: fadeIn 1s ease-out 0.5s both;
+    }
+    
+    .contact-info {
+      margin-bottom: 15px;
+      font-size: 1rem;
+    }
+    
+    .phone-number {
+      display: inline-block;
+      margin: 0 10px;
+      color: var(--gold);
+      text-decoration: none;
+      font-weight: 500;
+    }
+    
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+    }
+    
+    .social-link {
+      color: var(--gold);
+      font-size: 1.5rem;
+      transition: transform 0.3s ease, color 0.3s ease;
+    }
+    
+    .social-link:hover {
+      transform: translateY(-3px);
+      color: var(--pink);
+    }
+    
+    /* Main Content (initially hidden) */
+    .main-content {
+      display: none;
+      opacity: 0;
+      transition: opacity 0.5s ease;
+      padding-top: 70px; /* Space for fixed nav */
+    }
+    
+    /* Header with Logo and Theme Toggle */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 30px 40px;
+      position: relative;
+      z-index: 100;
+    }
+    
+    .logo-container {
+      display: flex;
+      align-items: center;
+    }
+    
+    .logo-img {
+      height: 50px;
+      margin-right: 15px;
+    }
+    
+    .logo-text {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--gold);
+      letter-spacing: 1px;
+    }
+    
+    .theme-toggle {
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      font-size: 1.5rem;
+      color: var(--gold);
+    }
+    
+    /* Hero Section with Blurred Background Image */
+    .hero-bg-blur {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -2;
+      background: url('images/hero-blur.jpg') center/cover no-repeat;
+      filter: blur(24px) brightness(1.1);
+      opacity: 0.35;
+      pointer-events: none;
+    }
+    
+    .hero {
+      position: relative;
+      overflow: hidden;
+      padding: 80px 40px;
+      text-align: left;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+    
+    .hero::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, rgba(212,175,55,0.1) 0%, rgba(255,255,255,0) 100%);
+      z-index: -1;
+      -webkit-backdrop-filter: blur(5px);
+      backdrop-filter: blur(5px);
+    }
+    
+    .dark-mode .hero::before {
+      background: linear-gradient(90deg, rgba(212,175,55,0.1) 0%, rgba(26,26,26,0) 100%);
+    }
+    
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      color: var(--black);
+      font-size: 5rem;
+      font-weight: 900;
+      margin-bottom: 20px;
+      line-height: 1;
+    }
+    
+    .dark-mode .hero h1 {
+      color: var(--text-dark);
+    }
+    
+    .hero .highlight {
+      color: var(--gold);
+      font-size: 5.5rem;
+      display: block;
+      margin-top: 10px;
+    }
+    
+    .tagline {
+      font-size: 1.3rem;
+      max-width: 500px;
+      margin: 0 0 40px;
+      color: var(--text-light);
+      font-weight: 300;
+    }
+    
+    .dark-mode .tagline {
+      color: var(--text-dark);
+    }
+    
+    /* Horizontal Product Scroller */
+    .product-scroller {
+      width: 100vw;
+      padding: 80px 0;
+      position: relative;
+      background-color: var(--card-light);
+    }
+    
+    .dark-mode .product-scroller {
+      background-color: var(--bg-dark);
+    }
+    
+    .scroller-container {
+      display: flex;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      scroll-behavior: smooth;
+      padding: 0 40px;
+      gap: 30px;
+    }
+    
+    .product-card {
+      scroll-snap-align: start;
+      flex: 0 0 320px;
+      background: var(--card-light);
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+      overflow: hidden;
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+      position: relative;
+    }
+    
+    .dark-mode .product-card {
+      background: var(--card-dark);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    }
+    
+    /* Triangle Animation Effect */
+    .product-card::before {
+      content: "";
+      position: absolute;
+      width: 0;
+      height: 0;
+      border-left: var(--triangle-size) solid transparent;
+      border-right: var(--triangle-size) solid transparent;
+      border-bottom: var(--triangle-size) solid var(--gold);
+      top: -15px;
+      left: 50%;
+      transform: translateX(-50%);
+      opacity: 0;
+      transition: all 0.3s ease;
+    }
+    
+    .product-card:hover {
+      transform: translateY(-15px) scale(1.02);
+      box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+    }
+    
+    .dark-mode .product-card:hover {
+      box-shadow: 0 15px 40px rgba(0,0,0,0.5);
+    }
+    
+    .product-card:hover::before {
+      opacity: 1;
+      top: -10px;
+    }
+    
+    .product-image {
+      height: 280px;
+      overflow: hidden;
+      position: relative;
+    }
+    
+    .product-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.8s cubic-bezier(0.165, 0.84, 0.44, 1);
+    }
+    
+    .product-card:hover .product-image img {
+      transform: scale(1.1);
+    }
+    
+    .product-info {
+      padding: 25px;
+      position: relative;
+    }
+    
+    .product-category {
+      color: var(--pink);
+      font-weight: 500;
+      font-size: 0.9rem;
+      margin-bottom: 5px;
+      letter-spacing: 1px;
+    }
+    
+    .product-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.6rem;
+      margin-bottom: 15px;
+      color: var(--text-light);
+    }
+    
+    .dark-mode .product-name {
+      color: var(--text-dark);
+    }
+    
+    .product-features {
+      list-style: none;
+      margin: 20px 0;
+    }
+    
+    .product-features li {
+      padding: 8px 0;
+      position: relative;
+      padding-left: 25px;
+      font-size: 0.95rem;
+      color: var(--text-light);
+    }
+    
+    .dark-mode .product-features li {
+      color: var(--text-dark);
+    }
+    
+    .product-features li:before {
+      content: "❯";
+      color: var(--gold);
+      position: absolute;
+      left: 0;
+      font-size: 0.8rem;
+    }
+    
+    .product-price {
+      font-size: 1.5rem;
+      color: var(--gold);
+      font-weight: 700;
+      margin: 25px 0 15px;
+      font-family: 'Playfair Display', serif;
+    }
+    
+    .add-to-cart {
+      background: var(--gold);
+      color: white;
+      border: none;
+      padding: 15px 30px;
+      border-radius: 30px;
+      font-weight: 500;
+      cursor: pointer;
+      width: 100%;
+      transition: all 0.3s;
+      font-size: 1rem;
+      letter-spacing: 1px;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .add-to-cart:hover {
+      background: var(--pink);
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(255,159,159,0.3);
+    }
+    
+    /* Scroll Arrows */
+    .scroll-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 60px;
+      height: 60px;
+      background: var(--card-light);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 5px 25px rgba(0,0,0,0.15);
+      cursor: pointer;
+      z-index: 10;
+      opacity: 0.9;
+      transition: all 0.3s;
+      color: var(--text-light);
+    }
+    
+    .dark-mode .scroll-arrow {
+      background: var(--card-dark);
+      color: var(--text-dark);
+      box-shadow: 0 5px 25px rgba(0,0,0,0.4);
+    }
+    
+    .scroll-arrow:hover {
+      opacity: 1;
+      transform: translateY(-50%) scale(1.1);
+      background: var(--gold);
+      color: white;
+    }
+    
+    .arrow-left {
+      left: 20px;
+    }
+    
+    .arrow-right {
+      right: 20px;
+    }
+    
+    /* Hide scrollbar */
+    .scroller-container::-webkit-scrollbar {
+      display: none;
+    }
+    
+    /* Ripple Effect */
+    .ripple {
+      position: absolute;
+      background: rgba(255,255,255,0.5);
+      border-radius: 50%;
+      transform: scale(0);
+      animation: ripple 0.6s linear;
+      pointer-events: none;
+    }
+    
+    @keyframes ripple {
+      to {
+        transform: scale(4);
+        opacity: 0;
+      }
+    }
+    
+    /* Back Button */
+    .back-btn {
+      display: none;
+      position: fixed;
+      top: 80px;
+      left: 20px;
+      background: var(--gold);
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      font-size: 1.2rem;
+      cursor: pointer;
+      z-index: 100;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    }
+    
+    /* Location Modal */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.7);
+      z-index: 2000;
+      justify-content: center;
+      align-items: center;
+    }
+    
+    .modal-content {
+      background: var(--card-light);
+      padding: 30px;
+      border-radius: 15px;
+      max-width: 600px;
+      width: 90%;
+      position: relative;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    }
+    
+    .dark-mode .modal-content {
+      background: var(--card-dark);
+    }
+    
+    .close-modal {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: var(--text-light);
+    }
+    
+    .dark-mode .close-modal {
+      color: var(--text-dark);
+    }
+    
+    /* Product Showcase */
+    .product-showcase {
+      max-width: 1100px;
+      margin: 60px auto 40px auto;
+      padding: 0 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+    }
+    .showcase-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: #fff9f0;
+      border-radius: 18px;
+      box-shadow: 0 4px 24px rgba(212,175,55,0.07);
+      overflow: hidden;
+      transition: background 0.3s;
+      position: relative;
+    }
+    .dark-mode .showcase-item {
+      background: #23201a;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.18);
+    }
+    .showcase-item:nth-child(even) {
+      flex-direction: row-reverse;
+      background: #f7f3e8;
+    }
+    .dark-mode .showcase-item:nth-child(even) {
+      background: #181613;
+    }
+    .showcase-image {
+      flex: 1 1 320px;
+      min-width: 220px;
+      max-width: 340px;
+      height: 260px;
+      object-fit: cover;
+      border-radius: 0 18px 18px 0;
+      transition: transform 0.4s;
+    }
+    .showcase-item:nth-child(even) .showcase-image {
+      border-radius: 18px 0 0 18px;
+    }
+    .showcase-details {
+      flex: 2 1 400px;
+      padding: 36px 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .showcase-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.6rem;
+      color: var(--gold);
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+    .showcase-desc {
+      font-size: 1.08rem;
+      color: var(--text-light);
+      margin-bottom: 8px;
+    }
+    .dark-mode .showcase-desc {
+      color: var(--text-dark);
+    }
+    .showcase-more {
+      max-height: 0;
+      overflow: hidden;
+      opacity: 0;
+      transition: max-height 0.5s cubic-bezier(0.4,0,0.2,1), opacity 0.4s;
+      font-size: 1rem;
+      color: #6a5b2b;
+      margin-bottom: 0;
+    }
+    .showcase-item.expanded .showcase-more {
+      max-height: 300px;
+      opacity: 1;
+      margin-bottom: 10px;
+    }
+    .showcase-readmore {
+      background: transparent;
+      color: var(--gold);
+      border: 1px solid rgba(212,175,55,0.3);
+      border-radius: 20px;
+      padding: 6px 16px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      cursor: pointer;
+      margin-top: 6px;
+      transition: all 0.3s;
+      outline: none;
+      align-self: flex-start;
+    }
+    .showcase-readmore:hover {
+      background: rgba(212,175,55,0.1);
+    }
+    .showcase-item.expanded .showcase-readmore {
+      background: rgba(212,175,55,0.05);
+      border: 1px solid rgba(212,175,55,0.2);
+    }
+    
+    /* Agent Process Section */
+    .agent-process {
+      max-width: 1100px;
+      margin: 60px auto;
+      padding: 0 20px;
+    }
+    .agent-process h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.5rem;
+      color: var(--gold);
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    .process-steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+    }
+    .process-step {
+      background: var(--card-light);
+      border-radius: 15px;
+      padding: 30px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+      transition: transform 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+    .dark-mode .process-step {
+      background: var(--card-dark);
+      box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+    }
+    .process-step:hover {
+      transform: translateY(-5px);
+    }
+    .step-number {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      font-size: 1.5rem;
+      color: rgba(212,175,55,0.2);
+      font-weight: 700;
+    }
+    .step-icon {
+      font-size: 2.5rem;
+      color: var(--gold);
+      margin-bottom: 20px;
+    }
+    .step-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      color: var(--text-light);
+      margin-bottom: 15px;
+    }
+    .dark-mode .step-title {
+      color: var(--text-dark);
+    }
+    .step-desc {
+      color: var(--text-light);
+      line-height: 1.6;
+    }
+    .dark-mode .step-desc {
+      color: var(--text-dark);
+    }
+    .agent-cta {
+      text-align: center;
+      margin-top: 50px;
+    }
+    .agent-cta button {
+      background: var(--gold);
+      color: white;
+      border: none;
+      padding: 15px 40px;
+      font-size: 1.1rem;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    .agent-cta button:hover {
+      background: #c19b2e;
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(212,175,55,0.3);
+    }
+    
+    @media (max-width: 900px) {
+      .product-showcase {
+        max-width: 98vw;
+      }
+      .showcase-details {
+        padding: 24px 14px;
+      }
+      .showcase-image {
+        max-width: 200px;
+        height: 160px;
+      }
+    }
+    @media (max-width: 600px) {
+      .showcase-item, .showcase-item:nth-child(even) {
+        flex-direction: column !important;
+        align-items: stretch;
+      }
+      .showcase-image {
+        width: 100%;
+        max-width: 100%;
+        height: 180px;
+        border-radius: 18px 18px 0 0 !important;
+      }
+      .showcase-details {
+        padding: 18px 8px;
+      }
+      .process-steps {
+        grid-template-columns: 1fr;
+      }
+    }
+    
+    /* No JavaScript fallback */
+    .no-js .carousel-container {
+      height: auto;
+    }
+    .no-js .carousel-track {
+      flex-wrap: wrap;
+      transform: none !important;
+    }
+    .no-js .carousel-slide {
+      min-width: 100%;
+    }
+     .review-modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.7);
+      z-index: 2100;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .review-modal-container {
+      background: var(--card-light);
+      width: 90%;
+      max-width: 600px;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+      transform: translateY(20px);
+      opacity: 0;
+      transition: all 0.3s ease;
+    }
+
+    .dark-mode .review-modal-container {
+      background: var(--card-dark);
+    }
+
+    .review-modal-header {
+      padding: 20px;
+      border-bottom: 1px solid rgba(0,0,0,0.1);
+      position: relative;
+      text-align: center;
+    }
+
+    .dark-mode .review-modal-header {
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .review-modal-header h3 {
+      font-family: 'Playfair Display', serif;
+      color: var(--gold);
+      margin: 0;
+    }
+
+    .close-review-modal {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    .review-modal-body {
+      padding: 25px;
+    }
+
+    .review-step {
+      display: none;
+    }
+
+    .review-step.active {
+      display: block;
+      animation: fadeIn 0.3s forwards;
+    }
+
+    /* Product Selection */
+    .product-select-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 15px;
+      margin-top: 20px;
+    }
+
+    .product-select-item {
+      border: 1px solid rgba(0,0,0,0.1);
+      border-radius: 10px;
+      padding: 15px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-align: center;
+    }
+
+    .dark-mode .product-select-item {
+      border-color: rgba(255,255,255,0.1);
+    }
+
+    .product-select-item:hover {
+      border-color: var(--gold);
+      transform: translateY(-3px);
+    }
+
+    .product-select-item img {
+      width: 80px;
+      height: 80px;
+      object-fit: contain;
+      margin-bottom: 10px;
+    }
+
+    .product-select-item h5 {
+      margin: 5px 0;
+      font-size: 0.9rem;
+    }
+
+    /* Rating Section */
+    .rating-section {
+      display: flex;
+      align-items: center;
+      margin: 20px 0;
+    }
+
+    .rating-section span {
+      margin-right: 15px;
+    }
+
+    .rating-stars {
+      color: var(--gold);
+      font-size: 1.8rem;
+    }
+
+    .rating-stars i {
+      cursor: pointer;
+      margin-right: 5px;
+    }
+
+    .rating-stars i.active {
+      font-weight: 900;
+    }
+
+    .review-product-display {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .review-product-display img {
+      width: 100px;
+      height: 100px;
+      object-fit: contain;
+      margin-bottom: 10px;
+    }
+
+    .review-modal-body textarea {
+      width: 100%;
+      padding: 15px;
+      border-radius: 8px;
+      border: 1px solid rgba(0,0,0,0.1);
+      margin-bottom: 15px;
+      resize: vertical;
+      min-height: 120px;
+    }
+
+    .dark-mode .review-modal-body textarea {
+      background: var(--bg-dark);
+      color: var(--text-dark);
+      border-color: rgba(255,255,255,0.1);
+    }
+
+    .review-actions {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .review-actions button {
+      padding: 12px 25px;
+      border-radius: 30px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .back-to-products {
+      background: transparent;
+      border: 1px solid var(--gold);
+      color: var(--gold);
+    }
+
+    .submit-review {
+      background: var(--gold);
+      color: white;
+      border: none;
+    }
+
+    /* Thank You Step */
+    .thank-you-message {
+      text-align: center;
+      padding: 20px 0;
+    }
+
+    .thank-you-message i {
+      font-size: 3rem;
+      color: var(--gold);
+      margin-bottom: 15px;
+    }
+
+    .seller-chat-option {
+      text-align: center;
+      margin-top: 30px;
+    }
+
+    .seller-chat-option p {
+      margin-bottom: 20px;
+    }
+
+    .start-chat-btn, .close-review-btn {
+      padding: 12px 25px;
+      border-radius: 30px;
+      margin: 0 10px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .start-chat-btn {
+      background: var(--gold);
+      color: white;
+      border: none;
+    }
+
+    .close-review-btn {
+      background: transparent;
+      border: 1px solid var(--gold);
+      color: var(--gold);
+    }
+
+    /* Chat Modal */
+    .chat-modal {
+      display: none;
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 350px;
+      background: var(--card-light);
+      border-radius: 15px;
+      box-shadow: 0 5px 25px rgba(0,0,0,0.2);
+      z-index: 2200;
+      overflow: hidden;
+    }
+
+    .dark-mode .chat-modal {
+      background: var(--card-dark);
+    }
+
+    .chat-header {
+      padding: 15px;
+      border-bottom: 1px solid rgba(0,0,0,0.1);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .seller-info {
+      display: flex;
+      align-items: center;
+    }
+
+    .seller-info img {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      margin-right: 10px;
+    }
+
+    .online-status {
+      color: #4CAF50;
+      font-size: 0.8rem;
+    }
+
+    .close-chat {
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    .chat-messages {
+      height: 300px;
+      padding: 15px;
+      overflow-y: auto;
+    }
+
+    .chat-input {
+      display: flex;
+      padding: 15px;
+      border-top: 1px solid rgba(0,0,0,0.1);
+    }
+
+    .chat-input input {
+      flex: 1;
+      padding: 10px 15px;
+      border-radius: 30px;
+      border: 1px solid rgba(0,0,0,0.1);
+      margin-right: 10px;
+    }
+
+    .send-btn {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: var(--gold);
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+
+    /* Message Styles */
+    .message {
+      margin-bottom: 15px;
+      max-width: 80%;
+    }
+
+    .message.sent {
+      margin-left: auto;
+      text-align: right;
+    }
+
+    .message.received {
+      margin-right: auto;
+    }
+
+    .message-content {
+      display: inline-block;
+      padding: 10px 15px;
+      border-radius: 18px;
+      background: #f1f1f1;
+    }
+
+    .dark-mode .message-content {
+      background: var(--bg-dark);
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .message.sent .message-content {
+      background: var(--gold);
+      color: white;
+    }
+
+    .message-time {
+      font-size: 0.7rem;
+      color: #999;
+      margin-top: 5px;
+    }
+
+    /* Add to Review Button */
+    .add-review-btn {
+      background: transparent;
+      border: 1px solid var(--gold);
+      color: var(--gold);
+      padding: 8px 15px;
+      border-radius: 30px;
+      font-size: 0.9rem;
+      cursor: pointer;
+      margin-top: 15px;
+      display: inline-block;
+      transition: all 0.3s ease;
+    }
+
+    .add-review-btn:hover {
+      background: rgba(212, 175, 55, 0.1);
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation Bar -->
+  <div class="nav-container">
+    <div class="nav-logo">
+      <img src="images/logo.png.jpg" alt="Pearl Essence Logo" class="nav-logo-img">
+    </div>
+    <nav class="nav-menu">
+      <a href="#" class="nav-link" id="homeLink">Home</a>
+      <a href="#" class="nav-link" id="contactLink">Contact</a>
+      <a href="#" class="nav-link" id="agentsLink">Agents</a>
+      <a href="#" class="nav-link" id="locationLink">Location</a>
+    </nav>
+  </div>
+
+  <!-- Image Carousel -->
+  <div class="carousel-container">
+    <div class="carousel-track" id="carouselTrack">
+      <!-- Slide 1 -->
+      <div class="carousel-slide">
+        <img src="images/sunscreen.jpg" alt="Our Brand new sunscreen" class="carousel-image">
+        <div class="slide-content">
+          <h3 class="slide-title">Pearl Essence Sunscreen</h3>
+          <p class="slide-text">Discover our premium pearl-infused skincare for a naturally luminous complexion.</p>
+          <a href="#" class="slide-button">Shop Now</a>
+        </div>
+      </div>
+      <!-- Slide 2 -->
+      <div class="carousel-slide">
+        <img src="images/vitamin c2.png.jpg" alt="Vitamin C serum" class="carousel-image">
+        <div class="slide-content">
+          <h3 class="slide-title">Vitamin C serum</h3>
+          <p class="slide-text">Enhance Glow & Radiance in 7 Days.
+​Reduces dark spots.
+​Leaves skin softer & bright</p>
+          <a href="#" class="slide-button">Shop Now</a>
+        </div>
+      </div>
+      <!-- Slide 3 -->
+      <div class="carousel-slide">
+        <img src="images/all products.png.jpg" alt="pearl_essence_products" class="carousel-image">
+        <div class="slide-content">
+          <h3 class="slide-title">Your Beauty Our Priority</h3>
+          <p class="slide-text">Stand Out And Make a difference with Pearl Essence Products.</p>
+          <a href="#" class="slide-button">Shop Now</a>
+        </div>
+      </div>
+      <!-- Slide 4 -->
+      <div class="carousel-slide">
+        <img src="images/image A (6).jpg" alt="CBD Serum" class="carousel-image">
+        <div class="slide-content">
+          <h3 class="slide-title">As Always Our Best Selling face and body Cream</h3>
+          <p class="slide-text">Brighten and calm your skin with our Pearl Essence Body and face cream>
+          <a href="#" class="slide-button">Shop Now</a>
+        </div>
+      </div>
+      <!-- Slide 5 -->
+      <div class="carousel-slide">
+        <img src="images/image A (5).jpg" alt="Pearl Essence Cream" class="carousel-image">
+        <div class="slide-content">
+          <h3 class="slide-title">Pearl Essence Cream</h3>
+          <p class="slide-text">Deep hydration and anti-aging in one luxurious cream.</p>
+          <a href="#" class="slide-button">Shop Now</a>
+        </div>
+      </div>
+    </div>
+    <div class="carousel-nav" id="carouselNav">
+    
+      <!-- Indicators will be added by JavaScript -->
+    </div>
+    <div class="owl-indicator">
+      <i class="fas fa-chevron-down"></i>
+    </div>
+  </div>
+
+  <!-- Location Modal -->
+  <div class="modal" id="locationModal">
+    <div class="modal-content">
+      <span class="close-modal" id="closeModal">&times;</span>
+      <h2 style="color: var(--gold); margin-bottom: 20px;">Our Location</h2>
+      <p style="margin-bottom: 20px;">Visit us at our Pearl Essence office:</p>
+      <div style="height: 300px; background: #f5f5f5; border-radius: 10px; display: flex; justify-content: center; align-items: center; margin-bottom: 20px;">
+        <!-- Replace with your actual map embed -->
+        <p>Map would be displayed here</p>
+      </div>
+      <p><strong>Address:</strong> 123 Beauty Street, Dar es Salaam, Tanzania</p>
+      <p><strong>Hours:</strong> Mon-Fri: 9AM - 6PM, Sat: 10AM - 4PM</p>
+    </div>
+  </div>
+
+  <!-- Page Transition Element -->
+  <div class="page-transition" id="pageTransition"></div>
+  
+  <!-- Welcome Screen -->
+  <div class="welcome-screen" id="welcomeScreen">
+    <div class="welcome-bg-image" id="welcomeBgImage"></div>
+    <div class="welcome-content">
+      <div class="welcome-logo-text">PEARL ESSENCE</div>
+      <h1 class="welcome-heading">Discover</h1>
+      <h2 class="welcome-subheading">Radiant Beauty with Pearl Essence</h2>
+      <p class="welcome-message">
+        At Pearl Essence, we believe that beauty is timeless and unique to each individual. 
+        Our mission is to help you embrace your natural radiance, enhancing the beauty that's already within you.
+      </p>
+      <button class="shop-now-btn glass-btn" id="shopNowBtn">Shop Now</button>
+      <div class="welcome-footer">
+        <div class="contact-info">
+          Contact us: <a href="tel:+255754757065" class="phone-number">+255 754 757 065</a>
+        </div>
+        <div class="social-links">
+          <a href="https://www.instagram.com/pearl_essence_products/?hl=en" class="social-link" target="_blank" rel="noopener" title="Instagram">
+            <i class="fab fa-instagram"></i>
+          </a>
+          <a href="https://wa.me/255754757065" class="social-link" target="_blank" rel="noopener" title="WhatsApp">
+            <i class="fab fa-whatsapp"></i>
+          </a>
+          <a href="https://www.google.com/url?q=https://www.tiktok.com/%40rencier&sa=U&ved=2ahUKEwiD056hu4iPAxXDLPsDHTf1FYMQFnoECBwQAQ&usg=AOvVaw2lLD6MCCMZ-AEIn-6r86tm" class="social-link" target="_blank" rel="noopener" title="TikTok">
+            <i class="fab fa-tiktok"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Main Content (initially hidden) -->
+  <div class="main-content" id="mainContent">
+    <button class="back-btn" id="backBtn">←</button>
+    
+    <!-- Header with Logo and Theme Toggle -->
+    <header>
+      <div class="logo-container">
+        <img src="images/logo.png.jpg" alt="Pearl Essence Logo" class="logo-img">
+        <div class="logo-text">PEARL ESSENCE</div>
+      </div>
+      <button class="theme-toggle" id="themeToggle">🌓</button>
+    </header>
+
+    <!-- Hero Section with Blurred Background Image -->
+    <section class="hero">
+      <div class="hero-bg-blur"></div>
+      <h1>THE HAPPIEST HOUR<br><span class="highlight">OF YOUR SKIN</span></h1>
+      <p class="tagline">Baby-soft skin that glows from within. Our pearl-infused formulas bring out your natural radiance.</p>
+    </section>
+
+    <!-- Product Showcase -->
+    <div class="product-showcase">
+      <!-- Product 1 -->
+      <div class="showcase-item">
+        <img class="showcase-image" src="images/sunscreen.jpg" alt="Pearl Essence Sunscreen">
+        <div class="showcase-details">
+          <div class="showcase-title">Pearl Essence Sunscreen</div>
+          <div class="showcase-desc">Protect and nourish your skin with our advanced pearl-infused sunscreen.</div>
+          <div class="showcase-more">SPF 50+ broad spectrum, lightweight, non-greasy, suitable for all skin types. Water-resistant and enriched with natural extracts for a radiant finish.</div>
+          <button class="showcase-readmore">Read More</button>
+        </div>
+      </div>
+      <!-- Product 2 -->
+      <div class="showcase-item">
+        <img class="showcase-image" src="images/glowic1.png.jpg" alt="Glowic Essence Cream">
+        <div class="showcase-details">
+          <div class="showcase-title">Glowic Essence Cream</div>
+          <div class="showcase-desc">Wake up to glowing skin with our overnight renewal cream.</div>
+          <div class="showcase-more">Formulated with pearl collagen boost, ultra-nourishing botanicals, and a non-greasy finish for visible results by morning.</div>
+          <button class="showcase-readmore">Read More</button>
+        </div>
+      </div>
+      <!-- Product 3 -->
+      <div class="showcase-item">
+        <img class="showcase-image" src="images/showergel.png.jpg" alt="Pearl Shower Gel">
+        <div class="showcase-details">
+          <div class="showcase-title">Pearl Shower Gel</div>
+          <div class="showcase-desc">A luxurious body wash with moisture lock technology.</div>
+          <div class="showcase-more">Infused with pearl extract and a refreshing floral scent, this silicon-free formula leaves your skin soft and hydrated.</div>
+          <button class="showcase-readmore">Read More</button>
+        </div>
+      </div>
+      <!-- Product 4 -->
+      <div class="showcase-item">
+        <img class="showcase-image" src="images/oil (1).jpg" alt="CBD Serum">
+        <div class="showcase-details">
+          <div class="showcase-title">CBD Serum</div>
+          <div class="showcase-desc">Brighten and calm your skin with our Pearl + CBD fusion serum.</div>
+          <div class="showcase-more">Anti-inflammatory, fast-absorbing, and designed to reduce redness while boosting radiance.</div>
+          <button class="showcase-readmore">Read More</button>
+        </div>
+      </div>
+      <!-- Product 5 -->
+      <div class="showcase-item">
+        <img class="showcase-image" src="images/image A (5).jpg" alt="Pearl Essence Cream">
+        <div class="showcase-details">
+          <div class="showcase-title">Pearl Essence Cream</div>
+          <div class="showcase-desc">Deep hydration and anti-aging in one luxurious cream.</div>
+          <div class="showcase-more">24K gold infused, with pearl protein extract and a unique hydration complex for visibly firmer, smoother skin.</div>
+          <button class="showcase-readmore">Read More</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Agent Process Section -->
+    <section class="agent-process">
+      <h2>Become a Pearl Essence Agent</h2>
+      <div class="process-steps">
+        <div class="process-step">
+          <div class="step-number">1</div>
+          <div class="step-icon"><i class="fas fa-user-plus"></i></div>
+          <h3 class="step-title">Apply Online</h3>
+          <p class="step-desc">Fill out our simple application form to start your journey as a Pearl Essence agent.</p>
+        </div>
+        <div class="process-step">
+          <div class="step-number">2</div>
+          <div class="step-icon"><i class="fas fa-handshake"></i></div>
+          <h3 class="step-title">Get Approved</h3>
+          <p class="step-desc">Our team will review your application and contact you within 48 hours.</p>
+        </div>
+        <div class="process-step">
+          <div class="step-number">3</div>
+          <div class="step-icon"><i class="fas fa-box-open"></i></div>
+          <h3 class="step-title">Receive Starter Kit</h3>
+          <p class="step-desc">Get your exclusive agent starter kit with samples and marketing materials.</p>
+        </div>
+        <div class="process-step">
+          <div class="step-number">4</div>
+          <div class="step-icon"><i class="fas fa-chart-line"></i></div>
+          <h3 class="step-title">Start Selling</h3>
+          <p class="step-desc">Begin your business with our support and training resources.</p>
+        </div>
+      </div>
+      <div class="agent-cta">
+        <button id="applyNowBtn">Apply Now</button>
+      </div>
+      
+    </section>
+
+    <!-- Horizontal Product Scroller -->
+    <section class="product-scroller">
+      <div class="scroll-arrow arrow-left" onclick="scrollProducts(-300)">←</div>
+      <div class="scroller-container" id="productScroller">
+        <!-- Product 1 -->
+        <div class="product-card">
+          <div class="product-image">
+            <img src="images/image A (5).jpg" alt="Pearl Essence Cream">
+          </div>
+          <div class="product-info">
+            <div class="product-category">LUXURY SKINCARE</div>
+            <h3 class="product-name">Pearl Essence Cream</h3>
+            <ul class="product-features">
+              <li>24K Gold Infused Formula</li>
+              <li>Pearl Protein Extract</li>
+              <li>Deep Hydration Complex</li>
+              <li>Anti-Aging Properties</li>
+            </ul>
+            <div class="product-price">$42.99</div>
+            <button class="add-to-cart glass-btn">ADD TO CART</button>
+          </div>
+        </div>
+
+        <!-- Product 2 -->
+        <div class="product-card">
+          <div class="product-image">
+            <img src="images/glowic1.png.jpg" alt="Pearl Essence Soap">
+          </div>
+          <div class="product-info">
+            <div class="product-category">GENTLE CLEANSER</div>
+            <h3 class="product-name">Pearl Essence Soap</h3>
+            <ul class="product-features">
+              <li>Micro-Pearl Exfoliation</li>
+              <li>pH Balanced Formula</li>
+              <li>Vegan Ingredients</li>
+              <li>Silky Smooth Lather</li>
+            </ul>
+            <div class="product-price">$24.99</div>
+            <button class="add-to-cart glass-btn">ADD TO CART</button>
+          </div>
+        </div>
+
+        <!-- Product 3 -->
+        <div class="product-card">
+          <div class="product-image">
+           <img src="images/showergel.png.jpg" alt="Shower">
+          </div>
+          <div class="product-info">
+            <div class="product-category">BODY WASH</div>
+            <h3 class="product-name">Pearl Shower Gel</h3>
+            <ul class="product-features">
+              <li>Luxurious Pearl Extract</li>
+              <li>Moisture Lock Technology</li>
+              <li>Refreshing Floral Scent</li>
+              <li>Silicon-Free Formula</li>
+            </ul>
+            <div class="product-price">$18.99</div>
+            <button class="add-to-cart glass-btn">ADD TO CART</button>
+          </div>
+        </div>
+
+        <!-- Product 4 -->
+        <div class="product-card">
+          <div class="product-image">
+            <img src="images/glowic1.png.jpg" alt="Glowic Night Cream">
+          </div>
+          <div class="product-info">
+            <div class="product-category">NIGHT TREATMENT</div>
+            <h3 class="product-name">Glowic Essence Cream</h3>
+            <ul class="product-features">
+              <li>Overnight Cell Renewal</li>
+              <li>Pearl Collagen Boost</li>
+              <li>Ultra-Nourishing</li>
+              <li>Non-Greasy Finish</li>
+            </ul>
+            <div class="product-price">$49.99</div>
+            <button class="add-to-cart glass-btn">ADD TO CART</button>
+          </div>
+        </div>
+
+        <!-- Product 5 -->
+        <div class="product-card">
+          <div class="product-image">
+            <img src="images/oil (1).jpg" alt="CBD Serum">
+          </div>
+          <div class="product-info">
+            <div class="product-category">PREMIUM SERUM</div>
+            <h3 class="product-name">CBD Serum</h3>
+            <ul class="product-features">
+              <li>Pearl + CBD Fusion</li>
+              <li>Anti-Inflammatory</li>
+              <li>Brightening Effect</li>
+              <li>Fast-Absorbing</li>
+            </ul>
+            <div class="product-price">$54.99</div>
+            <button class="add-to-cart glass-btn">ADD TO CART</button>
+          </div>
+        </div>
+      </div>
+      <div class="scroll-arrow arrow-right glass-btn" onclick="scrollProducts(300)">→</div>
+    </section>
+  </div>
+<!-- Review Modal -->
+<div class="review-modal" id="reviewModal">
+  <div class="review-modal-container">
+    <div class="review-modal-header">
+      <h3>Share Your Experience</h3>
+      <span class="close-review-modal">&times;</span>
+    </div>
+    <div class="review-modal-body">
+      <!-- Step 1: Product Selection -->
+      <div class="review-step active" id="reviewStep1">
+        <h4>Which product are you reviewing?</h4>
+        <div class="product-select-grid">
+          <!-- Products will be added dynamically -->
+        </div>
+      </div>
+      
+      <!-- Step 2: Rating & Review -->
+      <div class="review-step" id="reviewStep2">
+        <div class="review-product-display">
+          <img id="reviewProductImage" src="" alt="">
+          <h4 id="reviewProductName"></h4>
+        </div>
+        
+        <div class="rating-section">
+          <span>Your Rating:</span>
+          <div class="rating-stars">
+            <i class="far fa-star" data-value="1"></i>
+            <i class="far fa-star" data-value="2"></i>
+            <i class="far fa-star" data-value="3"></i>
+            <i class="far fa-star" data-value="4"></i>
+            <i class="far fa-star" data-value="5"></i>
+          </div>
+        </div>
+        
+        <textarea placeholder="Share your detailed experience..." id="reviewText"></textarea>
+        
+        <div class="review-actions">
+          <button class="back-to-products">Back</button>
+          <button class="submit-review">Submit Review</button>
+        </div>
+      </div>
+      
+      <!-- Step 3: Thank You & Chat -->
+      <div class="review-step" id="reviewStep3">
+        <div class="thank-you-message">
+          <i class="fas fa-check-circle"></i>
+          <h4>Thank You For Your Review!</h4>
+          <p>Your feedback helps us improve.</p>
+        </div>
+        
+        <div class="seller-chat-option">
+          <p>Would you like to chat with the seller about your experience?</p>
+          <button class="start-chat-btn">Start Chat</button>
+          <button class="close-review-btn">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Chat Modal -->
+<div class="chat-modal" id="chatModal">
+  <div class="chat-container">
+    <div class="chat-header">
+      <div class="seller-info">
+        <img src="images/seller-avatar.jpg" alt="Seller">
+        <div>
+          <h4>Pearl Essence Support</h4>
+          <div class="online-status">Online</div>
+        </div>
+      </div>
+      <span class="close-chat">&times;</span>
+    </div>
+    
+    <div class="chat-messages" id="chatMessages">
+      <!-- Messages will appear here -->
+    </div>
+    
+    <div class="chat-input">
+      <input type="text" placeholder="Type your message...">
+      <button class="send-btn"><i class="fas fa-paper-plane"></i></button>
+    </div>
+  </div>
+</div>
+  <script>
+    // Modernizr-like feature detection
+    document.documentElement.className = document.documentElement.className.replace('no-js', 'js');
+
+    // Page transition animation
+    const pageTransition = document.getElementById('pageTransition');
+    
+    // Show main content with transition when Shop Now is clicked
+    const welcomeScreen = document.getElementById('welcomeScreen');
+    const mainContent = document.getElementById('mainContent');
+    const shopNowBtn = document.getElementById('shopNowBtn');
+    const backBtn = document.getElementById('backBtn');
+    const welcomeBgImage = document.getElementById('welcomeBgImage');
+    const homeLink = document.getElementById('homeLink');
+    const contactLink = document.getElementById('contactLink');
+    const agentsLink = document.getElementById('agentsLink');
+    const locationLink = document.getElementById('locationLink');
+    const locationModal = document.getElementById('locationModal');
+    const closeModal = document.getElementById('closeModal');
+    const applyNowBtn = document.getElementById('applyNowBtn');
+    
+    // Replace this with your actual image URL
+    welcomeBgImage.style.backgroundImage = "url('images/image A (6).jpg')";
+    
+    // Navigation functionality
+    homeLink.addEventListener('click', (e) => {
+      e.preventDefault();
+      if (mainContent.style.display === 'block') {
+        // Start reverse transition
+        mainContent.style.opacity = '0';
+        pageTransition.style.transform = 'scaleY(1)';
+        pageTransition.style.transformOrigin = 'top';
+        pageTransition.style.transition = 'transform 0.6s cubic-bezier(0.65, 0, 0.35, 1)';
+        
+        setTimeout(() => {
+          mainContent.style.display = 'none';
+          welcomeScreen.style.display = 'flex';
+          
+          // Reset transition
+          setTimeout(() => {
+            pageTransition.style.transform = 'scaleY(0)';
+            pageTransition.style.transformOrigin = 'bottom';
+          }, 50);
+        }, 600);
+        
+        window.scrollTo(0, 0);
+      }
+    });
+    
+    contactLink.addEventListener('click', (e) => {
+      e.preventDefault();
+      window.scrollTo({
+        top: document.body.scrollHeight,
+        behavior: 'smooth'
+      });
+    });
+    
+    agentsLink.addEventListener('click', (e) => {
+      e.preventDefault();
+      // Scroll to agent process section if on main content
+      if (mainContent.style.display === 'block') {
+        document.querySelector('.agent-process').scrollIntoView({ behavior: 'smooth' });
+      } else {
+        alert("Our agents will contact you shortly. Please call +255 754 757 065 for immediate assistance.");
+      }
+    });
+    
+    locationLink.addEventListener('click', (e) => {
+      e.preventDefault();
+      locationModal.style.display = 'flex';
+      trackCarouselInteraction('location_modal_open');
+    });
+    
+    closeModal.addEventListener('click', () => {
+      locationModal.style.display = 'none';
+    });
+    
+    window.addEventListener('click', (e) => {
+      if (e.target === locationModal) {
+        locationModal.style.display = 'none';
+      }
+    });
+    
+    shopNowBtn.addEventListener('click', () => {
+      // Start transition animation
+      pageTransition.style.transform = 'scaleY(1)';
+      pageTransition.style.transformOrigin = 'bottom';
+      pageTransition.style.transition = 'transform 0.6s cubic-bezier(0.65, 0, 0.35, 1)';
+      
+      setTimeout(() => {
+        welcomeScreen.style.display = 'none';
+        mainContent.style.display = 'block';
+        backBtn.style.display = 'block';
+        
+        // Reset transition for next use
+        setTimeout(() => {
+          pageTransition.style.transform = 'scaleY(0)';
+          pageTransition.style.transformOrigin = 'top';
+          
+          // Fade in main content
+          setTimeout(() => {
+            mainContent.style.opacity = '1';
+          }, 100);
+        }, 50);
+      }, 600);
+    });
+    
+    backBtn.addEventListener('click', () => {
+      // Start reverse transition
+      mainContent.style.opacity = '0';
+      pageTransition.style.transform = 'scaleY(1)';
+      pageTransition.style.transformOrigin = 'top';
+      pageTransition.style.transition = 'transform 0.6s cubic-bezier(0.65, 0, 0.35, 1)';
+      
+      setTimeout(() => {
+        mainContent.style.display = 'none';
+        welcomeScreen.style.display = 'flex';
+        backBtn.style.display = 'none';
+        
+        // Reset transition
+        setTimeout(() => {
+          pageTransition.style.transform = 'scaleY(0)';
+          pageTransition.style.transformOrigin = 'bottom';
+        }, 50);
+      }, 600);
+      
+      window.scrollTo(0, 0);
+    });
+    
+    // Apply Now button functionality
+    applyNowBtn.addEventListener('click', () => {
+      alert("Thank you for your interest in becoming a Pearl Essence agent! Our team will contact you shortly.");
+    });
+    
+    // Theme Toggle Functionality
+    const themeToggle = document.getElementById('themeToggle');
+    const body = document.body;
+    
+    themeToggle.addEventListener('click', () => {
+      body.classList.toggle('dark-mode');
+      // Save preference to localStorage
+      const isDarkMode = body.classList.contains('dark-mode');
+      localStorage.setItem('darkMode', isDarkMode);
+    });
+    
+    // Check for saved theme preference
+    if (localStorage.getItem('darkMode') === 'true') {
+      body.classList.add('dark-mode');
+    }
+    
+    // Product Scroller Functionality
+    function scrollProducts(offset) {
+      const scroller = document.getElementById('productScroller');
+      scroller.scrollBy({
+        left: offset,
+        behavior: 'smooth'
+      });
+    }
+    
+    // Auto-hide arrows when at scroll boundaries
+    const scroller = document.getElementById('productScroller');
+    const leftArrow = document.querySelector('.arrow-left');
+    const rightArrow = document.querySelector('.arrow-right');
+    
+    scroller.addEventListener('scroll', () => {
+      leftArrow.style.display = scroller.scrollLeft > 0 ? 'flex' : 'none';
+      rightArrow.style.display = scroller.scrollLeft < (scroller.scrollWidth - scroller.clientWidth) ? 'flex' : 'none';
+    });
+    
+    // Initialize arrow visibility
+    leftArrow.style.display = 'none';
+    
+    // Add ripple effect to buttons
+    document.querySelectorAll('.add-to-cart').forEach(button => {
+      button.addEventListener('click', function(e) {
+        e.preventDefault();
+        const x = e.clientX - e.target.getBoundingClientRect().left;
+        const y = e.clientY - e.target.getBoundingClientRect().top;
+        
+        const ripple = document.createElement('span');
+        ripple.className = 'ripple';
+        ripple.style.left = `${x}px`;
+        ripple.style.top = `${y}px`;
+        
+        this.appendChild(ripple);
+        
+        setTimeout(() => {
+          ripple.remove();
+        }, 1000);
+      });
+    });
+    
+    // Auto return to welcome screen on scroll down
+    mainContent.addEventListener('scroll', () => {
+      if (mainContent.scrollTop > 30) {
+        mainContent.style.opacity = '0';
+        pageTransition.style.transform = 'scaleY(1)';
+        pageTransition.style.transformOrigin = 'top';
+        pageTransition.style.transition = 'transform 0.6s cubic-bezier(0.65, 0, 0.35, 1)';
+        setTimeout(() => {
+          mainContent.style.display = 'none';
+          welcomeScreen.style.display = 'flex';
+          backBtn.style.display = 'none';
+          setTimeout(() => {
+            pageTransition.style.transform = 'scaleY(0)';
+            pageTransition.style.transformOrigin = 'bottom';
+          }, 50);
+        }, 600);
+        window.scrollTo(0, 0);
+      }
+    });
+
+    // Image Carousel Functionality
+    const carouselTrack = document.getElementById('carouselTrack');
+    const carouselNav = document.getElementById('carouselNav');
+    const slides = document.querySelectorAll('.carousel-slide');
+    const slideCount = slides.length;
+    let currentIndex = 0;
+    let interval;
+    let touchStartX = 0;
+    let touchEndX = 0;
+
+    // Create navigation indicators
+    slides.forEach((slide, index) => {
+      const indicator = document.createElement('div');
+      indicator.className = 'carousel-indicator';
+      if (index === 0) indicator.classList.add('active');
+      indicator.addEventListener('click', () => {
+        goToSlide(index);
+        trackCarouselInteraction('indicator_click');
+      });
+      carouselNav.appendChild(indicator);
+      
+      // Set ARIA attributes
+      slide.setAttribute('aria-hidden', index !== 0);
+      slide.querySelector('.slide-content').setAttribute('aria-live', index === 0 ? 'polite' : 'off');
+    });
+
+    // Start auto-play
+    function startCarousel() {
+      interval = setInterval(() => {
+        currentIndex = (currentIndex + 1) % slideCount;
+        updateCarousel();
+        trackCarouselInteraction('auto_advance');
+      }, 5000); // Change slide every 5 seconds
+    }
+
+    // Update carousel position and active indicator
+    function updateCarousel() {
+      carouselTrack.style.transform = `translateX(-${currentIndex * 100}%)`;
+      
+      // Update active indicator and ARIA attributes
+      document.querySelectorAll('.carousel-indicator').forEach((indicator, index) => {
+        if (index === currentIndex) {
+          indicator.classList.add('active');
+          slides[index].setAttribute('aria-hidden', 'false');
+          slides[index].querySelector('.slide-content').setAttribute('aria-live', 'polite');
+        } else {
+          indicator.classList.remove('active');
+          slides[index].setAttribute('aria-hidden', 'true');
+          slides[index].querySelector('.slide-content').setAttribute('aria-live', 'off');
+        }
+      });
+    }
+
+    // Go to specific slide
+    function goToSlide(index) {
+      currentIndex = index;
+      updateCarousel();
+      resetInterval();
+    }
+
+    // Navigate to next slide
+    function nextSlide() {
+      currentIndex = (currentIndex + 1) % slideCount;
+      updateCarousel();
+      resetInterval();
+      trackCarouselInteraction('next_slide');
+    }
+
+    // Navigate to previous slide
+    function prevSlide() {
+      currentIndex = (currentIndex - 1 + slideCount) % slideCount;
+      updateCarousel();
+      resetInterval();
+      trackCarouselInteraction('prev_slide');
+    }
+
+    // Reset interval when manually navigating
+    function resetInterval() {
+      clearInterval(interval);
+      startCarousel();
+    }
+
+    // Handle swipe gestures for touch devices
+    carouselTrack.addEventListener('touchstart', (e) => {
+      touchStartX = e.changedTouches[0].screenX;
+    }, {passive: true});
+
+    carouselTrack.addEventListener('touchend', (e) => {
+      touchEndX = e.changedTouches[0].screenX;
+      handleSwipe();
+    }, {passive: true});
+
+    function handleSwipe() {
+      if (touchEndX < touchStartX - 50) nextSlide();
+      if (touchEndX > touchStartX + 50) prevSlide();
+    }
+
+    // Pause on hover
+    carouselTrack.addEventListener('mouseenter', () => clearInterval(interval));
+    carouselTrack.addEventListener('mouseleave', startCarousel);
+
+    // Track carousel interactions
+    function trackCarouselInteraction(action) {
+      if (window.gtag) {
+        gtag('event', 'carousel_interaction', {
+          'event_category': 'engagement',
+          'event_label': action
+        });
+      }
+    }
+
+    // Initialize carousel
+    startCarousel();
+
+    // Product Showcase Read More functionality
+    document.querySelectorAll('.showcase-readmore').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        const item = btn.closest('.showcase-item');
+        item.classList.toggle('expanded');
+        btn.textContent = item.classList.contains('expanded') ? 'Show Less' : 'Read More';
+      });
+    });
+
+    // Show back button when scrolled down in main content
+    mainContent.addEventListener('scroll', function() {
+      if (this.scrollTop > 100) {
+        backBtn.style.opacity = '1';
+        backBtn.style.pointerEvents = 'auto';
+      } else {
+        backBtn.style.opacity = '0';
+        backBtn.style.pointerEvents = 'none';
+      }
+    });
+    // Review System
+const reviewModal = document.getElementById('reviewModal');
+const closeReviewModal = document.querySelector('.close-review-modal');
+const productSelectGrid = document.querySelector('.product-select-grid');
+const reviewSteps = document.querySelectorAll('.review-step');
+const chatModal = document.getElementById('chatModal');
+const closeChat = document.querySelector('.close-chat');
+const chatMessages = document.getElementById('chatMessages');
+const chatInput = document.querySelector('.chat-input input');
+const sendBtn = document.querySelector('.send-btn');
+
+let currentReviewStep = 1;
+let selectedProduct = null;
+let currentRating = 0;
+
+// Sample products (replace with your actual products)
+const products = [
+  { id: 1, name: "Pearl Essence Cream", image: "images/image A (5).jpg" },
+  { id: 2, name: "Pearl Essence Soap", image: "images/glowic1.png.jpg" },
+  { id: 3, name: "Pearl Shower Gel", image: "images/showergel.png.jpg" },
+  { id: 4, name: "Glowic Essence Cream", image: "images/glowic1.png.jpg" },
+  { id: 5, name: "CBD Serum", image: "images/oil (1).jpg" }
+];
+
+// Initialize review modal with products
+function initReviewModal() {
+  productSelectGrid.innerHTML = '';
+  products.forEach(product => {
+    const productItem = document.createElement('div');
+    productItem.className = 'product-select-item';
+    productItem.innerHTML = `
+      <img src="${product.image}" alt="${product.name}">
+      <h5>${product.name}</h5>
+    `;
+    productItem.addEventListener('click', () => selectProduct(product));
+    productSelectGrid.appendChild(productItem);
+  });
+}
+
+// Select product for review
+function selectProduct(product) {
+  selectedProduct = product;
+  document.getElementById('reviewProductImage').src = product.image;
+  document.getElementById('reviewProductName').textContent = product.name;
+  goToReviewStep(2);
+}
+
+// Star rating interaction
+document.querySelectorAll('.rating-stars i').forEach(star => {
+  star.addEventListener('click', () => {
+    const value = parseInt(star.dataset.value);
+    currentRating = value;
+    document.querySelectorAll('.rating-stars i').forEach((s, index) => {
+      s.classList.toggle('active', index < value);
+      s.classList.toggle('far', index >= value);
+      s.classList.toggle('fas', index < value);
+    });
+  });
+});
+
+// Navigation between steps
+function goToReviewStep(step) {
+  currentReviewStep = step;
+  reviewSteps.forEach((s, index) => {
+    s.classList.toggle('active', index === step - 1);
+  });
+}
+
+// Submit review
+document.querySelector('.submit-review').addEventListener('click', () => {
+  const reviewText = document.getElementById('reviewText').value;
+  
+  if (currentRating === 0) {
+    alert('Please select a rating');
+    return;
+  }
+  
+  if (!reviewText.trim()) {
+    alert('Please write your review');
+    return;
+  }
+  
+  // Here you would normally send the review to your server
+  console.log('Review submitted:', {
+    product: selectedProduct.name,
+    rating: currentRating,
+    review: reviewText
+  });
+  
+  goToReviewStep(3);
+});
+
+// Back to products
+document.querySelector('.back-to-products').addEventListener('click', () => {
+  goToReviewStep(1);
+});
+
+// Close review modal
+closeReviewModal.addEventListener('click', () => {
+  closeReviewModalFunc();
+});
+
+function closeReviewModalFunc() {
+  reviewModal.style.display = 'none';
+  currentReviewStep = 1;
+  selectedProduct = null;
+  currentRating = 0;
+  document.getElementById('reviewText').value = '';
+  document.querySelectorAll('.rating-stars i').forEach(star => {
+    star.classList.remove('active', 'fas');
+    star.classList.add('far');
+  });
+  goToReviewStep(1);
+}
+
+// Start chat
+document.querySelector('.start-chat-btn').addEventListener('click', () => {
+  closeReviewModalFunc();
+  openChatModal();
+});
+
+// Close review modal when clicking outside
+reviewModal.addEventListener('click', (e) => {
+  if (e.target === reviewModal) {
+    closeReviewModalFunc();
+  }
+});
+
+// Chat functionality
+function openChatModal() {
+  chatModal.style.display = 'block';
+  // Add welcome message
+  addChatMessage('received', 'Pearl Essence Support', 'Hello! How can I help you with your recent purchase?');
+}
+
+function closeChatModal() {
+  chatModal.style.display = 'none';
+  chatMessages.innerHTML = '';
+}
+
+function addChatMessage(type, sender, text) {
+  const messageDiv = document.createElement('div');
+  messageDiv.className = `message ${type}`;
+  
+  const now = new Date();
+  const timeString = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+  
+  messageDiv.innerHTML = `
+    <div class="message-content">${text}</div>
+    <div class="message-time">${timeString}</div>
+  `;
+  
+  chatMessages.appendChild(messageDiv);
+  chatMessages.scrollTop = chatMessages.scrollHeight;
+}
+
+// Send message
+function sendMessage() {
+  const message = chatInput.value.trim();
+  if (message) {
+    addChatMessage('sent', 'You', message);
+    chatInput.value = '';
+    
+    // Simulate reply after 1-2 seconds
+    setTimeout(() => {
+      addChatMessage('received', 'Pearl Essence Support', 'Thank you for your feedback. We appreciate your business!');
+    }, 1000 + Math.random() * 1000);
+  }
+}
+
+sendBtn.addEventListener('click', sendMessage);
+chatInput.addEventListener('keypress', (e) => {
+  if (e.key === 'Enter') sendMessage();
+});
+
+closeChat.addEventListener('click', closeChatModal);
+
+// Open review modal from any "Add Review" button
+document.querySelectorAll('.add-review-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    initReviewModal();
+    reviewModal.style.display = 'flex';
+    setTimeout(() => {
+      document.querySelector('.review-modal-container').style.opacity = '1';
+      document.querySelector('.review-modal-container').style.transform = 'translateY(0)';
+    }, 10);
+  });
+});
+  </script>
+</body>
+</html>
