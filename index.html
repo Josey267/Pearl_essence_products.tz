@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pearl Essence | Premium Skincare</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Montserrat:wght@300;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="stylesheet" href='styles.css'>
+</head>
+<body>
+ 
+  <!-- Navigation Bar -->
+  <div class="nav-container">
+    <div class="nav-logo">
+      <img src="images/logo.png.jpg" alt="Pearl Essence Logo" class="nav-logo-img">
+    </div>
+    <nav class="nav-menu">
+      <a href="#" class="nav-link" id="homeLink">Home</a>
+      <a href="#" class="nav-link" id="contactLink">Contact</a>
+      <a href="agents&Community.html" class="nav-link" id="agentsLink">Agents&Community</a>
+      <a href="#" class="nav-link" id="locationLink">Location</a>
+    </nav>
+  </div>
+
+  <!-- Image Carousel -->
+  <div class="carousel-container">
+    <div class="carousel-track" id="carouselTrack">
+      <!-- Slide 1 -->
+      <div class="carousel-slide">
+        <img src="images/sunscreen.jpg" alt="Our Brand new sunscreen" class="carousel-image">
+        <div class="slide-content">
+          <h3 class="slide-title">Pearl Essence Sunscreen</h3>
+          <p class="slide-text">Discover our premium pearl-infused skincare for a naturally luminous complexion.</p>
+          <a href="#" class="slide-button">Shop Now</a>
+        </div>
+      </div>
+      <!-- Slide 2 -->
+      <div class="carousel-slide">
+        <img src="images/vitamin c2.png.jpg" alt="Vitamin C serum" class="carousel-image">
+        <div class="slide-content">
+          <h3 class="slide-title">Vitamin C serum</h3>
+          <p class="slide-text">Enhance Glow & Radiance in 7 Days.
+​Reduces dark spots.
+​Leaves skin softer & bright</p>
+          <a href="#" class="slide-button">Shop Now</a>
+        </div>
+      </div>
+      <!-- Slide 3 -->
+      <div class="carousel-slide">
+        <img src="images/all products.png.jpg" alt="pearl_essence_products" class="carousel-image">
+        <div class="slide-content">
+          <h3 class="slide-title">Your Beauty Our Priority</h3>
+          <p class="slide-text">Stand Out And Make a difference with Pearl Essence Products.</p>
+          <a href="#" class="slide-button">Shop Now</a>
+        </div>
+      </div>
+      <!-- Slide 4 -->
+      <div class="carousel-slide">
+        <img src="images/image A (6).jpg" alt="CBD Serum" class="carousel-image">
+        <div class="slide-content">
+          <h3 class="slide-title">As Always Our Best Selling face and body Cream</h3>
+          <p class="slide-text">Brighten and calm your skin with our Pearl Essence Body and face cream>
+          <a href="#" class="slide-button">Shop Now</a>
+        </div>
+      </div>
+      <!-- Slide 5 -->
+      <div class="carousel-slide">
+        <img src="images/image A (5).jpg" alt="Pearl Essence Cream" class="carousel-image">
+        <div class="slide-content">
+          <h3 class="slide-title">Pearl Essence Cream</h3>
+          <p class="slide-text">Deep hydration and anti-aging in one luxurious cream.</p>
+          <a href="#" class="slide-button">Shop Now</a>
+        </div>
+      </div>
+    </div>
+    <div class="carousel-nav" id="carouselNav">
+    
+      <!-- Indicators will be added by JavaScript -->
+    </div>
+    <div class="owl-indicator">
+      <i class="fas fa-chevron-down"></i>
+    </div>
+  </div>
+
+  <!-- Location Modal -->
+  <div class="modal" id="locationModal">
+    <div class="modal-content">
+      <span class="close-modal" id="closeModal">&times;</span>
+      <h2 style="color: var(--gold); margin-bottom: 20px;">Our Location</h2>
+      <p style="margin-bottom: 20px;">Visit us at our Pearl Essence office:</p>
+      <div style="height: 300px; background: #f5f5f5; border-radius: 10px; display: flex; justify-content: center; align-items: center; margin-bottom: 20px;">
+        <!-- Replace with your actual map embed -->
+        <p>Map would be displayed here</p>
+      </div>
+      <p><strong>Address:</strong> Universal Hotel Sinza mori, Dar es Salaam, Tanzania</p>
+      <p><strong>Hours:</strong> Mon-Fri: 9AM - 6PM, Sat: 10AM - 4PM</p>
+    </div>
+  </div>
+
+  <!-- Page Transition Element -->
+  <div class="page-transition" id="pageTransition"></div>
+  
+  <!-- Welcome Screen -->
+  <div class="welcome-screen" id="welcomeScreen">
+    <div class="welcome-bg-image" id="welcomeBgImage"></div>
+    <div class="welcome-content">
+      <div class="welcome-logo-text">PEARL ESSENCE</div>
+      <h1 class="welcome-heading">Discover</h1>
+      <h2 class="welcome-subheading">Radiant Beauty with Pearl Essence</h2>
+      <p class="welcome-message">
+        At Pearl Essence, we believe that beauty is timeless and unique to each individual. 
+        Our mission is to help you embrace your natural radiance, enhancing the beauty that's already within you.
+      </p>
+      <button class="shop-now-btn glass-btn" id="shopNowBtn">Shop Now</button>
+      <div class="welcome-footer">
+        <div class="contact-info">
+          Contact us: <a href="tel:+255754757065" class="phone-number">+255 754 757 065</a>
+        </div>
+         <div class="pearl-products">
+    <!-- Product 1 -->
+    <div class="product-row">
+      <div class="product-image">
+        <img src="images/sunscree33.png" alt="Pearl Necklace">
+      </div>
+      <div class="product-text">
+        <h3 class="product-title">Classic Pearl Necklace</h3>
+        <p class="product-desc">Timeless elegance with our hand-selected freshwater pearls. Perfect for both casual and formal occasions.</p>
+        <a href="#" class="shop-btn">View Product</a>
+      </div>
+    </div>
+
+    <!-- Product 2 -->
+    <div class="product-row reverse">
+      <div class="product-image">
+        <img src="images/vitamin c2.png.jpg" alt="Pearl Earrings">
+      </div>
+      <div class="product-text">
+        <h3 class="product-title">Diamond-Accent Pearl Earrings</h3>
+        <p class="product-desc">Sophisticated 6mm pearls paired with brilliant-cut diamond accents in 14k white gold.</p>
+        <a href="#" class="shop-btn">Shop Now</a>
+      </div>
+    </div>
+
+    <!-- Product 3 -->
+    <div class="product-row">
+      <div class="product-image">
+        <img src="images/vitaminc.png.jpg" alt="Pearl Bracelet">
+      </div>
+      <div class="product-text">
+        <h3 class="product-title">Pearl & Charm Bracelet</h3>
+        <p class="product-desc">Delicate 4mm pearls alternating with sterling silver charms on adjustable silk cord.</p>
+        <a href="#" class="shop-btn">View Details</a>
+      </div>
+    </div>
+  </div>
+        <div class="social-links">
+          <a href="https://www.instagram.com/pearl_essence_products/?hl=en" class="social-link" target="_blank" rel="noopener" title="Instagram">
+            <i class="fab fa-instagram"></i>
+          </a>
+          <a href="https://wa.me/255754757065" class="social-link" target="_blank" rel="noopener" title="WhatsApp">
+            <i class="fab fa-whatsapp"></i>
+          </a>
+          <a href="https://www.google.com/url?q=https://www.tiktok.com/%40rencier&sa=U&ved=2ahUKEwiD056hu4iPAxXDLPsDHTf1FYMQFnoECBwQAQ&usg=AOvVaw2lLD6MCCMZ-AEIn-6r86tm" class="social-link" target="_blank" rel="noopener" title="TikTok">
+            <i class="fab fa-tiktok"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Main Content (initially hidden) -->
+  <div class="main-content" id="mainContent">
+    <button class="back-btn" id="backBtn">←</button>
+    
+    <!-- Header with Logo and Theme Toggle -->
+    <header>
+      <div class="logo-container">
+        <img src="images/logo.png.jpg" alt="Pearl Essence Logo" class="logo-img">
+        <div class="logo-text">PEARL ESSENCE</div>
+      </div>
+      <button class="theme-toggle" id="themeToggle">🌓</button>
+    </header>
+
+    <!-- Hero Section with Blurred Background Image -->
+    <section class="hero">
+      <div class="hero-bg-blur"></div>
+      <h1>THE HAPPIEST HOUR<br><span class="highlight">OF YOUR SKIN</span></h1>
+      <p class="tagline">Baby-soft skin that glows from within. Our pearl-infused formulas bring out your natural radiance.</p>
+    </section>
+
+    <!-- Product Showcase -->
+    <div class="product-showcase">
+      <!-- Product 1 -->
+      <div class="showcase-item">
+        <img class="showcase-image" src="images/sunscreen.jpg" alt="Pearl Essence Sunscreen">
+        <div class="showcase-details">
+          <div class="showcase-title">Pearl Essence Sunscreen</div>
+          <div class="showcase-desc">Protect and nourish your skin with our advanced pearl-infused sunscreen.</div>
+          <div class="showcase-more">SPF 50+ broad spectrum, lightweight, non-greasy, suitable for all skin types. Water-resistant and enriched with natural extracts for a radiant finish.</div>
+          <button class="showcase-readmore">Read More</button>
+        </div>
+      </div>
+      <!-- Product 2 -->
+      <div class="showcase-item">
+        <img class="showcase-image" src="images/glowic1.png.jpg" alt="Glowic Essence Cream">
+        <div class="showcase-details">
+          <div class="showcase-title">Glowic Essence Cream</div>
+          <div class="showcase-desc">Wake up to glowing skin with our overnight renewal cream.</div>
+          <div class="showcase-more">Formulated with pearl collagen boost, ultra-nourishing botanicals, and a non-greasy finish for visible results by morning.</div>
+          <button class="showcase-readmore">Read More</button>
+        </div>
+      </div>
+      <!-- Product 3 -->
+      <div class="showcase-item">
+        <img class="showcase-image" src="images/showergel.png.jpg" alt="Pearl Shower Gel">
+        <div class="showcase-details">
+          <div class="showcase-title">Pearl Shower Gel</div>
+          <div class="showcase-desc">A luxurious body wash with moisture lock technology.</div>
+          <div class="showcase-more">Infused with pearl extract and a refreshing floral scent, this silicon-free formula leaves your skin soft and hydrated.</div>
+          <button class="showcase-readmore">Read More</button>
+        </div>
+      </div>
+      <!-- Product 4 -->
+      <div class="showcase-item">
+        <img class="showcase-image" src="images/oil (1).jpg" alt="CBD Serum">
+        <div class="showcase-details">
+          <div class="showcase-title">CBD Serum</div>
+          <div class="showcase-desc">Brighten and calm your skin with our Pearl + CBD fusion serum.</div>
+          <div class="showcase-more">Anti-inflammatory, fast-absorbing, and designed to reduce redness while boosting radiance.</div>
+          <button class="showcase-readmore">Read More</button>
+        </div>
+      </div>
+      <!-- Product 5 -->
+      <div class="showcase-item">
+        <img class="showcase-image" src="images/image A (5).jpg" alt="Pearl Essence Cream">
+        <div class="showcase-details">
+          <div class="showcase-title">Pearl Essence Cream</div>
+          <div class="showcase-desc">Deep hydration and anti-aging in one luxurious cream.</div>
+          <div class="showcase-more">24K gold infused, with pearl protein extract and a unique hydration complex for visibly firmer, smoother skin.</div>
+          <button class="showcase-readmore">Read More</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Agent Process Section -->
+    <section class="agent-process">
+      <h2>Become a Pearl Essence Agent</h2>
+      <div class="process-steps">
+        <div class="process-step">
+          <div class="step-number">1</div>
+          <div class="step-icon"><i class="fas fa-user-plus"></i></div>
+          <h3 class="step-title">Apply Online</h3>
+          <p class="step-desc">Fill out our simple application form to start your journey as a Pearl Essence agent.</p>
+        </div>
+        <div class="process-step">
+          <div class="step-number">2</div>
+          <div class="step-icon"><i class="fas fa-handshake"></i></div>
+          <h3 class="step-title">Get Approved</h3>
+          <p class="step-desc">Our team will review your application and contact you within 48 hours.</p>
+        </div>
+        <div class="process-step">
+          <div class="step-number">3</div>
+          <div class="step-icon"><i class="fas fa-box-open"></i></div>
+          <h3 class="step-title">Receive Starter Kit</h3>
+          <p class="step-desc">Get your exclusive agent starter kit with samples and marketing materials.</p>
+        </div>
+        <div class="process-step">
+          <div class="step-number">4</div>
+          <div class="step-icon"><i class="fas fa-chart-line"></i></div>
+          <h3 class="step-title">Start Selling</h3>
+          <p class="step-desc">Begin your business with our support and training resources.</p>
+        </div>
+      </div>
+      <div class="agent-cta">
+        <button id="applyNowBtn">Apply Now</button>
+      </div>
+      
+    </section>
+
+    <!-- Horizontal Product Scroller -->
+    <section class="product-scroller">
+      <div class="scroll-arrow arrow-left" onclick="scrollProducts(-300)">←</div>
+      <div class="scroller-container" id="productScroller">
+        <!-- Product 1 -->
+        <div class="product-card">
+          <div class="product-image">
+            <img src="images/image A (5).jpg" alt="Pearl Essence Cream">
+          </div>
+          <div class="product-info">
+            <div class="product-category">LUXURY SKINCARE</div>
+            <h3 class="product-name">Pearl Essence Cream</h3>
+            <ul class="product-features">
+              <li>24K Gold Infused Formula</li>
+              <li>Pearl Protein Extract</li>
+              <li>Deep Hydration Complex</li>
+              <li>Anti-Aging Properties</li>
+            </ul>
+            <div class="product-price">$42.99</div>
+            <button class="add-to-cart glass-btn">ADD TO CART</button>
+          </div>
+        </div>
+
+        <!-- Product 2 -->
+        <div class="product-card">
+          <div class="product-image">
+            <img src="images/glowic1.png.jpg" alt="Pearl Essence Soap">
+          </div>
+          <div class="product-info">
+            <div class="product-category">GENTLE CLEANSER</div>
+            <h3 class="product-name">Pearl Essence Soap</h3>
+            <ul class="product-features">
+              <li>Micro-Pearl Exfoliation</li>
+              <li>pH Balanced Formula</li>
+              <li>Vegan Ingredients</li>
+              <li>Silky Smooth Lather</li>
+            </ul>
+            <div class="product-price">$24.99</div>
+            <button class="add-to-cart glass-btn">ADD TO CART</button>
+          </div>
+        </div>
+
+        <!-- Product 3 -->
+        <div class="product-card">
+          <div class="product-image">
+           <img src="images/showergel.png.jpg" alt="Shower">
+          </div>
+          <div class="product-info">
+            <div class="product-category">BODY WASH</div>
+            <h3 class="product-name">Pearl Shower Gel</h3>
+            <ul class="product-features">
+              <li>Luxurious Pearl Extract</li>
+              <li>Moisture Lock Technology</li>
+              <li>Refreshing Floral Scent</li>
+              <li>Silicon-Free Formula</li>
+            </ul>
+            <div class="product-price">$18.99</div>
+            <button class="add-to-cart glass-btn">ADD TO CART</button>
+          </div>
+        </div>
+
+        <!-- Product 4 -->
+        <div class="product-card">
+          <div class="product-image">
+            <img src="images/glowic1.png.jpg" alt="Glowic Night Cream">
+          </div>
+          <div class="product-info">
+            <div class="product-category">NIGHT TREATMENT</div>
+            <h3 class="product-name">Glowic Essence Cream</h3>
+            <ul class="product-features">
+              <li>Overnight Cell Renewal</li>
+              <li>Pearl Collagen Boost</li>
+              <li>Ultra-Nourishing</li>
+              <li>Non-Greasy Finish</li>
+            </ul>
+            <div class="product-price">$49.99</div>
+            <button class="add-to-cart glass-btn">ADD TO CART</button>
+          </div>
+        </div>
+
+        <!-- Product 5 -->
+        <div class="product-card">
+          <div class="product-image">
+            <img src="images/oil (1).jpg" alt="CBD Serum">
+          </div>
+          <div class="product-info">
+            <div class="product-category">PREMIUM SERUM</div>
+            <h3 class="product-name">CBD Serum</h3>
+            <ul class="product-features">
+              <li>Pearl + CBD Fusion</li>
+              <li>Anti-Inflammatory</li>
+              <li>Brightening Effect</li>
+              <li>Fast-Absorbing</li>
+            </ul>
+            <div class="product-price">$54.99</div>
+            <button class="add-to-cart glass-btn">ADD TO CART</button>
+          </div>
+        </div>
+      </div>
+      <div class="scroll-arrow arrow-right glass-btn" onclick="scrollProducts(300)">→</div>
+    </section>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
