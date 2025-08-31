@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Access | Pearl Essence</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Montserrat:wght@300;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: linear-gradient(135deg, #fbf7f3 0%, #f9f5f1 100%);
+      color: #333;
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    
+    .login-container {
+      width: 100%;
+      max-width: 450px;
+      background: rgba(255, 255, 255, 0.95);
+      padding: 40px;
+      border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .login-container::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 6px;
+      background: linear-gradient(90deg, #d4af37, #f1e5c9, #d4af37);
+    }
+    
+    .logo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: 30px;
+    }
+    
+    .logo-img {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      object-fit: cover;
+      box-shadow: 0 4px 10px rgba(212, 175, 55, 0.3);
+    }
+    
+    .logo-text {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      color: #d4af37;
+      font-size: 24px;
+      letter-spacing: 0.5px;
+    }
+    
+    h2 {
+      font-family: 'Playfair Display', serif;
+      color: #d4af37;
+      margin-bottom: 10px;
+      font-weight: 600;
+    }
+    
+    .subtitle {
+      color: #7a7a7a;
+      margin-bottom: 30px;
+      font-size: 15px;
+    }
+    
+    .form-group {
+      margin-bottom: 20px;
+      text-align: left;
+    }
+    
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 500;
+      color: #555;
+      font-size: 14px;
+    }
+    
+    .input-with-icon {
+      position: relative;
+    }
+    
+    .input-with-icon i {
+      position: absolute;
+      left: 15px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #d4af37;
+    }
+    
+    .form-control {
+      width: 100%;
+      padding: 14px 14px 14px 45px;
+      border-radius: 10px;
+      border: 1px solid #eee5d7;
+      font-size: 16px;
+      transition: all 0.3s ease;
+      background: #fbf9f5;
+    }
+    
+    .form-control:focus {
+      border-color: #d4af37;
+      box-shadow: 0 0 0 2px rgba(212, 175, 55, 0.2);
+      outline: none;
+    }
+    
+    .btn {
+      background: linear-gradient(135deg, #d4af37 0%, #c19b2c 100%);
+      border: none;
+      color: white;
+      padding: 14px 20px;
+      border-radius: 10px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      display: inline-block;
+      width: 100%;
+      font-size: 16px;
+      letter-spacing: 0.5px;
+      box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+    }
+    
+    .btn:hover {
+      background: linear-gradient(135deg, #c19b2c 0%, #a88521 100%);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
+    }
+    
+    .error-message {
+      color: #f44336;
+      margin-top: 8px;
+      font-size: 14px;
+      display: none;
+      text-align: center;
+    }
+    
+    .back-link {
+      display: inline-block;
+      margin-top: 25px;
+      color: #7a7a7a;
+      text-decoration: none;
+      font-size: 14px;
+      transition: color 0.3s ease;
+    }
+    
+    .back-link:hover {
+      color: #d4af37;
+    }
+    
+    .security-notice {
+      margin-top: 25px;
+      padding: 12px;
+      background: rgba(212, 175, 55, 0.1);
+      border-radius: 8px;
+      font-size: 13px;
+      color: #8a6a12;
+      border-left: 3px solid #d4af37;
+    }
+    
+    .attempts-counter {
+      margin-top: 15px;
+      font-size: 13px;
+      color: #7a7a7a;
+    }
+    
+    @media (max-width: 500px) {
+      .login-container {
+        padding: 30px 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="login-container">
+    <div class="logo">
+      <img src="https://via.placeholder.com/50" alt="Pearl Essence Logo" class="logo-img">
+      <div class="logo-text">Pearl Essence</div>
+    </div>
+    
+    <h2>Admin Access</h2>
+    <p class="subtitle">Enter verification code to continue</p>
+    
+    <form id="adminLoginForm">
+      <div class="form-group">
+        <label for="adminCode">Verification Code</label>
+        <div class="input-with-icon">
+          <i class="fas fa-lock"></i>
+          <input type="password" id="adminCode" class="form-control" placeholder="Enter admin code" required>
+        </div>
+        <div class="error-message" id="errorMessage">Invalid verification code</div>
+      </div>
+      
+      <button type="submit" class="btn">
+        <i class="fas fa-unlock-alt"></i> Access Dashboard
+      </button>
+    </form>
+    
+    <div class="attempts-counter" id="attemptsCounter">
+      Attempts remaining: <span id="attemptsRemaining">3</span>
+    </div>
+    
+    <div class="security-notice">
+      <i class="fas fa-shield-alt"></i> For security reasons, access is limited to authorized personnel only.
+    </div>
+    
+    <a href="index.html" class="back-link">
+      <i class="fas fa-arrow-left"></i> Back to Store
+    </a>
+  </div>
+
+  <script>
+    // Admin authentication system
+    const ADMIN_CODE = "PEARL2024"; // In production, this should be stored in environment variables
+    const AUTH_KEY = 'pe_admin_auth';
+    const ATTEMPTS_KEY = 'pe_admin_attempts';
+    const MAX_ATTEMPTS = 3;
+    
+    // Initialize attempts counter
+    function initAttempts() {
+      if (!localStorage.getItem(ATTEMPTS_KEY)) {
+        localStorage.setItem(ATTEMPTS_KEY, MAX_ATTEMPTS);
+      }
+      updateAttemptsDisplay();
+    }
+    
+    // Update attempts display
+    function updateAttemptsDisplay() {
+      const attempts = parseInt(localStorage.getItem(ATTEMPTS_KEY));
+      document.getElementById('attemptsRemaining').textContent = attempts;
+      
+      if (attempts <= 1) {
+        document.getElementById('attemptsCounter').style.color = '#f44336';
+      }
+    }
+    
+    // Decrement attempts counter
+    function decrementAttempts() {
+      let attempts = parseInt(localStorage.getItem(ATTEMPTS_KEY));
+      attempts--;
+      localStorage.setItem(ATTEMPTS_KEY, attempts);
+      updateAttemptsDisplay();
+      
+      if (attempts <= 0) {
+        disableLoginForm();
+      }
+    }
+    
+    // Disable login form after too many attempts
+    function disableLoginForm() {
+      document.getElementById('adminCode').disabled = true;
+      document.getElementById('adminCode').placeholder = "Too many failed attempts";
+      document.querySelector('button[type="submit"]').disabled = true;
+      document.getElementById('errorMessage').textContent = "Access temporarily disabled";
+      document.getElementById('errorMessage').style.display = 'block';
+      
+      // Re-enable after 15 minutes
+      setTimeout(() => {
+        localStorage.setItem(ATTEMPTS_KEY, MAX_ATTEMPTS);
+        document.getElementById('adminCode').disabled = false;
+        document.getElementById('adminCode').placeholder = "Enter admin code";
+        document.querySelector('button[type="submit"]').disabled = false;
+        document.getElementById('errorMessage').style.display = 'none';
+        updateAttemptsDisplay();
+      }, 15 * 60 * 1000); // 15 minutes
+    }
+    
+    // Check if already authenticated
+    function checkAuth() {
+      const auth = localStorage.getItem(AUTH_KEY);
+      if (auth) {
+        const { timestamp, code } = JSON.parse(auth);
+        // Check if session is still valid (8 hours)
+        if (Date.now() - timestamp < 8 * 60 * 60 * 1000 && code === ADMIN_CODE) {
+          window.location.href = "admin-dashboard.html";
+          return;
+        } else {
+          // Clear expired session
+          localStorage.removeItem(AUTH_KEY);
+        }
+      }
+    }
+    
+    // Handle form submission
+    document.getElementById('adminLoginForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      const code = document.getElementById('adminCode').value;
+      const errorElement = document.getElementById('errorMessage');
+      
+      if (code === ADMIN_CODE) {
+        // Reset attempts on successful login
+        localStorage.setItem(ATTEMPTS_KEY, MAX_ATTEMPTS);
+        
+        // Store authentication with timestamp
+        localStorage.setItem(AUTH_KEY, JSON.stringify({
+          code: code,
+          timestamp: Date.now()
+        }));
+        
+        // Redirect to admin dashboard
+        window.location.href = "admin-dashboard.html";
+      } else {
+        decrementAttempts();
+        errorElement.style.display = 'block';
+        
+        // Shake animation for error
+        document.getElementById('adminCode').classList.add('error');
+        setTimeout(() => {
+          document.getElementById('adminCode').classList.remove('error');
+        }, 500);
+      }
+    });
+    
+    // Check authentication on page load
+    document.addEventListener('DOMContentLoaded', function() {
+      checkAuth();
+      initAttempts();
+      
+      // Add animation on load
+      document.querySelector('.login-container').style.opacity = '0';
+      document.querySelector('.login-container').style.transform = 'translateY(20px)';
+      
+      setTimeout(() => {
+        document.querySelector('.login-container').style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+        document.querySelector('.login-container').style.opacity = '1';
+        document.querySelector('.login-container').style.transform = 'translateY(0)';
+      }, 100);
+    });
+  </script>
+</body>
+</html>
