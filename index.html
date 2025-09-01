@@ -1,0 +1,1300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pearl Essence | Premium Skincare</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Montserrat:wght@300;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="cart.css">
+  <link rel="stylesheet" href='styles.css'>
+  <!-- moved Font Awesome here -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+ 
+  <!-- Navigation Bar -->
+  <div class="nav-container">
+    <div class="nav-logo">
+      <img src="images/logo.png.jpg" alt="Pearl Essence Logo" class="nav-logo-img">
+    </div>
+    <nav class="nav-menu" style="display: flex; justify-content: center; flex: 1;">
+      <a href="#" class="nav-link" id="homeLink">Home</a>
+      <a href="#" class="nav-link" id="contactLink">Contact</a>
+      <a href="agents&Community.html" class="nav-link" id="agentsLink">Agents&Community</a>
+      <a href="#" class="nav-link" id="locationLink">Location</a>
+      <!-- Admin access (opens verification/login) -->
+      <a href="login.html" class="nav-link" id="adminLink" title="Admin">
+      <i class="fas fa-user-shield"></i>
+      </a>
+    </nav>
+    </div>
+
+  <!-- Image Carousel -->
+  <div class="carousel-container">
+    <div class="carousel-track" id="carouselTrack">
+      <!-- Slide 1 -->
+      <div class="carousel-slide">
+        <img src="images/sunscreen.jpg" alt="Our Brand new sunscreen" class="carousel-image">
+        <div class="slide-content">
+          <h3 class="slide-title">Pearl Essence Sunscreen</h3>
+          <p class="slide-text">Discover our premium pearl-infused skincare for a naturally luminous complexion.</p>
+          <a href="#" class="slide-button">Shop Now</a>
+        </div>
+      </div>
+      <!-- Slide 2 -->
+      <div class="carousel-slide">
+        <img src="images/vitamin c2.png.jpg" alt="Vitamin C serum" class="carousel-image">
+        <div class="slide-content">
+          <h3 class="slide-title">Vitamin C serum</h3>
+          <p class="slide-text">Enhance Glow & Radiance in 7 Days.
+​Reduces dark spots.
+​Leaves skin softer & bright</p>
+          <a href="#" class="slide-button">Shop Now</a>
+        </div>
+      </div>
+      <!-- Slide 3 -->
+      <div class="carousel-slide">
+        <img src="images/all products.png.jpg" alt="pearl_essence_products" class="carousel-image">
+        <div class="slide-content">
+          <h3 class="slide-title">Your Beauty Our Priority</h3>
+          <p class="slide-text">Stand Out And Make a difference with Pearl Essence Products.</p>
+          <a href="#" class="slide-button">Shop Now</a>
+        </div>
+      </div>
+      <!-- Slide 4 -->
+      <div class="carousel-slide">
+        <img src="images/image A (6).jpg" alt="CBD Serum" class="carousel-image">
+        <div class="slide-content">
+          <h3 class="slide-title">As Always Our Best Selling face and body Cream</h3>
+          <p class="slide-text">Brighten and calm your skin with our Pearl Essence Body and face cream.</p>
+          <a href="#" class="slide-button">Shop Now</a>
+        </div>
+      </div>
+      <!-- Slide 5 -->
+      <div class="carousel-slide">
+        <img src="images/image A (5).jpg" alt="Pearl Essence Cream" class="carousel-image">
+        <div class="slide-content">
+          <h3 class="slide-title">Pearl Essence Cream</h3>
+          <p class="slide-text">Deep hydration and anti-aging in one luxurious cream.</p>
+          <a href="#" class="slide-button">Shop Now</a>
+        </div>
+      </div>
+    </div>
+    <div class="carousel-nav" id="carouselNav">
+    
+      <!-- Indicators will be added by JavaScript -->
+    </div>
+    <div class="owl-indicator">
+      <i class="fas fa-chevron-down"></i>
+    </div>
+  </div>
+
+  <!-- Location Modal -->
+  <div class="modal" id="locationModal">
+    <div class="modal-content">
+      <span class="close-modal" id="closeModal">&times;</span>
+      <h2 class="location-heading">Our Location</h2>
+      <p class="location-office-info">Visit us at our Pearl Essence office:</p>
+      <div class="location-map-placeholder">
+        <!-- Replace with your actual map embed -->
+        <p>Map would be displayed here</p>
+      </div>
+      <p><strong>Address:</strong> Universal Hotel Sinza mori, Dar es Salaam, Tanzania</p>
+      <p><strong>Hours:</strong> Mon-Fri: 9AM - 6PM, Sat: 10AM - 4PM</p>
+    </div>
+  </div>
+
+  <!-- Page Transition Element -->
+  <div class="page-transition" id="pageTransition"></div>
+  
+  <!-- Welcome Screen -->
+  <div class="welcome-screen" id="welcomeScreen">
+    <div class="welcome-bg-image" id="welcomeBgImage"></div>
+    <div class="welcome-content">
+      <div class="welcome-logo-text">PEARL ESSENCE</div>
+      <h1 class="welcome-heading">Discover</h1>
+      <h2 class="welcome-subheading">Radiant Beauty with Pearl Essence</h2>
+      <p class="welcome-message">
+        At Pearl Essence, we believe that beauty is timeless and unique to each individual. 
+        Our mission is to help you embrace your natural radiance, enhancing the beauty that's already within you.
+      </p>
+      <button class="shop-now-btn glass-btn" id="shopNowBtn">Shop Now</button>
+      <div class="welcome-footer">
+        <div class="contact-info">
+          Contact us: <a href="tel:+255754757065" class="phone-number">+255 754 757 065</a>
+        </div>
+         <div class="pearl-products">
+    <!-- Product 1 -->
+    <div class="product-row">
+      <div class="product-image">
+        <img src="images/sunscree33.png" alt="Pearl Necklace">
+      </div>
+      <div class="product-text">
+        <h3 class="product-title">Brand New PearlEssence Sunscreen 3in1</h3>
+        <p class="product-desc">Timeless elegance with our hand-selected freshwater pearls. Perfect for both casual and formal occasions.</p>
+        <a href="#" class="shop-btn">View Product</a>
+      </div>
+    </div>
+
+    <!-- Product 2 -->
+    <div class="product-row reverse">
+      <div class="product-image">
+        <img src="images/vitamin c2.png.jpg" alt="Pearl Earrings">
+      </div>
+      <div class="product-text">
+        <h3 class="product-title">Brand New PearlEssence Vitamin C Serum</h3>
+        <p class="product-desc">Sophisticated 6mm pearls paired with brilliant-cut diamond accents in 14k white gold.</p>
+        <a href="#" class="shop-btn">Shop Now</a>
+      </div>
+    </div>
+
+    <!-- Product 3 -->
+    <div class="product-row">
+      <div class="product-image">
+        <img src="images/vitaminc.png.jpg" alt="Pearl Bracelet">
+      </div>
+      <div class="product-text">
+        <h3 class="product-title">Pearl ratinol</h3>
+        <p class="product-desc">Delicate 4mm pearls alternating with sterling silver charms on adjustable silk cord.</p>
+        <a href="#" class="shop-btn">View Details</a>
+      </div>
+    </div>
+  </div>
+  <div class="social-links">
+    <a href="https://www.instagram.com/pearl_essence_products/?hl=en" class="social-link" target="_blank" rel="noopener" title="Instagram">
+      <i class="fab fa-instagram"></i>
+    </a>
+    <a href="https://wa.me/255754757065" class="social-link" target="_blank" rel="noopener" title="WhatsApp">
+      <i class="fab fa-whatsapp"></i>
+    </a>
+    <a href="https://www.tiktok.com/@rencier" class="social-link" target="_blank" rel="noopener" title="TikTok">
+      <i class="fab fa-tiktok"></i>
+    </a>
+  </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Main Content (initially hidden) -->
+  <div class="main-content" id="mainContent">
+    <button class="back-btn" id="backBtn">←</button>
+    
+    <!-- Header with Logo and Theme Toggle -->
+    <header>
+      <div class="logo-container">
+        <img src="images/logo.png.jpg" alt="Pearl Essence Logo" class="logo-img">
+        <div class="logo-text">PEARL ESSENCE</div>
+      </div>
+      <button class="theme-toggle" id="themeToggle">🌓</button>
+    </header>
+
+    <!-- Hero Section with Blurred Background Image -->
+    <section class="hero">
+      <div class="hero-bg-blur"></div>
+      <h1>THE HAPPIEST HOUR<br><span class="highlight">OF YOUR SKIN</span></h1>
+      <p class="tagline">Baby-soft skin that glows from within. Our pearl-infused formulas bring out your natural radiance.</p>
+    </section>
+
+    <!-- Product Showcase -->
+    <div class="product-showcase">
+      <!-- Product 1 -->
+      <div class="showcase-item">
+        <img class="showcase-image" src="images/sunscreen.jpg" alt="Pearl Essence Sunscreen">
+        <div class="showcase-details">
+          <div class="showcase-title">Pearl Essence Sunscreen</div>
+          <div class="showcase-desc">Protect and nourish your skin with our advanced pearl-infused sunscreen.</div>
+          <div class="showcase-more">SPF 50+ broad spectrum, lightweight, non-greasy, suitable for all skin types. Water-resistant and enriched with natural extracts for a radiant finish.</div>
+          <button class="showcase-readmore">Read More</button>
+        </div>
+      </div>
+      <!-- Product 2 -->
+      <div class="showcase-item">
+        <img class="showcase-image" src="images/glowic1.png.jpg" alt="Glowic Essence Cream">
+        <div class="showcase-details">
+          <div class="showcase-title">Glowic Essence Cream</div>
+          <div class="showcase-desc">Wake up to glowing skin with our overnight renewal cream.</div>
+          <div class="showcase-more">Formulated with pearl collagen boost, ultra-nourishing botanicals, and a non-greasy finish for visible results by morning.</div>
+          <button class="showcase-readmore">Read More</button>
+        </div>
+      </div>
+      <!-- Product 3 -->
+      <div class="showcase-item">
+        <img class="showcase-image" src="images/showergel.png.jpg" alt="Pearl Shower Gel">
+        <div class="showcase-details">
+          <div class="showcase-title">Pearl Shower Gel</div>
+          <div class="showcase-desc">A luxurious body wash with moisture lock technology.</div>
+          <div class="showcase-more">Infused with pearl extract and a refreshing floral scent, this silicon-free formula leaves your skin soft and hydrated.</div>
+          <button class="showcase-readmore">Read More</button>
+        </div>
+      </div>
+      <!-- Product 4 -->
+      <div class="showcase-item">
+        <img class="showcase-image" src="images/oil (1).jpg" alt="CBD Serum">
+        <div class="showcase-details">
+          <div class="showcase-title">CBD Serum</div>
+          <div class="showcase-desc">Brighten and calm your skin with our Pearl + CBD fusion serum.</div>
+          <div class="showcase-more">Anti-inflammatory, fast-absorbing, and designed to reduce redness while boosting radiance.</div>
+          <button class="showcase-readmore">Read More</button>
+        </div>
+      </div>
+      <!-- Product 5 -->
+      <div class="showcase-item">
+        <img class="showcase-image" src="images/image A (5).jpg" alt="Pearl Essence Cream">
+        <div class="showcase-details">
+          <div class="showcase-title">Pearl Essence Cream</div>
+          <div class="showcase-desc">Deep hydration and anti-aging in one luxurious cream.</div>
+          <div class="showcase-more">24K gold infused, with pearl protein extract and a unique hydration complex for visibly firmer, smoother skin.</div>
+          <button class="showcase-readmore">Read More</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Inserted: Shop With Us + relocated product scroller (scaled to normal) -->
+  <style>
+    /* Normalize product scroller card sizes and remove any scaling */
+    .shop-with-us-heading{font-size:1.6rem;margin:18px 0 10px;text-align:center}
+    .product-scroller .product-card{transform:none!important;scale:1!important;transform-origin:center center;max-width:260px}
+    .product-scroller .product-image img{width:100%;height:auto;object-fit:cover;border-radius:8px}
+    .product-scroller .scroller-container{display:flex;gap:18px;overflow-x:auto;padding:12px}
+    .product-scroller .product-info{padding:10px}
+    .product-scroller .product-price{font-weight:700}
+    @media (max-width:800px){ .product-scroller .product-card{max-width:220px} }
+
+    /* Shop With Us: container, dark-mode support and product card layout fixes */
+    .shop-with-us{
+      max-width:1100px;
+      margin:28px auto;
+      padding:28px 20px;
+      border-radius:14px;
+      background: rgba(255,255,255,0.04);
+      -webkit-backdrop-filter: blur(8px);
+      backdrop-filter: blur(8px);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.35);
+      color: #111;
+    }
+    .shop-with-us .shop-with-us-heading{ color: var(--gold); }
+
+    /* product scroller container adjustments */
+    .product-scroller{ display:flex; align-items:center; gap:12px; }
+    .product-scroller .scroller-container{ display:flex; gap:18px; overflow-x:auto; padding:12px; scroll-behavior:smooth; }
+    .product-scroller .product-card{ flex:0 0 260px; width:260px; min-width:220px; margin:0; display:flex; flex-direction:column; border-radius:10px; overflow:hidden; background:transparent; }
+    .product-scroller .product-image{ height:170px; overflow:hidden; }
+    .product-scroller .product-image img{ width:100%; height:100%; object-fit:cover; display:block; }
+    .product-scroller .product-info{ padding:12px; background: rgba(255,255,255,0.95); border-radius:0 0 10px 10px; flex:1; display:flex; flex-direction:column; justify-content:space-between; }
+    .product-scroller .product-price{ margin-top:10px; font-weight:700 }
+
+    /* arrows placement */
+    .scroll-arrow{ cursor:pointer; -webkit-user-select:none; user-select:none; padding:8px 12px; background:rgba(0,0,0,0.35); color:#fff; border-radius:8px; }
+
+    /* Dark-mode overrides */
+    body.dark-mode .shop-with-us{ background: rgba(14,14,14,0.6); color: #e6e6e6; box-shadow: 0 10px 30px rgba(0,0,0,0.7); }
+    body.dark-mode .shop-with-us .shop-with-us-heading{ color: #f3d88a; }
+    body.dark-mode .product-scroller .product-info{ background: rgba(26,26,26,0.85); color:#e6e6e6; }
+    body.dark-mode .scroll-arrow{ background:rgba(255,255,255,0.06); color:#fff; }
+
+    /* ensure scroller shows nicely on small screens */
+    @media (max-width:900px){
+      .shop-with-us{ padding:18px 12px }
+      .product-scroller .product-card{ flex:0 0 200px; width:200px; }
+      .product-scroller .product-image{ height:140px }
+    }
+
+    /* Specific mobile styles for tall screens (16:9 aspect ratio) */
+    @media (max-width: 768px) and (max-height: 600px) {
+      .welcome-screen {
+        padding: 10px;
+        min-height: 80vh;
+      }
+      .welcome-content {
+        gap: 15px;
+      }
+      .welcome-logo-text {
+        font-size: 24px;
+      }
+      .welcome-heading {
+        font-size: 24px;
+      }
+      .welcome-subheading {
+        font-size: 18px;
+      }
+      .welcome-message {
+        font-size: 14px;
+        line-height: 1.4;
+      }
+      .shop-now-btn {
+        padding: 10px 15px;
+        font-size: 16px;
+        width: auto;
+        max-width: 200px;
+      }
+      .welcome-footer {
+        gap: 15px;
+      }
+      .social-links {
+        gap: 10px;
+      }
+      .main-content {
+        padding: 15px;
+      }
+      .hero {
+        padding: 20px 0;
+      }
+      .hero h1 {
+        font-size: 20px;
+        line-height: 1.1;
+      }
+      .hero .tagline {
+        font-size: 14px;
+      }
+      .product-showcase {
+        gap: 15px;
+      }
+      .showcase-item {
+        padding: 10px;
+      }
+      .showcase-image {
+        height: 150px;
+      }
+      .agent-process .process-steps {
+        gap: 15px;
+      }
+      .process-step {
+        padding: 15px;
+      }
+      .modal {
+        width: 95%;
+        margin: 5px;
+        padding: 15px;
+      }
+      .customer-form {
+        padding: 15px;
+      }
+    }
+  </style>
+
+  <!-- enhance content: subheading and CTA inside Shop With Us -->
+  <div class="shop-with-us">
+    <h2 class="shop-with-us-heading">Shop With Us</h2>
+    <p class="shop-subheading">Explore our curated collection — handcrafted formulas, premium ingredients, and results you can trust.</p>
+    <div class="shop-cta"><a href="#" class="view-all-btn glass-btn">View All Products</a></div>
+    <section class="product-scroller">
+      <div class="scroll-arrow arrow-left" onclick="scrollProducts(-300)">←</div>
+      <div class="scroller-container" id="productScrollerTop">
+        <!-- Product 1 -->
+        <div class="product-card">
+          <div class="product-image">
+        <img src="images/image A (5).jpg" alt="Pearl Essence Cream">
+          </div>
+          <div class="product-info">
+        <div class="product-category">LUXURY SKINCARE</div>
+         <h3 class="product-name">Pearl Essence Cream</h3>
+         <ul class="product-features">
+           <li>24K Gold Infused Formula</li>
+           <li>Pearl Protein Extract</li>
+           <li>Deep Hydration Complex</li>
+           <li>Anti-Aging Properties</li>
+         </ul>
+         <div class="product-price product-price-enhanced">TZS 98,877</div>
+         <button class="add-to-cart glass-btn">ADD TO CART</button>
+           </div>
+         </div>
+
+        <!-- Product 2 -->
+        <div class="product-card">
+          <div class="product-image">
+        <img src="images/glowic1.png.jpg" alt="Pearl Essence Soap">
+          </div>
+          <div class="product-info">
+        <div class="product-category">GENTLE CLEANSER</div>
+        <h3 class="product-name">Pearl Essence Soap</h3>
+        <ul class="product-features">
+          <li>Micro-Pearl Exfoliation</li>
+          <li>pH Balanced Formula</li>
+          <li>Vegan Ingredients</li>
+          <li>Silky Smooth Lather</li>
+        </ul>
+        <div class="product-price" style="font-family: 'Poppins', sans-serif; font-size: 14px; font-weight: 600; letter-spacing: 0.5px;">TZS 57,477</div>
+        <button class="add-to-cart glass-btn">ADD TO CART</button>
+          </div>
+        </div>
+
+        <!-- Product 3 -->
+        <div class="product-card">
+          <div class="product-image">
+           <img src="images/showergel.png.jpg" alt="Shower">
+          </div>
+          <div class="product-info">
+        <div class="product-category">BODY WASH</div>
+        <h3 class="product-name">Pearl Shower Gel</h3>
+          <ul class="product-features">
+            <li>Luxurious Pearl Extract</li>
+            <li>Moisture Lock Technology</li>
+            <li>Refreshing Floral Scent</li>
+            <li>Silicon-Free Formula</li>
+          </ul>
+          <div class="product-price">TZS 43,677</div>
+          <button class="add-to-cart glass-btn">ADD TO CART</button>
+        </div>
+        </div>
+
+        <!-- Product 4 -->
+        <div class="product-card">
+          <div class="product-image">
+        <img src="images/glowic1.png.jpg" alt="Glowic Night Cream">
+          </div>
+          <div class="product-info">
+        <div class="product-category">NIGHT TREATMENT</div>
+        <h3 class="product-name">Glowic Essence Cream</h3>
+          <ul class="product-features">
+            <li>Overnight Cell Renewal</li>
+            <li>Pearl Collagen Boost</li>
+            <li>Ultra-Nourishing</li>
+            <li>Non-Greasy Finish</li>
+          </ul>
+          <div class="product-price">TZS 114,977</div>
+          <button class="add-to-cart glass-btn">ADD TO CART</button>
+        </div>
+        </div>
+
+        <!-- Product 5 -->
+        <div class="product-card">
+          <div class="product-image">
+        <img src="images/oil (1).jpg" alt="CBD Serum">
+          </div>
+          <div class="product-info">
+        <div class="product-category">PREMIUM SERUM</div>
+        <h3 class="product-name">CBD Serum</h3>
+        <ul class="product-features">
+          <li>Pearl + CBD Fusion</li>
+          <li>Anti-Inflammatory</li>
+          <li>Brightening Effect</li>
+          <li>Fast-Absorbing</li>
+        </ul>
+        <div class="product-price" style="font-family: 'Poppins', sans-serif; font-size: 14px; font-weight: 600; letter-spacing: 0.5px;">TZS 126,477</div>
+        <button class="add-to-cart glass-btn">ADD TO CART</button>
+          </div>
+        </div>
+      </div>
+      <div class="scroll-arrow arrow-right glass-btn" onclick="scrollProducts(300)">→</div>
+        </section>
+      </div>
+
+    <!-- Agent Process Section -->
+    <section class="agent-process">
+      <h2>Become a Pearl Essence Agent</h2>
+      <div class="process-steps">
+        <div class="process-step">
+          <div class="step-number">1</div>
+          <div class="step-icon"><i class="fas fa-user-plus"></i></div>
+          <h3 class="step-title">Apply Online</h3>
+          <p class="step-desc">Fill out our simple application form to start your journey as a Pearl Essence agent.</p>
+        </div>
+        <div class="process-step">
+          <div class="step-number">2</div>
+          <div class="step-icon"><i class="fas fa-handshake"></i></div>
+          <h3 class="step-title">Get Approved</h3>
+          <p class="step-desc">Our team will review your application and contact you within 48 hours.</p>
+        </div>
+        <div class="process-step">
+          <div class="step-number">3</div>
+          <div class="step-icon"><i class="fas fa-box-open"></i></div>
+          <h3 class="step-title">Receive Starter Kit</h3>
+          <p class="step-desc">Get your exclusive agent starter kit with samples and marketing materials.</p>
+        </div>
+        <div class="process-step">
+          <div class="step-number">4</div>
+          <div class="step-icon"><i class="fas fa-chart-line"></i></div>
+          <h3 class="step-title">Start Selling</h3>
+          <p class="step-desc">Begin your business with our support and training resources.</p>
+        </div>
+      </div>
+      <div class="agent-cta">
+        <button id="applyNowBtn">Apply Now</button>
+      </div>
+      
+    </section>
+  <div class="modal-overlay" id="deliveryModal">
+        <div class="modal-container">
+            <div class="modal-header">
+                <h3 class="modal-title">Delivery Options</h3>
+                <button class="modal-close" id="modalClose">&times;</button>
+            </div>
+            
+            <div class="modal-body">
+                <div class="step-nav">
+                    <div class="step active" id="step1">1</div>
+                    <div class="step-line"></div>
+                    <div class="step" id="step2">2</div>
+                    <div class="step-line"></div>
+                    <div class="step" id="step3">3</div>
+                </div>
+                
+                <div class="step-content" id="step1-content">
+                    <div class="form-group">
+                        <label for="location" class="form-label">Where are you ordering from?</label>
+                        <select id="location" class="form-select">
+                            <option value="">Select your area</option>
+                            <option value="kinondoni">Kinondoni</option>
+                            <option value="ilala">Ilala</option>
+                            <option value="temeke">Temeke</option>
+                            <option value="ubungo">Ubungo</option>
+                            <option value="kigamboni">Kigamboni</option>
+                            <option value="arusha-region">Arusha Region</option>
+                            <option value="dar-es-salaam-region">Dar es Salaam Region</option>
+                            <option value="dodoma-region">Dodoma Region</option>
+                            <option value="geita-region">Geita Region</option>
+                            <option value="iringa-region">Iringa Region</option>
+                            <option value="kagera-region">Kagera Region</option>
+                            <option value="katavi-region">Katavi Region</option>
+                            <option value="kigoma-region">Kigoma Region</option>
+                            <option value="kilimanjaro-region">Kilimanjaro Region</option>
+                            <option value="lindi-region">Lindi Region</option>
+                            <option value="manyara-region">Manyara Region</option>
+                            <option value="mara-region">Mara Region</option>
+                            <option value="mbeya-region">Mbeya Region</option>
+                            <option value="mjini-magharibi-region">Mjini Magharibi Region (Zanzibar)</option>
+                            <option value="morogoro-region">Morogoro Region</option>
+                            <option value="mtwara-region">Mtwara Region</option>
+                            <option value="mwanza-region">Mwanza Region</option>
+                            <option value="njombe-region">Njombe Region</option>
+                            <option value="pemba-north-region">Pemba North Region</option>
+                            <option value="pemba-south-region">Pemba South Region</option>
+                            <option value="pwani-region">Pwani (Coast) Region</option>
+                            <option value="rukwa-region">Rukwa Region</option>
+                            <option value="ruvuma-region">Ruvuma Region</option>
+                            <option value="shinyanga-region">Shinyanga Region</option>
+                            <option value="simiyu-region">Simiyu Region</option>
+                            <option value="singida-region">Singida Region</option>
+                            <option value="songwe-region">Songwe Region</option>
+                            <option value="tabora-region">Tabora Region</option>
+                            <option value="tanga-region">Tanga Region</option>
+                            <option value="unguja-north-region">Unguja North Region (Zanzibar)</option>
+                            <option value="unguja-south-region">Unguja South Region (Zanzibar)</option>
+                        </select>
+                        <!-- quick-search input for free-text location (real-time lookup) -->
+                        <input id="locationInput" type="text" placeholder="Or type your area (e.g. Ilala, Sinza)">
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-primary" id="nextToStep2" disabled>Next</button>
+                    </div>
+                </div>
+                
+                <div class="step-content" id="step2-content">
+                    <p>Available delivery partners in your area:</p>
+                    <div class="agent-list" id="agentList">
+                        </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-secondary" id="backToStep1">Back</button>
+                        <button class="btn btn-primary" id="nextToStep3" disabled>Next</button>
+                    </div>
+                </div>
+                
+                <div class="step-content" id="step3-content">
+                    <div class="confirmation">
+                        <i class="fas fa-check-circle confirmation-icon"></i>
+                        <h3 class="confirmation-title">Item Added to Cart</h3>
+                        <p class="confirmation-text" id="confirmationText"></p>
+                        <p>Your selected agent will handle your delivery.</p>
+                        <div id="orderTotal">Total: TZS 0</div>
+
+                        <!-- Customer details form (hidden until user clicks Finish & Pay) -->
+<div id="customerForm" class="customer-form premium-customer-form">
+  <div class="customer-form-header">
+    <i class="fas fa-user-circle form-icon"></i>
+    <div>
+      <h3 class="customer-form-title">Your
+      <p class="customer-form-desc">Fill in your info to complete your order.</p>
+    </div>
+  </div>
+  <div class="customer-form-fields">
+    <label class="customer-form-label" for="custName"><i class="fas fa-user"></i> Name</label>
+    <input id="custName" type="text" placeholder="Full name" class="customer-form-input" />
+
+    <label class="customer-form-label" for="custPhone"><i class="fas fa-phone"></i> Phone</label>
+    <input id="custPhone" type="tel" placeholder="e.g. +255712345678" class="customer-form-input" />
+
+    <label class="customer-form-label" for="custAddress"><i class="fas fa-map-marker-alt"></i> Delivery Address</label>
+    <input id="custAddress" type="text" placeholder="City / street / landmark" class="customer-form-input" />
+  </div>
+  <div class="customer-form-btn-row">
+    <button class="btn btn-primary-action glass-btn" id="sendWhatsBtn">
+      <i class="fab fa-whatsapp"></i> Send via WhatsApp
+    </button>
+    <button class="btn btn-secondary-action" id="cancelWhatsBtn">Cancel</button>
+  </div>
+</div>
+
+<style>
+/* Premium Glassmorphic Customer Form */
+.premium-customer-form {
+  background: rgba(255, 255, 255, 0.55);
+  -webkit-backdrop-filter: blur(18px);
+  backdrop-filter: blur(18px);
+  border-radius: 20px;
+  padding: 28px 24px;
+  max-width: 420px;
+  margin: 0 auto 18px auto;
+  font-family: 'Montserrat', 'Segoe UI', Arial, sans-serif;
+  border: 1.5px solid rgba(212,175,55,0.3);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.15);
+  animation: fadeInForm .6s ease-out;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Glossy overlay */
+.premium-customer-form::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: linear-gradient(145deg, rgba(255,255,255,0.25), rgba(255,255,255,0.05));
+  border-radius: 20px;
+  pointer-events: none;
+}
+
+@keyframes fadeInForm {
+  from { opacity: 0; transform: translateY(24px);}
+  to { opacity: 1; transform: none;}
+}
+
+.customer-form-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 18px;
+}
+
+.customer-form-header .form-icon {
+  font-size: 2.8rem;
+  color: #d4af37;
+  background: rgba(255, 255, 255, 0.4);
+  border-radius: 50%;
+  padding: 10px;
+  box-shadow: 0 4px 16px rgba(212,175,55,0.15);
+}
+
+.customer-form-title {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: #1f2937;
+  margin: 0 0 2px 0;
+  letter-spacing: 0.01em;
+}
+
+.customer-form-desc {
+  font-size: 0.95rem;
+  color: #6b5b2f;
+  margin: 0;
+}
+
+.customer-form-fields {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-bottom: 18px;
+}
+
+.customer-form-label {
+  font-weight: 600;
+  color: #b89c3a;
+  font-size: 1.01rem;
+  margin-bottom: 3px;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.customer-form-input {
+  border: 1.5px solid rgba(212,175,55,0.35);
+  border-radius: 10px;
+  padding: 12px 14px;
+  font-size: 1rem;
+  background: rgba(255, 255, 255, 0.6);
+  color: #1f2937;
+  transition: border-color 0.18s, background 0.18s;
+  outline: none;
+  margin-bottom: 2px;
+}
+
+.customer-form-input:focus {
+  border-color: #d4af37;
+  background: rgba(255, 255, 255, 0.8);
+}
+
+.customer-form-btn-row {
+  display: flex;
+  gap: 14px;
+  justify-content: flex-end;
+  margin-top: 10px;
+}
+
+/* Primary button - glossy gold gradient */
+.btn.btn-primary-action.glass-btn {
+  background: linear-gradient(135deg,#d4af37,#f8e9b0);
+  color: #fff;
+  font-weight: 700;
+  border: none;
+  border-radius: 12px;
+  box-shadow: 0 4px 18px rgba(212,175,55,0.28);
+  padding: 12px 20px;
+  font-size: 1.05rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.25s ease-in-out;
+}
+.btn.btn-primary-action.glass-btn:hover {
+  background: linear-gradient(135deg,#c49c2b,#e6d088);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 22px rgba(212,175,55,0.35);
+}
+
+/* Secondary button */
+.btn.btn-secondary-action {
+  background: rgba(255, 255, 255, 0.45);
+  color: #b89c3a;
+  border: 1.5px solid rgba(212,175,55,0.25);
+  border-radius: 12px;
+  font-weight: 600;
+  padding: 12px 18px;
+  font-size: 1.02rem;
+  transition: all 0.2s;
+}
+.btn.btn-secondary-action:hover {
+  background: rgba(255, 255, 255, 0.7);
+  color: #d4af37;
+  transform: translateY(-2px);
+}
+
+/* Mobile optimization */
+@media (max-width: 600px) {
+  .premium-customer-form {
+    padding: 18px 10px;
+    max-width: 95vw;
+  }
+  .customer-form-header .form-icon { font-size: 2rem; }
+  .customer-form-btn-row { flex-direction: column; gap: 8px; }
+}
+</style>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-secondary-action" id="addMoreBtn">Add More Products</button>
+                        <button class="btn btn-primary-action" id="finishPayBtn">Finish & Pay</button>
+                    </div>
+                </div>
+            </div>
+                  <style>
+                  /* Delivery modal agent card styling - enhanced visuals */
+                  #deliveryModal .agent-card {
+                    display:flex;align-items:center;gap:14px;padding:14px;border-radius:12px;margin-bottom:12px;
+                    background:linear-gradient(180deg,#fff,#fbf8f3);box-shadow:0 10px 30px rgba(15,15,15,0.06);
+                    border:1px solid rgba(0,0,0,0.04);transition:transform .18s ease,box-shadow .18s ease;
+                  }
+                  #deliveryModal .agent-card:hover{transform:translateY(-6px);box-shadow:0 18px 40px rgba(15,15,15,0.08)}
+                  #deliveryModal .agent-card.selected{border-color:#d4af37;box-shadow:0 18px 40px rgba(212,175,55,0.12);outline:2px solid rgba(212,175,55,0.08)}
+                  #deliveryModal .agent-avatar{width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,#D4AF37,#c19a6b);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;margin-right:12px;flex-shrink:0;font-size:18px;box-shadow:0 6px 18px rgba(0,0,0,0.08)}
+                  #deliveryModal .agent-avatar img { width:100%; height:100%; object-fit:cover; border-radius:50%; display:block; }
+                  #deliveryModal .agent-row{display:flex;align-items:center;gap:12px;width:100%}
+                  #deliveryModal .agent-details{flex:1;min-width:0}
+                  #deliveryModal .agent-name{font-weight:700;color:#1f2937;font-size:15px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+                  #deliveryModal .agent-area{font-size:13px;color:#6b7280;margin-top:4px}
+                  #deliveryModal .agent-phones{display:flex;flex-wrap:wrap;gap:8px;justify-content:flex-end}
+                  #deliveryModal .agent-phones a{display:inline-block;padding:6px 10px;border-radius:999px;background:#f1fdf3;color:#2e7d32;font-weight:700;text-decoration:none;border:1px solid #dff3e4;transition:background-color .12s,color .12s}
+                  #deliveryModal .agent-phones a:hover{background:#2e7d32;color:#fff}
+                  #deliveryModal .agent-phones a .phone-ico{margin-right:6px}
+                  #deliveryModal .agent-area-badge{font-size:12px;color:#9ca3af}
+                  #deliveryModal .agent-availability{padding:6px 10px;border-radius:999px;font-weight:700;background:#eaf8ef;color:#2e7d32}
+                  @media (prefers-color-scheme:dark){
+                    #deliveryModal .agent-card{background:linear-gradient(180deg,#222,#1b1b1b);color:#eee;border-color:rgba(255,255,255,0.04);box-shadow:0 10px 30px rgba(0,0,0,0.5)}
+                    #deliveryModal .agent-phones a{background:rgba(46,125,50,0.06);color:#7ee082;border:1px solid rgba(46,125,50,0.12)}
+                  }
+                  @media (max-width:600px){
+                    #deliveryModal .agent-row{flex-direction:column;align-items:flex-start}
+                    #deliveryModal .agent-phones{justify-content:flex-start;width:100%}
+                    #deliveryModal .agent-avatar{width:48px;height:48px}
+                    #deliveryModal .agent-name{font-size:14px}
+                  }
+                  </style>
+        </div>
+    </div>
+      <script src="script.js"></script>
+      <script src="app.js"></script>
+      <script>
+// Add to Cart button functionality
+// Ensure all .add-to-cart buttons open the delivery modal and set product info
+const addToCartButtons = document.querySelectorAll('.add-to-cart');
+const deliveryModal = document.getElementById('deliveryModal');
+const confirmationText = document.getElementById('confirmationText');
+
+addToCartButtons.forEach(btn => {
+  btn.addEventListener('click', function(e) {
+    e.preventDefault();
+    // Get product info
+    const card = btn.closest('.product-card');
+    const name = card ? card.querySelector('.product-name').textContent : 'Product';
+    const price = card ? card.querySelector('.product-price').textContent : '';
+  confirmationText.textContent = `${name} (${price}) has been added to your cart.`;
+  // store last product info for later steps (structured)
+  window._pe_lastProductText = confirmationText.textContent;
+  window._pe_lastProduct = { name: name, price: price };
+    deliveryModal.style.display = 'flex';
+    // Optionally, set step 1 as active
+    document.getElementById('step1-content').style.display = 'block';
+    document.getElementById('step2-content').style.display = 'none';
+    document.getElementById('step3-content').style.display = 'none';
+  });
+});
+// Hide modal on finish
+const finishBtn = document.getElementById('finishBtn');
+if (finishBtn) {
+  finishBtn.addEventListener('click', function() {
+    deliveryModal.style.display = 'none';
+  });
+}
+</script>
+<script>
+// Delivery modal logic: populate agents from localStorage based on selected area
+(function(){
+  const AGENTS_KEY = 'pe_agents_v1';
+  const locationSelect = document.getElementById('location');
+  const locationInput = document.getElementById('locationInput');
+  const nextToStep2 = document.getElementById('nextToStep2');
+  const backToStep1 = document.getElementById('backToStep1');
+  const nextToStep3 = document.getElementById('nextToStep3');
+  const agentListEl = document.getElementById('agentList');
+  const step1Content = document.getElementById('step1-content');
+  const step2Content = document.getElementById('step2-content');
+  const step3Content = document.getElementById('step3-content');
+  const confirmationTextEl = document.getElementById('confirmationText');
+
+  function normalizeArea(s){ return (s||'').toString().toLowerCase().replace(/[^a-z0-9]/g,'').replace(/\s+/g,''); }
+
+  // Debounce helper
+  function debounce(fn, wait){ let t; return function(...args){ clearTimeout(t); t = setTimeout(()=>fn.apply(this,args), wait); }; }
+
+  // Levenshtein distance
+  function levenshtein(a,b){
+    a = a||''; b = b||'';
+    const m = a.length, n = b.length;
+    if(m===0) return n; if(n===0) return m;
+    const dp = Array.from({length:m+1}, ()=>Array(n+1).fill(0));
+    for(let i=0;i<=m;i++) dp[i][0]=i;
+    for(let j=0;j<=n;j++) dp[0][j]=j;
+    for(let i=1;i<=m;i++){
+      for(let j=1;j<=n;j++){
+        const cost = a[i-1]===b[j-1] ? 0 : 1;
+        dp[i][j] = Math.min(dp[i-1][j]+1, dp[i][j-1]+1, dp[i-1][j-1]+cost);
+      }
+    }
+    return dp[m][n];
+  }
+
+  function loadAgents(){ try{ return JSON.parse(localStorage.getItem(AGENTS_KEY) || '[]'); }catch(e){ return []; } }
+
+  function scoreAgentFuzzy(agent, token){
+    const area = normalizeArea(agent.area || agent.location || '');
+    const name = normalizeArea(agent.name || '');
+    let score = 0;
+    if(!token) return score;
+    if(area === token) score += 200;
+    if(name === token) score += 100;
+    if(area.includes(token)) score += 80;
+    if(name.includes(token)) score += 50;
+    if(area.startsWith(token) || name.startsWith(token)) score += 30;
+    const dist = levenshtein(area, token);
+    const maxLen = Math.max(area.length, token.length, 1);
+    const sim = 1 - (dist / maxLen);
+    score += Math.round(sim * 40);
+    if(Array.isArray(agent.phone) && agent.phone.length>1) score += 5;
+    return score;
+  }
+
+  // Render agents with animation
+  function renderAgentMatches(matches){
+    agentListEl.innerHTML = '';
+    if(!matches || matches.length===0){ agentListEl.innerHTML = '<p>No delivery agents found in your area.</p>'; nextToStep3.disabled = true; return; }
+    matches.forEach((ag, idx)=>{
+      const card = document.createElement('div');
+      card.className = 'agent-card';
+      const phones = Array.isArray(ag.phone)?ag.phone:(ag.phone? [ag.phone]:[]);
+      card.innerHTML = `
+        <div class="agent-row">
+          <div class="agent-avatar"><img src="images/logo.png.jpg" alt="Pearl Essence" class="agent-avatar-img"></div>
+          <div class="agent-details">
+            <div class="agent-name">${ag.name}</div>
+            <div class="agent-area">${ag.area||ag.location||''}</div>
+          </div>
+          <div class="agent-phones">
+            ${phones.map(p=>`<a href="tel:${p.replace(/\s+/g,'')}" class="phone-link">${p}</a>`).join('')}
+          </div>
+        </div>`;
+      // animate in
+      card.classList.add('card-animate'); setTimeout(()=>card.classList.add('show'), 40);
+      card.addEventListener('click', ()=>{
+        const prev = agentListEl.querySelector('.selected'); if(prev) prev.classList.remove('selected');
+        card.classList.add('selected'); nextToStep3.disabled = false; window._pe_selectedAgent = ag;
+      });
+      agentListEl.appendChild(card);
+    });
+    nextToStep3.disabled = false;
+  }
+
+  // Main search: prefer strict substring matches, else fuzzy fallback
+  function fetchAndRenderAgentsByText(rawText){
+    const token = normalizeArea(rawText || '');
+    if(!token){ agentListEl.innerHTML = '<p>Please enter your area.</p>'; nextToStep3.disabled = true; return; }
+    const agents = loadAgents();
+    // compute normalized area for each agent once
+    const annotated = agents.map(a=>({a, normArea: normalizeArea(a.area || a.location || ''), score:0}));
+    // first, find strict substring matches (contain token)
+    const substringMatches = annotated.filter(x => x.normArea && x.normArea.includes(token)).map(x=>x.a);
+    if(substringMatches.length>0){
+      // show all that include token (e.g., Sinza variations)
+      renderAgentMatches(substringMatches);
+      return;
+    }
+    // No substring hits — fallback to fuzzy scoring with threshold
+    const MIN_SCORE = 30;
+    const scored = annotated.map(x=>({ a:x.a, score: scoreAgentFuzzy(x.a, token) }));
+    const good = scored.filter(x=>x.score >= MIN_SCORE).sort((p,q)=>q.score-p.score).map(x=>x.a);
+    if(good.length>0){ renderAgentMatches(good); return; }
+    // final fallback: top 3 nearest if any positive score
+    const near = scored.filter(x=>x.score>0).sort((p,q)=>q.score-p.score).slice(0,3).map(x=>x.a);
+    renderAgentMatches(near);
+  }
+
+  const debouncedFetch = debounce((text)=>{ fetchAndRenderAgentsByText(text); }, 300);
+
+  // listeners
+  if(locationSelect){
+    locationSelect.addEventListener('change', ()=>{
+      nextToStep2.disabled = !locationSelect.value;
+      const chosenLabel = locationSelect.options[locationSelect.selectedIndex]?.text || '';
+      if(locationSelect.value && chosenLabel){ fetchAndRenderAgentsByText(chosenLabel); step1Content.style.display='none'; step2Content.style.display='block'; }
+    });
+  }
+
+  if(locationInput){
+    locationInput.addEventListener('input', (e)=>{ const v=(e.target.value||'').trim(); if(!v) return; debouncedFetch(v); step1Content.style.display='none'; step2Content.style.display='block'; });
+  }
+
+  if(nextToStep2){ nextToStep2.addEventListener('click', ()=>{ const chosenLabel = locationSelect.options[locationSelect.selectedIndex]?.text || ''; if(!chosenLabel) return; fetchAndRenderAgentsByText(chosenLabel); step1Content.style.display='none'; step2Content.style.display='block'; }); }
+
+  if(backToStep1) backToStep1.addEventListener('click', ()=>{ step2Content.style.display='none'; step1Content.style.display='block'; });
+
+  if(nextToStep3) nextToStep3.addEventListener('click', ()=>{
+    const agent = window._pe_selectedAgent || null;
+    step2Content.style.display='none'; step3Content.style.display='block';
+    const productText = window._pe_lastProductText || '';
+    if(agent){
+      confirmationTextEl.textContent = `${productText} Your selected agent: ${agent.name} (${(Array.isArray(agent.phone)?agent.phone.join(', '):agent.phone||'')}).`;
+      try{
+        const cartKey = 'pe_cart_v1';
+        const existing = JSON.parse(localStorage.getItem(cartKey) || '{}');
+        const cart = existing || {};
+        cart.lastOrder = cart.lastOrder || {};
+        cart.lastOrder.product = window._pe_lastProduct || null;
+        cart.lastOrder.agent = agent;
+        cart.lastOrder.timestamp = (new Date()).toISOString();
+        localStorage.setItem(cartKey, JSON.stringify(cart));
+      }catch(e){/*ignore*/}
+    }else{
+      confirmationTextEl.textContent = `${productText}`;
+    }
+  });
+
+  const modalCloseBtn = document.getElementById('modalClose'); if(modalCloseBtn) modalCloseBtn.addEventListener('click', ()=>{ deliveryModal.style.display='none'; });
+
+})();
+</script>
+  <script>
+    // Ensure agents seed exists so pages can use shared agent list (used by login and other pages)
+    (function(){
+      const AGENTS_KEY = 'pe_agents_v1';
+      // raw seed (from provided list)
+      const raw = [
+        {id:'mwanza_1', name:'Mwanza', phone:['+255628088887'], area:'Mwanza'},
+        {id:'kibaha_1', name:'Kibaha', phone:['+255682180819'], area:'Kibaha'},
+        {id:'mwanza_pasi', name:'Mwanza Pasi Beach', phone:['+255659470706'], area:'Mwanza Pasi Beach'},
+        {id:'wakela_ukonga', name:'Wakela Ukonga', phone:['+255765677758'], area:'Ukonga'},
+        {id:'zanzibar_1', name:'Zanzibar', phone:['+255621166461','+255753674879'], area:'Zanzibar'},
+        {id:'kigoma_1', name:'Kigoma', phone:['+255683913227'], area:'Kigoma'},
+        {id:'mufindi_1', name:'Mufindi', phone:['+255622136179'], area:'Mufindi'},
+        {id:'morogoro_1', name:'Morogoro', phone:['+255754590704'], area:'Morogoro'},
+        {id:'kkoo', name:'KKOO', phone:['+255712048043','+255755048043','+255655048043'], area:'KKOO'},
+        {id:'wakala_mwenge', name:'Wakala Mwenge', phone:['+255620904888','+255757736910','+255714722358'], area:'Mwenge'},
+        {id:'sinza', name:'Sinza', phone:['+255719328328','+255744328328','+255622328328'], area:'Sinza'},
+        {id:'wakala_kigamboni', name:'Wakala Kigamboni', phone:['+255715099216'], area:'Kigamboni'},
+        {id:'musoma_1', name:'Musoma', phone:['+255621823888','+255719328328'], area:'Musoma'},
+        {id:'tabora', name:'Tabora', phone:['+255678770000'], area:'Tabora'},
+        {id:'simiyu', name:'Simiyu', phone:['+255755106173'], area:'Simiyu'},
+        {id:'tanga', name:'Tanga', phone:['+255759292929','+255629292929'], area:'Tanga'},
+        {id:'dodoma', name:'Dodoma', phone:['+255685410410','+255712510510','+255656888419','+255763013335','+255714746278'], area:'Dodoma'},
+        {id:'bunju', name:'Bunju', phone:['+255684892888'], area:'Bunju'},
+        {id:'kimara', name:'Kimara', phone:['+255754093093'], area:'Kimara'},
+        {id:'kawe', name:'Kawe', phone:['+255622328328'], area:'Kawe'},
+        {id:'mombasa', name:'Mombasa', phone:['+255683999111'], area:'Mombasa'},
+        {id:'wakala_bukoba', name:'Wakala Bukoba', phone:['+255764459291','+255714873848'], area:'Bukoba'},
+        {id:'mtwara_mbeya', name:'Mtwara/Mbeya', phone:['+255627057583'], area:'Mtwara/Mbeya'},
+        {id:'songea', name:'Songea', phone:['+255678770000'], area:'Songea'},
+        {id:'iringa', name:'Iringa', phone:['+255719328328'], area:'Iringa'},
+        {id:'mbeya', name:'Mbeya', phone:['+255759292929','+255629292929'], area:'Mbeya'},
+        {id:'wakala_arusha', name:'Wakala Arusha', phone:['+255652647225','+255742857066'], area:'Arusha'},
+        {id:'wakaka_posta', name:'Wakaka Posta', phone:['+255694340688','+255767501841'], area:'Dar es Salaam'},
+        {id:'wakaka_mbweni', name:'Wakaka Mbweni', phone:['+255752275170'], area:'Mbweni'},
+        {id:'wakaka_maburushi', name:'Wakaka Maburushi', phone:['+255755209941'], area:'Maburushi'},
+        {id:'wakaka_kinondoni', name:'Wakaka Kinondoni', phone:['+255710940940'], area:'Kinondoni'},
+        {id:'wakaka_kariakoo', name:'Wakaka Kariakoo', phone:['+255715421929','+255652134003'], area:'Kariakoo'},
+        {id:'wakaka_kkoo', name:'Wakaka Kkoo', phone:['+255788296801'], area:'KKOO'},
+        {id:'wakaka_upanga', name:'Wakaka Upanga', phone:['+255752275170'], area:'Upanga'},
+        {id:'wakaka_tegeta', name:'Wakaka Tegeta', phone:['+25574446567'], area:'Tegeta'},
+        {id:'wakaka_goba', name:'Wakaka Goba', phone:['+255767573607'], area:'Goba'},
+        {id:'wakaka_kimara', name:'Wakaka Kimara', phone:['+255762328638'], area:'Kimara'},
+        {id:'wakaka_mkijichi', name:'Wakaka M/Kijichi', phone:['+255712222966'], area:'Kijichi'},
+        {id:'wakaka_sinza_madukani', name:'Wakaka Sinza Madukani', phone:['+255622214482'], area:'Sinza'},
+        {id:'wakaka_sinza_kwaremmy', name:'Wakaka Sinza Kwaremmy', phone:['+255713843949'], area:'Sinza'},
+        {id:'wakaka_sinza_mori', name:'Wakaka Sinza Mori', phone:['+255716913192','+255712222966'], area:'Sinza'},
+        {id:'wakaka_banana', name:'Wakaka Banana', phone:['+255683064346'], area:'Banana'},
+        {id:'wakaka_tabata', name:'Wakaka Tabata', phone:['+255689345159'], area:'Tabata'},
+        {id:'wakaka_mboni_navisha', name:'Wakaka M/Boni Navisha', phone:['+255713777501'], area:'M/ Boni'},
+        {id:'wakaka_africansana', name:'Wakaka Africansana', phone:['+255763400442'], area:'Africansana'},
+        {id:'wakaka_tanga', name:'Wakaka Tanga', phone:['+255713843643','+25565622736'], area:'Tanga'},
+        {id:'wakaka_mvomero', name:'Wakaka Mvomero', phone:['+255754960936'], area:'Mvomero'},
+        {id:'wakaka_moshi', name:'Wakaka Moshi', phone:['+255768000894','+255714456900'], area:'Moshi'},
+        {id:'wakaka_mwenge_alt', name:'Wakaka Mwenge (alt)', phone:['+255757736910','+255715842472','+255714722358'], area:'Mwenge'}
+      ];
+
+      // helpers
+      function normalizePhone(p){
+        if(!p) return '';
+        let s = String(p).replace(/[^0-9]/g,'');
+        // If starts with 0 and length 10 -> strip 0 and add 255
+        if(s.length === 10 && s[0]==='0') s = '255' + s.slice(1);
+        // If local 9-digit (e.g., 7xx...), prefix 255
+        if(s.length === 9) s = '255' + s;
+        // If already has country code like 255xxx, keep
+        if(s.length >= 11 && s.indexOf('255')===0) return '+' + s;
+        return '+' + s;
+      }
+
+      function normalizeAreaName(a){
+        if(!a) return '';
+        // collapse whitespace, remove extra punctuation, keep readable form
+        return a.toString().replace(/[\,\.|\(\)]/g,'').replace(/\s+/g,' ').trim();
+      }
+
+      function keyForAgent(a){
+        const name = (a.name||'').toString().toLowerCase().replace(/\s+/g,'');
+        const area = (a.area||a.location||'').toString().toLowerCase().replace(/\s+/g,'');
+        return name + '|' + area;
+      }
+
+      // normalize and dedupe
+      const map = new Map();
+      raw.forEach((r,i)=>{
+        const phones = (Array.isArray(r.phone)?r.phone:[r.phone||'']).map(normalizePhone).filter(Boolean);
+        const area = normalizeAreaName(r.area||r.location||'');
+        const name = (r.name||'').toString().trim();
+        const id = r.id || (name.toLowerCase().replace(/\s+/g,'_') + '_' + i);
+        const entry = { id, name, area, phone: Array.from(new Set(phones)), sourceIndex: i };
+
+        const k = keyForAgent(entry);
+        if(map.has(k)){
+          // merge phones
+          const existing = map.get(k);
+          const mergedPhones = Array.from(new Set([].concat(existing.phone||[], entry.phone||[])));
+          existing.phone = mergedPhones;
+          // prefer earlier fields if missing
+          if(!existing.area && entry.area) existing.area = entry.area;
+          if(!existing.name && entry.name) existing.name = entry.name;
+        }else{
+          map.set(k, entry);
+        }
+      });
+
+      const cleaned = Array.from(map.values()).map((a,idx)=>({ id: a.id || ('agent_'+idx), name: a.name, area: a.area, phone: a.phone }));
+
+      try{ localStorage.setItem(AGENTS_KEY, JSON.stringify(cleaned)); }catch(e){ /* ignore */ }
+    })();
+  </script>
+  <script>
+document.addEventListener('DOMContentLoaded', function(){
+  const finishPayBtn = document.getElementById('finishPayBtn');
+  const sendWhatsBtn = document.getElementById('sendWhatsBtn');
+  const cancelWhatsBtn = document.getElementById('cancelWhatsBtn');
+  const customerForm = document.getElementById('customerForm');
+  const orderTotalEl = document.getElementById('orderTotal');
+
+  function normalizeForWa(number){
+    if(!number) return '';
+    let s = String(number).replace(/[^0-9]/g,'');
+    if(s.length === 10 && s[0]==='0') s = '255' + s.slice(1);
+    if(s.length === 9) s = '255' + s;
+    return s.replace(/^\+/, '');
+  }
+
+  function getOrderItemsText(){
+    try{
+      const cart = JSON.parse(localStorage.getItem('pe_cart_v1') || '{}');
+      const last = cart.lastOrder && cart.lastOrder.product ? cart.lastOrder.product : window._pe_lastProduct || null;
+      if(!last) return '- (no item details)';
+      if(Array.isArray(last)) return last.map(it=>`- ${it.name || it.title || 'Item'} x${it.quantity||1}`).join('\n');
+      return `- ${last.name||last.title||'Item'} x${last.quantity||1}`;
+    }catch(e){
+      const p = window._pe_lastProduct || null;
+      if(p) return `- ${p.name || 'Item'} x${p.quantity || 1}`;
+      return '- (no item details)';
+    }
+  }
+
+  function getOrderTotalText(){
+    if(orderTotalEl && orderTotalEl.textContent && orderTotalEl.textContent.trim()){
+      return orderTotalEl.textContent.replace(/^\s*Total[:\s]*/i,'').trim();
+    }
+    const p = window._pe_lastProduct || (function(){ try{const c=JSON.parse(localStorage.getItem('pe_cart_v1')||'{}'); return c.lastOrder && c.lastOrder.product ? c.lastOrder.product : null;}catch(e){return null;} })();
+    if(p && p.price) return p.price;
+    return '';
+  }
+
+  if(finishPayBtn){
+    finishPayBtn.addEventListener('click', function(){ if(customerForm) customerForm.style.display = 'block'; });
+  }
+  if(cancelWhatsBtn){ cancelWhatsBtn.addEventListener('click', ()=>{ if(customerForm) customerForm.style.display = 'none'; }); }
+
+  if(sendWhatsBtn){
+    sendWhatsBtn.addEventListener('click', function(e){
+      e.preventDefault();
+      const custName = (document.getElementById('custName') || {}).value || '';
+      const custPhone = (document.getElementById('custPhone') || {}).value || '';
+      const custAddress = (document.getElementById('custAddress') || {}).value || '';
+      const agent = window._pe_selectedAgent || (function(){ try{const c=JSON.parse(localStorage.getItem('pe_cart_v1')||'{}'); return c.lastOrder && c.lastOrder.agent ? c.lastOrder.agent : null;}catch(e){return null;} })();
+      if(!agent){ alert('Please select a delivery agent before sending the WhatsApp message.'); return; }
+      const agentName = agent.name || agent.id || 'Agent';
+      const agentPhone = (Array.isArray(agent.phone)?agent.phone[0]:agent.phone)||'';
+      const agentWa = normalizeForWa(agentPhone);
+      if(!agentWa){ alert('Agent phone number is not available.'); return; }
+
+      const itemsText = getOrderItemsText();
+      const totalText = getOrderTotalText() || '';
+
+      const messageLines = [
+        `Hello ${agentName},`,
+        `A new order has been placed on PearlEssence.com:`,
+        `Customer: ${custName || 'N/A'}`,
+        `Phone: ${custPhone || 'N/A'}`,
+        `Address: ${custAddress || 'N/A'}`,
+        `Items:`,
+        itemsText,
+        `Total: ${totalText || 'TBD'}`,
+        '',
+        'Please confirm delivery.'
+      ];
+
+      const text = messageLines.join('\n');
+      const encoded = encodeURIComponent(text);
+      const waUrl = `https://wa.me/${agentWa}?text=${encoded}`;
+      window.open(waUrl, '_blank');
+    });
+  }
+});
+</script>
+<script>
+(function(){
+  function parsePriceString(p){
+    if(!p) return 0;
+    // detect TZS or $ presence
+    const isTZS = /tzs|tsh|shs/i.test(p);
+    const isDollar = /\$/.test(p);
+    const cleaned = p.toString().replace(/[^0-9\.\,]/g,'').replace(/,/g,'');
+    const n = parseFloat(cleaned);
+    return isNaN(n)?0:n;
+  }
+  function detectCurrency(p){ if(!p) return ''; if(/tzs|tsh|shs/i.test(p)) return 'TZS'; if(/\$/.test(p)) return '$'; return ''; }
+
+  function saveToCartProduct(product){
+    try{
+      const key = 'pe_cart_v1';
+      const existing = JSON.parse(localStorage.getItem(key) || '{}') || {};
+      existing.items = existing.items || [];
+      // find by name
+      const idx = existing.items.findIndex(i => i.name === product.name);
+      if(idx > -1){ existing.items[idx].quantity = (existing.items[idx].quantity||1) + (product.quantity||1); }
+      else { existing.items.push(Object.assign({quantity: product.quantity||1}, product)); }
+      existing.lastOrder = { product: product, timestamp: (new Date()).toISOString() };
+      localStorage.setItem(key, JSON.stringify(existing));
+      updateOrderTotalDisplay();
+    }catch(e){ console.warn('saveToCartProduct error', e); }
+  }
+
+  function updateOrderTotalDisplay(){
+    try{
+      const key='pe_cart_v1';
+      const cart = JSON.parse(localStorage.getItem(key) || '{}') || {};
+      const items = cart.items || [];
+      if(!items.length){ document.getElementById('orderTotal').textContent = 'Total: TZS 0'; return; }
+      let sum = 0; let currency = '';
+      items.forEach(it=>{ const p = parsePriceString(it.price||''); sum += (p * (it.quantity||1)); if(!currency) currency = detectCurrency(it.price||''); });
+      const formatted = currency === 'TZS' ? ('TZS ' + Math.round(sum).toLocaleString()) : (currency === '$' ? ('$' + sum.toFixed(2)) : (sum.toFixed(2)));
+      document.getElementById('orderTotal').textContent = 'Total: ' + formatted;
+    }catch(e){ console.warn(e); }
+  }
+
+  // Ensure add-to-cart saves product to cart even if original handler ran
+  function attachAddToCartPersist(){
+    document.querySelectorAll('.add-to-cart').forEach(btn=>{
+      // avoid duplicate binding
+      if(btn.dataset.peBound) return; btn.dataset.peBound = '1';
+      btn.addEventListener('click', function(e){
+        // allow original behavior to run first
+        setTimeout(()=>{
+          const card = btn.closest('.product-card') || btn.closest('.mini-product');
+          const name = card ? (card.querySelector('.product-name')?.textContent || card.querySelector('.mini-title')?.textContent || 'Product') : 'Product';
+          const price = card ? (card.querySelector('.product-price')?.textContent || card.querySelector('.mini-price')?.textContent || '') : '';
+          const product = { name: name.trim(), price: price.trim(), quantity:1 };
+          saveToCartProduct(product);
+          // ensure modal shows and confirmation text updated
+          try{
+            const confirmationText = document.getElementById('confirmationText');
+            if(confirmationText) confirmationText.textContent = `${product.name} (${product.price || ''}) has been added to your cart.`;
+          }catch(e){}
+          // open delivery modal and reset steps
+          const dm = document.getElementById('deliveryModal');
+          if(dm){
+            dm.style.display = 'flex';
+            const s1 = document.getElementById('step1-content');
+            const s2 = document.getElementById('step2-content');
+            const s3 = document.getElementById('step3-content');
+            if(s1) s1.style.display = 'block';
+            if(s2) s2.style.display = 'none';
+            if(s3) s3.style.display = 'none';
+          }
+        }, 10);
+      });
+    });
+  }
+
+  // Add More Products: close modal and let user continue shopping
+  const addMoreBtn = document.getElementById('addMoreBtn');
+  if(addMoreBtn){ addMoreBtn.addEventListener('click', function(){ const dm = document.getElementById('deliveryModal'); if(dm) dm.style.display='none'; }); }
+
+  // Finish & Pay: reveal customer form and focus name
+  const finishPayBtn = document.getElementById('finishPayBtn');
+  if(finishPayBtn){ finishPayBtn.addEventListener('click', function(e){
+      const cust = document.getElementById('customerForm') || document.querySelector('.customer-form');
+      if(cust) cust.style.display = 'block';
+      const name = document.getElementById('custName'); if(name) name.focus();
+      // update total display
+      updateOrderTotalDisplay();
+  }); }
+
+  // When modal opens (mutation observer) ensure scroller bindings
+  // Simple init
+  attachAddToCartPersist(); updateOrderTotalDisplay();
+
+  // If you dynamically add product nodes later, call attachAddToCartPersist() manually.
+})();
+</script>
+</body>
+</html>
