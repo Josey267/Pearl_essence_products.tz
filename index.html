@@ -701,8 +701,7 @@
            <li>Deep Hydration Complex</li>
            <li>Anti-Aging Properties</li>
          </ul>
-         <div class="product-price product-price-enhanced">TZS 98,877</div>
-         <button class="add-to-cart glass-btn">ADD TO CART</button>
+         <button class="add-to-cart glass-btn">ORDER NOW</button>
            </div>
          </div>
 
@@ -720,8 +719,7 @@
           <li>Vegan Ingredients</li>
           <li>Silky Smooth Lather</li>
         </ul>
-        <div class="product-price">TZS 57,477</div>
-        <button class="add-to-cart glass-btn">ADD TO CART</button>
+        <button class="add-to-cart glass-btn">ORDER NOW</button>
           </div>
         </div>
 
@@ -739,8 +737,7 @@
             <li>Refreshing Floral Scent</li>
             <li>Silicon-Free Formula</li>
           </ul>
-          <div class="product-price">TZS 43,677</div>
-          <button class="add-to-cart glass-btn">ADD TO CART</button>
+          <button class="add-to-cart glass-btn">ORDER NOW</button>
         </div>
         </div>
 
@@ -758,8 +755,7 @@
             <li>Ultra-Nourishing</li>
             <li>Non-Greasy Finish</li>
           </ul>
-          <div class="product-price">TZS 114,977</div>
-          <button class="add-to-cart glass-btn">ADD TO CART</button>
+          <button class="add-to-cart glass-btn">ORDER NOW</button>
         </div>
         </div>
 
@@ -777,8 +773,7 @@
           <li>Brightening Effect</li>
           <li>Fast-Absorbing</li>
         </ul>
-        <div class="product-price">TZS 126,477</div>
-        <button class="add-to-cart glass-btn">ADD TO CART</button>
+        <button class="add-to-cart glass-btn">ORDER NOW</button>
           </div>
         </div>
       </div>
@@ -816,10 +811,52 @@
         </div>
       </div>
       <div class="agent-cta">
-        <button id="applyNowBtn">Apply Now</button>
+        <button id="applyNowBtn" class="glass-btn agent-cta-btn">Apply Now</button>
       </div>
       
     </section>
+    <!-- Agent Registration Modal -->
+    <div id="agentRegisterModal" class="agent-register-modal" aria-hidden="true">
+      <div class="agent-register-container">
+        <button type="button" id="agentModalClose" class="agent-close-btn" aria-label="Close">×</button>
+        <h2 class="agent-register-title">Become a Pearl Essence Agent</h2>
+        <p class="agent-register-desc">Fill in your details and send them via WhatsApp to start selling with us.</p>
+
+        <form id="agentForm" class="agent-form">
+          <label class="agent-label">Full name</label>
+          <input id="regName" type="text" placeholder="Enter full name" class="agent-input" />
+
+          <label class="agent-label">Location (Region & District)</label>
+          <input id="regLocation" type="text" placeholder="e.g. Arusha, Sinza" class="agent-input" />
+
+          <label class="agent-label">Phone Number</label>
+          <input id="regPhone" type="tel" placeholder="e.g. 0682180819" class="agent-input" />
+
+          <div class="agent-actions">
+            <button type="button" id="agentSubmitBtn" class="agent-submit">Submit Application via WhatsApp</button>
+            <button type="button" id="agentCancelBtn" class="agent-cancel">Cancel</button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <style>
+    /* Agent registration modal - glass/gold styling to match site */
+    .agent-register-modal{ display:none; position:fixed; inset:0; background:rgba(0,0,0,0.45); z-index:1200; align-items:center; justify-content:center; padding:20px; }
+    .agent-register-container{ width:100%; max-width:520px; background:linear-gradient(180deg, rgba(255,255,255,0.9), rgba(249,245,238,0.92)); border-radius:16px; padding:28px; box-shadow:0 18px 50px rgba(0,0,0,0.45); border:1.5px solid rgba(212,175,55,0.18); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); font-family: 'Montserrat', sans-serif; }
+    .agent-register-title{ margin:0 0 6px; font-size:1.45rem; color:#1f2937; font-weight:800; }
+    .agent-register-desc{ margin:0 0 18px; color:#6b5b2f; }
+    .agent-form{ display:flex; flex-direction:column; gap:12px; }
+    .agent-label{ font-weight:700; color:#b89c3a; font-size:0.98rem; }
+    .agent-input{ padding:12px 14px; border-radius:10px; border:1.5px solid rgba(212,175,55,0.22); background:rgba(255,255,255,0.8); outline:none; font-size:1rem; }
+    .agent-input:focus{ border-color:#d4af37; box-shadow:0 6px 18px rgba(212,175,55,0.08); }
+    .agent-actions{ display:flex; gap:12px; justify-content:flex-end; margin-top:8px; }
+    .agent-submit{ background:linear-gradient(135deg,#d4af37,#f8e9b0); color:#fff; border:none; padding:10px 16px; border-radius:12px; font-weight:800; box-shadow:0 8px 22px rgba(212,175,55,0.22); cursor:pointer; }
+    .agent-submit:hover{ transform:translateY(-2px); }
+    .agent-cancel{ background:rgba(255,255,255,0.7); border:1px solid rgba(212,175,55,0.16); padding:10px 14px; border-radius:12px; color:#6b5b2f; cursor:pointer; }
+    .agent-close-btn{ position:absolute; right:18px; top:12px; background:transparent; border:none; font-size:1.6rem; color:#6b5b2f; cursor:pointer; }
+    .agent-cta-btn{ padding:14px 30px; border-radius:999px; font-weight:700; box-shadow:0 12px 30px rgba(212,175,55,0.14); }
+    @media (max-width:600px){ .agent-register-container{ padding:16px; border-radius:12px; } .agent-cta-btn{ padding:10px 20px } }
+    </style>
   <div class="modal-overlay" id="deliveryModal">
         <div class="modal-container">
             <div class="modal-header">
@@ -1141,10 +1178,10 @@ addToCartButtons.forEach(btn => {
     // Get product info
     const card = btn.closest('.product-card');
     const name = card ? card.querySelector('.product-name').textContent : 'Product';
-    const price = card ? card.querySelector('.product-price').textContent : '';
-  confirmationText.textContent = `${name} (${price}) has been added to your cart.`;
+    const price = card ? (card.querySelector('.product-price') ? card.querySelector('.product-price').textContent : '') : '';
+  confirmationText.textContent = name;
   // store last product info for later steps (structured)
-  window._pe_lastProductText = confirmationText.textContent;
+  window._pe_lastProductText = name;
   window._pe_lastProduct = { name: name, price: price };
     deliveryModal.style.display = 'flex';
     // Optionally, set step 1 as active
@@ -1296,7 +1333,8 @@ if (finishBtn) {
     step2Content.style.display='none'; step3Content.style.display='block';
     const productText = window._pe_lastProductText || '';
     if(agent){
-      confirmationTextEl.textContent = `${productText} Your selected agent: ${agent.name} (${(Array.isArray(agent.phone)?agent.phone.join(', '):agent.phone||'')}).`;
+      confirmationTextEl.textContent = 'You are ordering: ' + (productText || '');
+      try{ const ot = document.getElementById('orderTotal'); if(ot){ ot.textContent = ''; ot.style.display = 'none'; } }catch(e){}
       try{
         const cartKey = 'pe_cart_v1';
         const existing = JSON.parse(localStorage.getItem(cartKey) || '{}');
@@ -1308,7 +1346,8 @@ if (finishBtn) {
         localStorage.setItem(cartKey, JSON.stringify(cart));
       }catch(e){/*ignore*/}
     }else{
-      confirmationTextEl.textContent = `${productText}`;
+      confirmationTextEl.textContent = 'You are ordering: ' + (productText || '');
+      try{ const ot = document.getElementById('orderTotal'); if(ot){ ot.textContent = ''; ot.style.display = 'none'; } }catch(e){}
     }
   });
 
@@ -1317,6 +1356,38 @@ if (finishBtn) {
 })();
 </script>
   <script>
+// Agent registration modal behavior and WhatsApp submission
+(function(){
+  const applyBtn = document.getElementById('applyNowBtn');
+  const modal = document.getElementById('agentRegisterModal');
+  const closeBtn = document.getElementById('agentModalClose');
+  const cancelBtn = document.getElementById('agentCancelBtn');
+  const submitBtn = document.getElementById('agentSubmitBtn');
+
+  function showModal(){ if(modal){ modal.style.display = 'flex'; modal.style.alignItems='center'; modal.style.justifyContent='center'; document.getElementById('regName').focus(); } }
+  function hideModal(){ if(modal){ modal.style.display = 'none'; } }
+
+  if(applyBtn) applyBtn.addEventListener('click', function(e){ e.preventDefault(); showModal(); });
+  if(closeBtn) closeBtn.addEventListener('click', hideModal);
+  if(cancelBtn) cancelBtn.addEventListener('click', hideModal);
+
+  function normalizePhoneForWa(num){ if(!num) return ''; let s = String(num).replace(/[^0-9]/g,''); if(s.length===10 && s[0]==='0') s = '255' + s.slice(1); if(s.length===9) s = '255' + s; if(s.indexOf('255')===0) return s.replace(/^\+?/,''); return s; }
+
+  if(submitBtn){
+    submitBtn.addEventListener('click', function(){
+      const name = (document.getElementById('regName')||{}).value || '';
+      const location = (document.getElementById('regLocation')||{}).value || '';
+      const phone = (document.getElementById('regPhone')||{}).value || '';
+      if(!name.trim() || !location.trim() || !phone.trim()){ alert('Please fill in all fields.'); return; }
+      const target = '255682180819'; // WhatsApp destination for applications (+255682180819)
+      const waPhone = normalizePhoneForWa(phone);
+      const message = `*NEW AGENT APPLICATION*\n\n*Name:* ${name}\n*Location:* ${location}\n*Phone:* ${phone}\n\nI would like to register as a Pearl Essence agent.`;
+      const url = `https://wa.me/${target}?text=` + encodeURIComponent(message);
+      window.open(url,'_blank');
+      hideModal();
+    });
+  }
+})();
     // Hamburger menu toggle
     const hamburger = document.getElementById('hamburger');
     const navMenu = document.getElementById('navMenu');
@@ -1347,57 +1418,57 @@ if (finishBtn) {
     (function(){
       const AGENTS_KEY = 'pe_agents_v1';
       // raw seed (from provided list)
-      const raw = [
-        {id:'mwanza_1', name:'Mwanza', phone:['+255628088887'], area:'Mwanza'},
-        {id:'kibaha_1', name:'Kibaha', phone:['+255682180819'], area:'Kibaha'},
-        {id:'mwanza_pasi', name:'Mwanza Pasi Beach', phone:['+255659470706'], area:'Mwanza Pasi Beach'},
-        {id:'wakela_ukonga', name:'Wakela Ukonga', phone:['+255765677758'], area:'Ukonga'},
-        {id:'zanzibar_1', name:'Zanzibar', phone:['+255621166461','+255753674879'], area:'Zanzibar'},
-        {id:'kigoma_1', name:'Kigoma', phone:['+255683913227'], area:'Kigoma'},
-        {id:'mufindi_1', name:'Mufindi', phone:['+255622136179'], area:'Mufindi'},
-        {id:'morogoro_1', name:'Morogoro', phone:['+255754590704'], area:'Morogoro'},
-        {id:'kkoo', name:'KKOO', phone:['+255712048043','+255755048043','+255655048043'], area:'KKOO'},
-        {id:'wakala_mwenge', name:'Wakala Mwenge', phone:['+255620904888','+255757736910','+255714722358'], area:'Mwenge'},
-        {id:'sinza', name:'Sinza', phone:['+255719328328','+255744328328','+255622328328'], area:'Sinza'},
-        {id:'wakala_kigamboni', name:'Wakala Kigamboni', phone:['+255715099216'], area:'Kigamboni'},
-        {id:'musoma_1', name:'Musoma', phone:['+255621823888','+255719328328'], area:'Musoma'},
-        {id:'tabora', name:'Tabora', phone:['+255678770000'], area:'Tabora'},
-        {id:'simiyu', name:'Simiyu', phone:['+255755106173'], area:'Simiyu'},
-        {id:'tanga', name:'Tanga', phone:['+255759292929','+255629292929'], area:'Tanga'},
-        {id:'dodoma', name:'Dodoma', phone:['+255685410410','+255712510510','+255656888419','+255763013335','+255714746278'], area:'Dodoma'},
-        {id:'bunju', name:'Bunju', phone:['+255684892888'], area:'Bunju'},
-        {id:'kimara', name:'Kimara', phone:['+255754093093'], area:'Kimara'},
-        {id:'kawe', name:'Kawe', phone:['+255622328328'], area:'Kawe'},
-        {id:'mombasa', name:'Mombasa', phone:['+255683999111'], area:'Mombasa'},
-        {id:'wakala_bukoba', name:'Wakala Bukoba', phone:['+255764459291','+255714873848'], area:'Bukoba'},
-        {id:'mtwara_mbeya', name:'Mtwara/Mbeya', phone:['+255627057583'], area:'Mtwara/Mbeya'},
-        {id:'songea', name:'Songea', phone:['+255678770000'], area:'Songea'},
-        {id:'iringa', name:'Iringa', phone:['+255719328328'], area:'Iringa'},
-        {id:'mbeya', name:'Mbeya', phone:['+255759292929','+255629292929'], area:'Mbeya'},
-        {id:'wakala_arusha', name:'Wakala Arusha', phone:['+255652647225','+255742857066'], area:'Arusha'},
-        {id:'wakaka_posta', name:'Wakaka Posta', phone:['+255694340688','+255767501841'], area:'Dar es Salaam'},
-        {id:'wakaka_mbweni', name:'Wakaka Mbweni', phone:['+255752275170'], area:'Mbweni'},
-        {id:'wakaka_maburushi', name:'Wakaka Maburushi', phone:['+255755209941'], area:'Maburushi'},
-        {id:'wakaka_kinondoni', name:'Wakaka Kinondoni', phone:['+255710940940'], area:'Kinondoni'},
-        {id:'wakaka_kariakoo', name:'Wakaka Kariakoo', phone:['+255715421929','+255652134003'], area:'Kariakoo'},
-        {id:'wakaka_kkoo', name:'Wakaka Kkoo', phone:['+255788296801'], area:'KKOO'},
-        {id:'wakaka_upanga', name:'Wakaka Upanga', phone:['+255752275170'], area:'Upanga'},
-        {id:'wakaka_tegeta', name:'Wakaka Tegeta', phone:['+25574446567'], area:'Tegeta'},
-        {id:'wakaka_goba', name:'Wakaka Goba', phone:['+255767573607'], area:'Goba'},
-        {id:'wakaka_kimara', name:'Wakaka Kimara', phone:['+255762328638'], area:'Kimara'},
-        {id:'wakaka_mkijichi', name:'Wakaka M/Kijichi', phone:['+255712222966'], area:'Kijichi'},
-        {id:'wakaka_sinza_madukani', name:'Wakaka Sinza Madukani', phone:['+255622214482'], area:'Sinza'},
-        {id:'wakaka_sinza_kwaremmy', name:'Wakaka Sinza Kwaremmy', phone:['+255713843949'], area:'Sinza'},
-        {id:'wakaka_sinza_mori', name:'Wakaka Sinza Mori', phone:['+255716913192','+255712222966'], area:'Sinza'},
-        {id:'wakaka_banana', name:'Wakaka Banana', phone:['+255683064346'], area:'Banana'},
-        {id:'wakaka_tabata', name:'Wakaka Tabata', phone:['+255689345159'], area:'Tabata'},
-        {id:'wakaka_mboni_navisha', name:'Wakaka M/Boni Navisha', phone:['+255713777501'], area:'M/ Boni'},
-        {id:'wakaka_africansana', name:'Wakaka Africansana', phone:['+255763400442'], area:'Africansana'},
-        {id:'wakaka_tanga', name:'Wakaka Tanga', phone:['+255713843643','+25565622736'], area:'Tanga'},
-        {id:'wakaka_mvomero', name:'Wakaka Mvomero', phone:['+255754960936'], area:'Mvomero'},
-        {id:'wakaka_moshi', name:'Wakaka Moshi', phone:['+255768000894','+255714456900'], area:'Moshi'},
-        {id:'wakaka_mwenge_alt', name:'Wakaka Mwenge (alt)', phone:['+255757736910','+255715842472','+255714722358'], area:'Mwenge'}
-      ];
+const agents = [
+  {id:'arusha_1', name:'Arusha', phone:['+255716684377', '+255788195192', '+255764195926', '+255752915939', '+255621323924', '+255755577809', '+255766646443', '+255652647225', '+255742857066'], area:'Arusha'},
+  {id:'dodoma_1', name:'Dodoma', phone:['+255656888419', '+255763013335', '+255714746278', '+255685410410', '+255712510510'], area:'Dodoma'},
+  {id:'mwanza_1', name:'Mwanza', phone:['+255755226458', '+255674986386', '+255757150316', '+255762006112', '+255656613601', '+255622530670', '+255767211748', '+255656460245', '+255628088887'], area:'Mwanza'},
+  {id:'mwanza_pasi', name:'Mwanza Pasi Beach', phone:['+255659470706'], area:'Mwanza Pasi Beach'},
+  {id:'mbeya_1', name:'Mbeya', phone:['+255764717057', '+255766218194', '+255758269660', '+255753184486', '+255762580396', '+255759292929', '+255629292929'], area:'Mbeya'},
+  {id:'kahama_1', name:'Kahama', phone:['+255759024643', '+255754267336', '+255754454380', '+255766517593', '+255745100441', '+255625984901', '+255678084371', '+255689616038'], area:'Kahama'},
+  {id:'kkoo_1', name:'Kariakoo (KKOO)', phone:['+255747457006', '0673020230', '+255713024904', '+255655749321', '+255784004718', '+255652134003', '+255747757006', '+255712048043', '+255755048043', '+255655048043', '+255715421929', '+255788296801'], area:'Kariakoo'},
+  {id:'moshi_1', name:'Moshi', phone:['+255766088894', '+255714456900', '+255652415911', '+255654993628', '+255652577029'], area:'Moshi'},
+  {id:'tanga_1', name:'Tanga', phone:['+255713836343', '+255718793026', '+255655637735', '+255765100287', '+255678372647', '+255759292929', '+255629292929', '+255713843643', '+25565622736'], area:'Tanga'},
+  {id:'morogoro_1', name:'Morogoro', phone:['+255756084168', '+255715102891', '+255716858782', '+255752915393', '+255656344509', '+255754590704'], area:'Morogoro'},
+  {id:'sinza_1', name:'Sinza', phone:['+255756607808', '+255719913512', '+255622779453', '+255682039626', '+255753674878', '+255683064346', '+255719328328', '+255744328328', '+255622328328', '+255622214482', '+255713843949', '+255716913192', '+255712222966'], area:'Sinza'},
+  {id:'mwenge_1', name:'Mwenge', phone:['+255757736910', '+255716568981', '+255740771726', '+255620904888', '+255714722358', '+255715842472'], area:'Mwenge'},
+  {id:'kimara_1', name:'Kimara', phone:['+255764047547', '+255762264058', '+255766545461', '+255754093093', '+255762328638'], area:'Kimara'},
+  {id:'kigamboni_1', name:'Kigamboni', phone:['0775176996', '0699841060', '0622959442', '+255715099216'], area:'Kigamboni'},
+  {id:'tabata_1', name:'Tabata', phone:['+255689345159', '+255763398871'], area:'Tabata'},
+  {id:'tegeta_1', name:'Tegeta', phone:['+255625663828', '+25574446567'], area:'Tegeta'},
+  {id:'bunju_1', name:'Bunju', phone:['+255692418743', '+255684892888'], area:'Bunju'},
+  {id:'wakala_shinyanga', name:'Wakala Shinyanga', phone:['+255677743709', '+255763635733', '+255782324223', '+255763539308'], area:'Shinyanga'},
+  {id:'zanzibar_1', name:'Zanzibar', phone:['+255753674878', '+255621166461', '+255753674879'], area:'Zanzibar'},
+  {id:'musoma_1', name:'Musoma', phone:['+255754969936', '+255769089141', '+255621823888', '+255719328328'], area:'Musoma'},
+  {id:'iringa_1', name:'Iringa', phone:['+255714678585', '+255757699921', '+255719328328'], area:'Iringa'},
+  {id:'mtwara_masasi', name:'Mtwara/Masasi', phone:['+255656506551', '+255712004163', '+255627057583'], area:'Mtwara/Masasi'},
+  {id:'kigoma_1', name:'Kigoma', phone:['+255745526140', '+255683913227'], area:'Kigoma'},
+  {id:'songea_1', name:'Songea', phone:['+255674113397', '+255678770000'], area:'Songea'},
+  {id:'tabora_1', name:'Tabora', phone:['+255757924164', '+255778429915', '+255678770000'], area:'Tabora'},
+  {id:'bukoba_1', name:'Wakala Bukoba', phone:['+255714873848', '+255764459291'], area:'Bukoba'},
+  {id:'kibaha_1', name:'Kibaha', phone:['0712064866', '0746255776', area:'Kibaha'},
+  {id:'simiyu_1', name:'Simiyu', phone:['0768165059', '+255755106173'], area:'Simiyu'},
+  {id:'singida_1', name:'Singida', phone:['+255786537753'], area:'Singida'},
+  {id:'tarime_1', name:'Tarime', phone:['+255759280848', '+255744931500'], area:'Tarime'},
+  {id:'mafinga_1', name:'Mafinga', phone:['+255622140089'], area:'Mafinga'},
+  {id:'tunduma_1', name:'Tunduma Songwe', phone:['752753883', '753340493'], area:'Tunduma'},
+  {id:'mufindi_1', name:'Mufindi', phone:['+255622136179'], area:'Mufindi'},
+  {id:'kawe_1', name:'Kawe', phone:['+255715068380', '+255622328328'], area:'Kawe'},
+  {id:'mombasa_1', name:'Mombasa', phone:['+254741517107', '+255683999111'], area:'Mombasa'},
+  {id:'nairobi_1', name:'Nairobi', phone:['+254700127325', '+254713182054'], area:'Nairobi'},
+  {id:'rwanda_1', name:'Rwanda', phone:['+250788440320', '+250786421208', '+250788506613', '+250782170944', '+250780655681', '+250785661692'], area:'Rwanda'},
+  {id:'burundi_1', name:'Burundi', phone:['+25777160769', '+25775332277'], area:'Burundi'},
+  {id:'ukonga_1', name:'Ukonga', phone:['+255683064346', '+255765677758'], area:'Ukonga'},
+  {id:'temeke_1', name:'Temeke', phone:['+255768177000'], area:'Temeke'},
+  {id:'makumbusho_1', name:'Makumbusho', phone:['+255752099413'], area:'Makumbusho'},
+  {id:'banana_1', name:'Banana', phone:['+255683064346'], area:'Banana'},
+  {id:'posta_1', name:'Posta', phone:['+255694340688', '+255767501841'], area:'Dar es Salaam'},
+  {id:'mbweni_1', name:'Mbweni', phone:['+255752275170'], area:'Mbweni'},
+  {id:'kinondoni_1', name:'Kinondoni', phone:['+255710940940'], area:'Kinondoni'},
+  {id:'upanga_1', name:'Upanga', phone:['+255752275170'], area:'Upanga'},
+  {id:'goba_1', name:'Goba', phone:['+255767573607'], area:'Goba'},
+  {id:'kijichi_1', name:'Kijichi', phone:['+255712222966'], area:'Kijichi'},
+  {id:'mvomero_1', name:'Mvomero', phone:['+255754960936'], area:'Mvomero'}
+];
 
       // helpers
       function normalizePhone(p){
@@ -1426,7 +1497,8 @@ if (finishBtn) {
 
       // normalize and dedupe
       const map = new Map();
-      raw.forEach((r,i)=>{
+      // `agents` is the seed array above; ensure we iterate it (was `raw` previously which is undefined)
+      (agents || []).forEach((r,i)=>{
         const phones = (Array.isArray(r.phone)?r.phone:[r.phone||'']).map(normalizePhone).filter(Boolean);
         const area = normalizeAreaName(r.area||r.location||'');
         const name = (r.name||'').toString().trim();
@@ -1472,13 +1544,15 @@ document.addEventListener('DOMContentLoaded', function(){
     try{
       const cart = JSON.parse(localStorage.getItem('pe_cart_v1') || '{}');
       const last = cart.lastOrder && cart.lastOrder.product ? cart.lastOrder.product : window._pe_lastProduct || null;
-      if(!last) return '- (no item details)';
-      if(Array.isArray(last)) return last.map(it=>`- ${it.name || it.title || 'Item'} x${it.quantity||1}`).join('\n');
-      return `- ${last.name||last.title||'Item'} x${last.quantity||1}`;
+      if(!last) return '';
+      if(Array.isArray(last)){
+        if(last.length === 1) return last[0].name || '';
+        return last.map(it => it.name || it.title || 'Item').join('\n');
+      }
+      return last.name || last.title || '';
     }catch(e){
       const p = window._pe_lastProduct || null;
-      if(p) return `- ${p.name || 'Item'} x${p.quantity || 1}`;
-      return '- (no item details)';
+      return p ? (p.name || '') : '';
     }
   }
 
@@ -1590,7 +1664,7 @@ document.addEventListener('DOMContentLoaded', function(){
           // ensure modal shows and confirmation text updated
           try{
             const confirmationText = document.getElementById('confirmationText');
-            if(confirmationText) confirmationText.textContent = `${product.name} (${product.price || ''}) has been added to your cart.`;
+            if(confirmationText) confirmationText.textContent = (product.name || '');
           }catch(e){}
           // open delivery modal and reset steps
           const dm = document.getElementById('deliveryModal');
