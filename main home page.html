@@ -29,6 +29,7 @@
       <i class="fas fa-user-shield"></i>
       </a>
     </nav>
+    <button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch to dark theme" aria-pressed="false" title="Switch theme">🌙</button>
     <div class="hamburger" id="hamburger" role="button" tabindex="0" aria-label="Toggle menu" aria-controls="navMenu">
       <span></span>
       <span></span>
@@ -192,7 +193,6 @@
         <img src="images/logo.png.jpg" alt="Pearl Essence Logo" class="logo-img">
         <div class="logo-text">PEARL ESSENCE</div>
       </div>
-      <button class="theme-toggle" id="themeToggle">🌓</button>
     </header>
 
     <!-- Hero Section with Blurred Background Image -->
@@ -918,7 +918,8 @@
                             <option value="unguja-south-region">Unguja South Region (Zanzibar)</option>
                         </select>
                         <!-- quick-search input for free-text location (real-time lookup) -->
-                        <input id="locationInput" type="text" placeholder="Or type your area (e.g. Ilala, Sinza)">
+                        <input id="locationInput" type="text" placeholder="Or type your area (e.g. Tabora, Sinza)" autocomplete="off">
+                        <div class="agent-list" id="liveAgentResults"></div>
                     </div>
                     <div class="modal-footer">
                         <button class="btn btn-primary" id="nextToStep2" disabled>Next</button>
@@ -1259,9 +1260,10 @@ if (finishBtn) {
   }
 
   // Render agents with animation
-  function renderAgentMatches(matches){
-    agentListEl.innerHTML = '';
-    if(!matches || matches.length===0){ agentListEl.innerHTML = '<p>No delivery agents found in your area.</p>'; nextToStep3.disabled = true; return; }
+  function renderAgentMatches(matches, container, autoAdvance){
+    container = container || agentListEl;
+    container.innerHTML = '';
+    if(!matches || matches.length===0){ container.innerHTML = '<p>No delivery agents found in your area.</p>'; if(!autoAdvance) nextToStep3.disabled = true; return; }
     matches.forEach((ag, idx)=>{
       const card = document.createElement('div');
       card.className = 'agent-card';
@@ -1280,18 +1282,64 @@ if (finishBtn) {
       // animate in
       card.classList.add('card-animate'); setTimeout(()=>card.classList.add('show'), 40);
       card.addEventListener('click', ()=>{
-        const prev = agentListEl.querySelector('.selected'); if(prev) prev.classList.remove('selected');
+        const prev = container.querySelector('.selected'); if(prev) prev.classList.remove('selected');
         card.classList.add('selected'); nextToStep3.disabled = false; window._pe_selectedAgent = ag;
+        if(autoAdvance) nextToStep3.click();
       });
-      agentListEl.appendChild(card);
+      container.appendChild(card);
     });
-    nextToStep3.disabled = false;
+    if(!autoAdvance) nextToStep3.disabled = false;
+  }
+
+  // Region name -> agent areas that belong to that region
+  const REGION_AREAS = {
+    'dar es salaam': ['dar es salaam','kariakoo','sinza','mwenge','kimara','kigamboni','tabata','tegeta','bunju','kawe','ukonga','temeke','makumbusho','banana','posta','mbweni','kinondoni','ilala','ubungo','upanga','goba','kijichi'],
+    'kinondoni': ['kinondoni','sinza','mwenge','kawe','tegeta','bunju','makumbusho','mbweni'],
+    'ilala': ['ilala','kariakoo','ukonga','banana','tabata','posta'],
+    'temeke': ['temeke','kijichi'],
+    'ubungo': ['ubungo','kimara','goba'],
+    'kigamboni': ['kigamboni'],
+    'mjini magharibi': ['zanzibar'],
+    'unguja north': ['zanzibar'],
+    'unguja south': ['zanzibar'],
+    'pwani': ['kibaha'],
+    'kagera': ['bukoba'],
+    'kilimanjaro': ['moshi'],
+    'mara': ['musoma','tarime'],
+    'ruvuma': ['songea'],
+    'songwe': ['tunduma'],
+    'shinyanga': ['shinyanga','kahama'],
+    'iringa': ['iringa','mafinga','mufindi'],
+    'morogoro': ['morogoro','mvomero'],
+    'mtwara': ['mtwara','masasi'],
+    'mwanza': ['mwanza']
+  };
+  function normSpace(s){ return (s||'').toString().toLowerCase().replace(/\(.*?\)/g,'').replace(/\bregion\b/g,'').replace(/[^a-z0-9 ]/g,' ').replace(/\s+/g,' ').trim(); }
+
+  // Agents belonging to the searched region/area only
+  function findAgentsForRegion(rawText){
+    const q = normSpace(rawText);
+    const token = q.replace(/ /g,'');
+    if(!token) return [];
+    const agents = loadAgents();
+    const wanted = new Set();
+    Object.keys(REGION_AREAS).forEach(r=>{ if(r === q || (q.length>=3 && r.startsWith(q))) REGION_AREAS[r].forEach(a=>wanted.add(a.replace(/ /g,''))); });
+    return agents.filter(a=>{
+      const area = normalizeArea(a.area || a.location || '');
+      const name = normalizeArea(a.name || '');
+      if(area.includes(token) || name.includes(token)) return true;
+      for(const w of wanted){ if(area === w || area.includes(w) || name.includes(w)) return true; }
+      return false;
+    });
   }
 
   // Main search: prefer strict substring matches, else fuzzy fallback
-  function fetchAndRenderAgentsByText(rawText){
+  function fetchAndRenderAgentsByText(rawText, container, autoAdvance){
     const token = normalizeArea(rawText || '');
-    if(!token){ agentListEl.innerHTML = '<p>Please enter your area.</p>'; nextToStep3.disabled = true; return; }
+    container = container || agentListEl;
+    if(!token){ container.innerHTML = autoAdvance ? '' : '<p>Please enter your area.</p>'; if(!autoAdvance) nextToStep3.disabled = true; return; }
+    const regionMatches = findAgentsForRegion(rawText);
+    if(regionMatches.length>0){ renderAgentMatches(regionMatches, container, autoAdvance); return; }
     const agents = loadAgents();
     // compute normalized area for each agent once
     const annotated = agents.map(a=>({a, normArea: normalizeArea(a.area || a.location || ''), score:0}));
@@ -1299,32 +1347,41 @@ if (finishBtn) {
     const substringMatches = annotated.filter(x => x.normArea && x.normArea.includes(token)).map(x=>x.a);
     if(substringMatches.length>0){
       // show all that include token (e.g., Sinza variations)
-      renderAgentMatches(substringMatches);
+      renderAgentMatches(substringMatches, container, autoAdvance);
       return;
     }
     // No substring hits — fallback to fuzzy scoring with threshold
     const MIN_SCORE = 30;
     const scored = annotated.map(x=>({ a:x.a, score: scoreAgentFuzzy(x.a, token) }));
     const good = scored.filter(x=>x.score >= MIN_SCORE).sort((p,q)=>q.score-p.score).map(x=>x.a);
-    if(good.length>0){ renderAgentMatches(good); return; }
-    // final fallback: top 3 nearest if any positive score
-    const near = scored.filter(x=>x.score>0).sort((p,q)=>q.score-p.score).slice(0,3).map(x=>x.a);
-    renderAgentMatches(near);
+    // typo tolerance: only the single best fuzzy match, never unrelated areas
+    renderAgentMatches(good.slice(0,1), container, autoAdvance);
   }
 
-  const debouncedFetch = debounce((text)=>{ fetchAndRenderAgentsByText(text); }, 300);
+  const liveResultsEl = document.getElementById('liveAgentResults');
+  const debouncedFetch = debounce((text)=>{ fetchAndRenderAgentsByText(text, liveResultsEl, true); }, 150);
 
   // listeners
   if(locationSelect){
     locationSelect.addEventListener('change', ()=>{
       nextToStep2.disabled = !locationSelect.value;
       const chosenLabel = locationSelect.options[locationSelect.selectedIndex]?.text || '';
-      if(locationSelect.value && chosenLabel){ fetchAndRenderAgentsByText(chosenLabel); step1Content.style.display='none'; step2Content.style.display='block'; }
+      if(locationSelect.value && chosenLabel){
+        if(locationInput) locationInput.value = '';
+        if(liveResultsEl) liveResultsEl.innerHTML = '';
+        window._pe_selectedAgent = null;
+        fetchAndRenderAgentsByText(chosenLabel); step1Content.style.display='none'; step2Content.style.display='block';
+      }
     });
   }
 
   if(locationInput){
-    locationInput.addEventListener('input', (e)=>{ const v=(e.target.value||'').trim(); if(!v) return; debouncedFetch(v); step1Content.style.display='none'; step2Content.style.display='block'; });
+    locationInput.addEventListener('input', (e)=>{
+      const v=(e.target.value||'').trim();
+      window._pe_selectedAgent = null;
+      if(!v){ if(liveResultsEl) liveResultsEl.innerHTML=''; return; }
+      debouncedFetch(v);
+    });
   }
 
   if(nextToStep2){ nextToStep2.addEventListener('click', ()=>{ const chosenLabel = locationSelect.options[locationSelect.selectedIndex]?.text || ''; if(!chosenLabel) return; fetchAndRenderAgentsByText(chosenLabel); step1Content.style.display='none'; step2Content.style.display='block'; }); }
@@ -1333,7 +1390,7 @@ if (finishBtn) {
 
   if(nextToStep3) nextToStep3.addEventListener('click', ()=>{
     const agent = window._pe_selectedAgent || null;
-    step2Content.style.display='none'; step3Content.style.display='block';
+    step1Content.style.display='none'; step2Content.style.display='none'; step3Content.style.display='block';
     const productText = window._pe_lastProductText || '';
     if(agent){
       confirmationTextEl.textContent = 'You are ordering: ' + (productText || '');

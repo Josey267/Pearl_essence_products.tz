@@ -127,18 +127,21 @@
     // Theme Toggle Functionality
     const themeToggle = document.getElementById('themeToggle');
     const body = document.body;
-    
-    themeToggle.addEventListener('click', () => {
-      body.classList.toggle('dark-mode');
-      // Save preference to localStorage
-      const isDarkMode = body.classList.contains('dark-mode');
-      localStorage.setItem('darkMode', isDarkMode);
-    });
-    
-    // Check for saved theme preference
-    if (localStorage.getItem('darkMode') === 'true') {
-      body.classList.add('dark-mode');
+
+    function setTheme(isDarkMode) {
+      body.classList.toggle('dark-mode', isDarkMode);
+      themeToggle.textContent = isDarkMode ? '☀️' : '🌙';
+      themeToggle.setAttribute('aria-label', isDarkMode ? 'Switch to light theme' : 'Switch to dark theme');
+      themeToggle.setAttribute('aria-pressed', String(isDarkMode));
+      themeToggle.title = isDarkMode ? 'Switch to light theme' : 'Switch to dark theme';
+      localStorage.setItem('darkMode', String(isDarkMode));
     }
+
+    // Restore the saved theme and keep the control state in sync.
+    setTheme(localStorage.getItem('darkMode') === 'true');
+    themeToggle.addEventListener('click', () => {
+      setTheme(!body.classList.contains('dark-mode'));
+    });
     
     // Product Scroller Functionality (guarded when DOM elements are missing)
     function scrollProducts(offset) {
