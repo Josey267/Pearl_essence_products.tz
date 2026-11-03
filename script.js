@@ -121,7 +121,7 @@
     
     // Apply Now button functionality
     applyNowBtn.addEventListener('click', () => {
-      alert("Thank you for your interest in becoming a Pearl Essence agent! Our team will contact you shortly.");
+      console.log("Thank you for your interest in becoming a Pearl Essence agent! Our team will contact you shortly.");
     });
     
     // Theme Toggle Functionality
@@ -142,24 +142,25 @@
     
     // Product Scroller Functionality (guarded when DOM elements are missing)
     function scrollProducts(offset) {
-      const scrollerEl = document.getElementById('productScroller');
+      const scrollerEl = document.getElementById('productScrollerTop');
       if (!scrollerEl || typeof scrollerEl.scrollBy !== 'function') return;
       scrollerEl.scrollBy({ left: offset, behavior: 'smooth' });
     }
 
     // Auto-hide arrows when at scroll boundaries (safe guards)
-    const scrollerEl = document.getElementById('productScroller');
+    const scrollerEl = document.getElementById('productScrollerTop');
     const leftArrow = document.querySelector('.arrow-left');
     const rightArrow = document.querySelector('.arrow-right');
 
     if (scrollerEl && leftArrow && rightArrow) {
-      scrollerEl.addEventListener('scroll', () => {
-        leftArrow.style.display = scrollerEl.scrollLeft > 0 ? 'flex' : 'none';
-        rightArrow.style.display = scrollerEl.scrollLeft < (scrollerEl.scrollWidth - scrollerEl.clientWidth) ? 'flex' : 'none';
-      });
-
-      // Initialize arrow visibility
-      leftArrow.style.display = 'none';
+      const updateArrows = () => {
+        const maxScroll = scrollerEl.scrollWidth - scrollerEl.clientWidth;
+        leftArrow.style.display = scrollerEl.scrollLeft > 4 ? 'flex' : 'none';
+        rightArrow.style.display = scrollerEl.scrollLeft < maxScroll - 4 ? 'flex' : 'none';
+      };
+      scrollerEl.addEventListener('scroll', updateArrows, { passive: true });
+      window.addEventListener('resize', updateArrows);
+      updateArrows();
     }
     
     // Add ripple effect to buttons
@@ -182,25 +183,10 @@
       });
     });
     
-    // Auto return to welcome screen on scroll down
-    mainContent.addEventListener('scroll', () => {
-      if (mainContent.scrollTop > 30) {
-        mainContent.style.opacity = '0';
-        pageTransition.style.transform = 'scaleY(1)';
-        pageTransition.style.transformOrigin = 'top';
-        pageTransition.style.transition = 'transform 0.6s cubic-bezier(0.65, 0, 0.35, 1)';
-        setTimeout(() => {
-          mainContent.style.display = 'none';
-          welcomeScreen.style.display = 'flex';
-          backBtn.style.display = 'none';
-          setTimeout(() => {
-            pageTransition.style.transform = 'scaleY(0)';
-            pageTransition.style.transformOrigin = 'bottom';
-          }, 50);
-        }, 600);
-        window.scrollTo(0, 0);
-      }
-    });
+    // Frost the header area once the page is scrolled
+    const onPageScroll = () => document.body.classList.toggle('is-scrolled', window.scrollY > 40);
+    window.addEventListener('scroll', onPageScroll, { passive: true });
+    onPageScroll();
 
     // Image Carousel Functionality
     const carouselTrack = document.getElementById('carouselTrack');
@@ -325,27 +311,92 @@
       });
     });
 
-    // Show back button when scrolled down in main content
-    mainContent.addEventListener('scroll', function() {
-      if (this.scrollTop > 100) {
-        backBtn.style.opacity = '1';
-        backBtn.style.pointerEvents = 'auto';
-      } else {
-        backBtn.style.opacity = '0';
-        backBtn.style.pointerEvents = 'none';
-      }
-    });
-   // You can add interactive functionality here if needed
-document.addEventListener('DOMContentLoaded', function() {
-  // Example: Add click tracking for analytics
-  const buttons = document.querySelectorAll('.shop-btn');
-  
-  buttons.forEach(button => {
-    button.addEventListener('click', function(e) {
-      console.log('Product button clicked:', e.target.textContent.trim());
-      // Add your analytics tracking here
-    });
+    // Back button: always usable once the main content is open
+    // Keyboard support for the hamburger menu
+    const hamburgerBtn = document.getElementById('hamburger');
+    if (hamburgerBtn) {
+      hamburgerBtn.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          hamburgerBtn.click();
+        }
+      });
+    }
+console.log('Pearl Essence products loaded');
+// Slime-nav toggle & behavior
+(function(){
+  const slime = document.getElementById('slimeNav');
+  const toggle = document.getElementById('slimeToggle');
+  const slimeLocations = document.querySelectorAll('.slime-location');
+  const topLinks = document.querySelectorAll('.slime-top-link');
+
+  if(!slime || !toggle) return;
+
+  function setExpanded(exp){
+    if(exp){
+      slime.classList.add('expanded');
+      slime.classList.remove('collapsed');
+      toggle.setAttribute('aria-expanded','true');
+    } else {
+      slime.classList.remove('expanded');
+      slime.classList.add('collapsed');
+      toggle.setAttribute('aria-expanded','false');
+    }
+    localStorage.setItem('slimeExpanded', !!exp);
+  }
+
+  toggle.addEventListener('click', (e)=>{
+    e.stopPropagation();
+    const isExpanded = slime.classList.contains('expanded');
+    setExpanded(!isExpanded);
   });
-  
-  console.log('Pearl Essence products loaded');
-});
+
+  // close on page clicks for small screens
+  document.addEventListener('click', (e)=>{
+    if(window.innerWidth < 900 && !slime.contains(e.target)){
+      setExpanded(false);
+    }
+  });
+
+  // restore saved state
+  if(localStorage.getItem('slimeExpanded') === 'true') setExpanded(true);
+
+  // wire the slim location links to existing modal show
+  if(slimeLocations && slimeLocations.length){
+    slimeLocations.forEach(function(el){
+      el.addEventListener('click', function(e){
+        e.preventDefault();
+        if(typeof locationLink !== 'undefined' && locationLink) locationLink.click();
+        else document.getElementById('locationModal').style.display = 'flex';
+        if(window.innerWidth < 900) setExpanded(false);
+      });
+    });
+  }
+
+  // close nav on small screens when a top link is clicked
+  if(topLinks && topLinks.length){
+    topLinks.forEach(function(link){
+      link.addEventListener('click', function(){
+        if(window.innerWidth < 900) setExpanded(false);
+      });
+    });
+  }
+})();
+
+// CTA button inside slime nav -> scroll to products
+(function(){
+  const slimeCTA = document.getElementById('slimeCTA');
+  if(!slimeCTA) return;
+  slimeCTA.addEventListener('click', function(e){
+    e.preventDefault();
+    const target = document.getElementById('productScrollerTop') || document.querySelector('.product-showcase') || document.getElementById('mainContent');
+    if(target){
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      const aside = document.getElementById('slimeNav');
+      if(aside && window.innerWidth >= 900){
+        aside.classList.add('expanded');
+        setTimeout(()=> aside.classList.remove('expanded'), 1400);
+      }
+    }
+  });
+})();

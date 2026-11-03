@@ -1,0 +1,190 @@
+/* ==========================================================
+   Pearl Essence - hero + frosted glass layer
+   Loaded last (end of <body>) so it overrides styles.css,
+   cart.css and the inline <style> blocks.
+   ========================================================== */
+
+:root {
+  /* Frosted glass tokens */
+  --glass-bg: rgba(0, 0, 0, 0.4);
+  --glass-bg-strong: rgba(0, 0, 0, 0.55);
+  --glass-blur: blur(10px) saturate(180%);
+  --glass-border: 1px solid rgba(255, 255, 255, 0.18);
+  --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+  --glass-text: #ffffff;
+  --glass-text-hover: #f4d48b;
+
+  /* Layout */
+  --nav-height: 72px;
+  --hero-height: 100vh;
+}
+
+@supports (height: 100svh) {
+  :root { --hero-height: 100svh; }
+}
+
+/* ---------- 1. Hero carousel: full height, starts at the top edge ---------- */
+.carousel-container {
+  margin-top: 0;                 /* no gap above - image bleeds under the nav */
+  height: var(--hero-height);
+  min-height: 560px;
+}
+
+/* Darken the top so white nav text stays readable on bright photos */
+.carousel-slide::after {
+  background:
+    linear-gradient(180deg, rgba(0, 0, 0, 0.45) 0%, rgba(0, 0, 0, 0) 26%),
+    linear-gradient(90deg, rgba(19, 17, 16, 0.72), rgba(19, 17, 16, 0.05));
+}
+
+.slide-content { bottom: 20%; }
+
+/* ---------- 2. Frosted glass navbar overlaying the carousel ---------- */
+.nav-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  min-height: var(--nav-height);
+  padding: 12px clamp(16px, 4vw, 48px);
+  border-radius: 0;
+  display: flex !important;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+
+  background: var(--glass-bg);
+  -webkit-backdrop-filter: var(--glass-blur);
+  backdrop-filter: var(--glass-blur);
+  border: 0;
+  border-bottom: var(--glass-border);
+  box-shadow: var(--glass-shadow);
+  z-index: 1000;
+}
+
+/* Slightly denser glass once the user scrolls past the hero */
+body.is-scrolled .nav-container {
+  background: var(--glass-bg-strong);
+}
+
+body.dark-mode .nav-container {
+  background: var(--glass-bg);
+  border-bottom: var(--glass-border);
+}
+
+.nav-container .nav-logo-img {
+  width: 44px;
+  height: 44px;
+  border: 2px solid rgba(244, 212, 139, 0.85);
+}
+
+.nav-container .nav-menu {
+  display: flex;
+  align-items: center;
+  gap: clamp(16px, 2.4vw, 34px);
+  grid-column: auto;
+}
+
+.nav-container .nav-link,
+body.dark-mode .nav-container .nav-link {
+  color: var(--glass-text);
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.35);
+}
+
+.nav-container .nav-link:hover,
+.nav-container .nav-link:focus-visible {
+  color: var(--glass-text-hover);
+}
+
+.nav-container .hamburger span,
+body.dark-mode .nav-container .hamburger span {
+  background: var(--glass-text);
+}
+
+/* ---------- 3. Frosted glass slider controls bar ---------- */
+.carousel-nav {
+  bottom: 28px;
+  padding: 10px 20px;
+  border-radius: 999px;
+  background: var(--glass-bg);
+  -webkit-backdrop-filter: var(--glass-blur);
+  backdrop-filter: var(--glass-blur);
+  border: var(--glass-border);
+  box-shadow: var(--glass-shadow);
+}
+
+.owl-indicator {
+  bottom: 88px;
+}
+
+/* ---------- Mobile ---------- */
+@media (max-width: 768px) {
+  :root { --nav-height: 60px; }
+
+  .nav-container { padding: 8px 16px; }
+
+  .nav-container .nav-logo-img { width: 38px; height: 38px; }
+
+  .nav-container .hamburger { display: flex; }
+
+  /* Dropdown panel: frosted glass too. absolute (not fixed) because the
+     nav's backdrop-filter makes it the containing block. */
+  .nav-container .nav-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    display: flex;               /* overrides display:none from styles.css at <=640px */
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    padding: 8px 20px 16px;
+    background: var(--glass-bg-strong);
+    -webkit-backdrop-filter: var(--glass-blur);
+    backdrop-filter: var(--glass-blur);
+    border-bottom: var(--glass-border);
+    border-radius: 0 0 18px 18px;
+    transform: translateY(-8px);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s;
+  }
+
+  .nav-container .nav-menu.active {
+    transform: none;
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+  }
+
+  .nav-container .nav-link {
+    padding: 14px 0;
+    font-size: 1.05rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+  }
+
+  .nav-container .nav-link:last-child { border-bottom: 0; }
+
+  .carousel-container { height: var(--hero-height); min-height: 520px; }
+
+  .slide-content { left: 6%; right: 6%; bottom: 22%; }
+
+  .owl-indicator { bottom: 84px; }
+}
+
+/* ---------- Fallback when backdrop-filter is unsupported ---------- */
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .nav-container,
+  .carousel-nav,
+  .nav-container .nav-menu {
+    background: rgba(0, 0, 0, 0.7);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nav-container .nav-menu { transition: none; }
+}
