@@ -3,10 +3,12 @@
 <head>
   <meta charset="UTF-8">
  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Pearl Essence - premium pearl-infused skincare. Sunscreen, Vitamin C serum, face and body creams delivered across Tanzania.">
   <title>Pearl Essence | Premium Skincare</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Montserrat:wght@300;500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="cart.css">
-  <link rel="stylesheet" href='styles.css'>
+  <link rel="stylesheet" href="cart.css?v=20261103">
+  <link rel="stylesheet" href='styles.css?v=20261103'>
   <!-- moved Font Awesome here -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
@@ -27,7 +29,8 @@
       <i class="fas fa-user-shield"></i>
       </a>
     </nav>
-    <div class="hamburger" id="hamburger">
+    <button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch to dark theme" aria-pressed="false" title="Switch theme">🌙</button>
+    <div class="hamburger" id="hamburger" role="button" tabindex="0" aria-label="Toggle menu" aria-controls="navMenu">
       <span></span>
       <span></span>
       <span></span>
@@ -68,7 +71,7 @@
       </div>
       <!-- Slide 4 -->
       <div class="carousel-slide">
-        <img src="images/image A (6).jpg" alt="CBD Serum" class="carousel-image">
+        <img src="images/image A (6).jpg" alt="Pearl Essence face and body cream" class="carousel-image">
         <div class="slide-content">
           <h3 class="slide-title">As Always Our Best Selling face and body Cream</h3>
           <p class="slide-text">Brighten and calm your skin with our Pearl Essence Body and face cream.</p>
@@ -132,11 +135,11 @@
     <!-- Product 1 -->
     <div class="product-row">
       <div class="product-image">
-        <img src="images/sunscree33.png" alt="Pearl Necklace">
+        <img src="images/sunscree33.png" alt="Pearl Essence Sunscreen 3in1">
       </div>
       <div class="product-text">
         <h3 class="product-title">Brand New PearlEssence Sunscreen 3in1</h3>
-        <p class="product-desc">Timeless elegance with our hand-selected freshwater pearls. Perfect for both casual and formal occasions.</p>
+        <p class="product-desc">Broad-spectrum SPF protection with pearl extract, in a lightweight, non-greasy formula for every skin tone.</p>
         
       </div>
     </div>
@@ -144,11 +147,11 @@
     <!-- Product 2 -->
     <div class="product-row reverse">
       <div class="product-image">
-        <img src="images/vitamin c2.png.jpg" alt="Pearl Earrings">
+        <img src="images/vitamin c2.png.jpg" alt="Pearl Essence Vitamin C Serum">
       </div>
       <div class="product-text">
         <h3 class="product-title">Brand New PearlEssence Vitamin C Serum</h3>
-        <p class="product-desc">Sophisticated 6mm pearls paired with brilliant-cut diamond accents in 14k white gold.</p>
+        <p class="product-desc">Brightens dull skin, softens dark spots and boosts your natural glow in just 7 days.</p>
         
       </div>
     </div>
@@ -156,11 +159,11 @@
     <!-- Product 3 -->
     <div class="product-row">
       <div class="product-image">
-        <img src="images/vitaminc.png.jpg" alt="Pearl Bracelet">
+        <img src="images/vitaminc.png.jpg" alt="Pearl Essence Retinol">
       </div>
       <div class="product-text">
-        <h3 class="product-title">Pearl ratinol</h3>
-        <p class="product-desc">Delicate 4mm pearls alternating with sterling silver charms on adjustable silk cord.</p>
+        <h3 class="product-title">Pearl Retinol</h3>
+        <p class="product-desc">Smooths fine lines and refines texture for firmer, more even-toned skin overnight.</p>
         
       </div>
     </div>
@@ -190,7 +193,6 @@
         <img src="images/logo.png.jpg" alt="Pearl Essence Logo" class="logo-img">
         <div class="logo-text">PEARL ESSENCE</div>
       </div>
-      <button class="theme-toggle" id="themeToggle">🌓</button>
     </header>
 
     <!-- Hero Section with Blurred Background Image -->
@@ -351,7 +353,7 @@
         gap: 10px;
       }
       .main-content {
-        padding: 15px;
+        padding: 80px 15px 15px;
       }
       .hero {
         padding: 20px 0;
@@ -916,7 +918,8 @@
                             <option value="unguja-south-region">Unguja South Region (Zanzibar)</option>
                         </select>
                         <!-- quick-search input for free-text location (real-time lookup) -->
-                        <input id="locationInput" type="text" placeholder="Or type your area (e.g. Ilala, Sinza)">
+                        <input id="locationInput" type="text" placeholder="Or type your area (e.g. Tabora, Sinza)" autocomplete="off">
+                        <div class="agent-list" id="liveAgentResults"></div>
                     </div>
                     <div class="modal-footer">
                         <button class="btn btn-primary" id="nextToStep2" disabled>Next</button>
@@ -946,7 +949,7 @@
   <div class="customer-form-header">
     <i class="fas fa-user-circle form-icon"></i>
     <div>
-      <h3 class="customer-form-title">Your
+      <h3 class="customer-form-title">Your Details</h3>
       <p class="customer-form-desc">Fill in your info to complete your order.</p>
     </div>
   </div>
@@ -1163,8 +1166,9 @@
                   </style>
         </div>
     </div>
-      <script src="script.js"></script>
-      <script src="app.js"></script>
+      <link rel="stylesheet" href="premium.css?v=20261103">
+      <script src="script.js?v=20261103"></script>
+      <script src="app.js?v=20261103"></script>
       <script>
 // Add to Cart button functionality
 // Ensure all .add-to-cart buttons open the delivery modal and set product info
@@ -1256,9 +1260,10 @@ if (finishBtn) {
   }
 
   // Render agents with animation
-  function renderAgentMatches(matches){
-    agentListEl.innerHTML = '';
-    if(!matches || matches.length===0){ agentListEl.innerHTML = '<p>No delivery agents found in your area.</p>'; nextToStep3.disabled = true; return; }
+  function renderAgentMatches(matches, container, autoAdvance){
+    container = container || agentListEl;
+    container.innerHTML = '';
+    if(!matches || matches.length===0){ container.innerHTML = '<p>No delivery agents found in your area.</p>'; if(!autoAdvance) nextToStep3.disabled = true; return; }
     matches.forEach((ag, idx)=>{
       const card = document.createElement('div');
       card.className = 'agent-card';
@@ -1277,18 +1282,64 @@ if (finishBtn) {
       // animate in
       card.classList.add('card-animate'); setTimeout(()=>card.classList.add('show'), 40);
       card.addEventListener('click', ()=>{
-        const prev = agentListEl.querySelector('.selected'); if(prev) prev.classList.remove('selected');
+        const prev = container.querySelector('.selected'); if(prev) prev.classList.remove('selected');
         card.classList.add('selected'); nextToStep3.disabled = false; window._pe_selectedAgent = ag;
+        if(autoAdvance) nextToStep3.click();
       });
-      agentListEl.appendChild(card);
+      container.appendChild(card);
     });
-    nextToStep3.disabled = false;
+    if(!autoAdvance) nextToStep3.disabled = false;
+  }
+
+  // Region name -> agent areas that belong to that region
+  const REGION_AREAS = {
+    'dar es salaam': ['dar es salaam','kariakoo','sinza','mwenge','kimara','kigamboni','tabata','tegeta','bunju','kawe','ukonga','temeke','makumbusho','banana','posta','mbweni','kinondoni','ilala','ubungo','upanga','goba','kijichi'],
+    'kinondoni': ['kinondoni','sinza','mwenge','kawe','tegeta','bunju','makumbusho','mbweni'],
+    'ilala': ['ilala','kariakoo','ukonga','banana','tabata','posta'],
+    'temeke': ['temeke','kijichi'],
+    'ubungo': ['ubungo','kimara','goba'],
+    'kigamboni': ['kigamboni'],
+    'mjini magharibi': ['zanzibar'],
+    'unguja north': ['zanzibar'],
+    'unguja south': ['zanzibar'],
+    'pwani': ['kibaha'],
+    'kagera': ['bukoba'],
+    'kilimanjaro': ['moshi'],
+    'mara': ['musoma','tarime'],
+    'ruvuma': ['songea'],
+    'songwe': ['tunduma'],
+    'shinyanga': ['shinyanga','kahama'],
+    'iringa': ['iringa','mafinga','mufindi'],
+    'morogoro': ['morogoro','mvomero'],
+    'mtwara': ['mtwara','masasi'],
+    'mwanza': ['mwanza']
+  };
+  function normSpace(s){ return (s||'').toString().toLowerCase().replace(/\(.*?\)/g,'').replace(/\bregion\b/g,'').replace(/[^a-z0-9 ]/g,' ').replace(/\s+/g,' ').trim(); }
+
+  // Agents belonging to the searched region/area only
+  function findAgentsForRegion(rawText){
+    const q = normSpace(rawText);
+    const token = q.replace(/ /g,'');
+    if(!token) return [];
+    const agents = loadAgents();
+    const wanted = new Set();
+    Object.keys(REGION_AREAS).forEach(r=>{ if(r === q || (q.length>=3 && r.startsWith(q))) REGION_AREAS[r].forEach(a=>wanted.add(a.replace(/ /g,''))); });
+    return agents.filter(a=>{
+      const area = normalizeArea(a.area || a.location || '');
+      const name = normalizeArea(a.name || '');
+      if(area.includes(token) || name.includes(token)) return true;
+      for(const w of wanted){ if(area === w || area.includes(w) || name.includes(w)) return true; }
+      return false;
+    });
   }
 
   // Main search: prefer strict substring matches, else fuzzy fallback
-  function fetchAndRenderAgentsByText(rawText){
+  function fetchAndRenderAgentsByText(rawText, container, autoAdvance){
     const token = normalizeArea(rawText || '');
-    if(!token){ agentListEl.innerHTML = '<p>Please enter your area.</p>'; nextToStep3.disabled = true; return; }
+    container = container || agentListEl;
+    if(!token){ container.innerHTML = autoAdvance ? '' : '<p>Please enter your area.</p>'; if(!autoAdvance) nextToStep3.disabled = true; return; }
+    const regionMatches = findAgentsForRegion(rawText);
+    if(regionMatches.length>0){ renderAgentMatches(regionMatches, container, autoAdvance); return; }
     const agents = loadAgents();
     // compute normalized area for each agent once
     const annotated = agents.map(a=>({a, normArea: normalizeArea(a.area || a.location || ''), score:0}));
@@ -1296,32 +1347,41 @@ if (finishBtn) {
     const substringMatches = annotated.filter(x => x.normArea && x.normArea.includes(token)).map(x=>x.a);
     if(substringMatches.length>0){
       // show all that include token (e.g., Sinza variations)
-      renderAgentMatches(substringMatches);
+      renderAgentMatches(substringMatches, container, autoAdvance);
       return;
     }
     // No substring hits — fallback to fuzzy scoring with threshold
     const MIN_SCORE = 30;
     const scored = annotated.map(x=>({ a:x.a, score: scoreAgentFuzzy(x.a, token) }));
     const good = scored.filter(x=>x.score >= MIN_SCORE).sort((p,q)=>q.score-p.score).map(x=>x.a);
-    if(good.length>0){ renderAgentMatches(good); return; }
-    // final fallback: top 3 nearest if any positive score
-    const near = scored.filter(x=>x.score>0).sort((p,q)=>q.score-p.score).slice(0,3).map(x=>x.a);
-    renderAgentMatches(near);
+    // typo tolerance: only the single best fuzzy match, never unrelated areas
+    renderAgentMatches(good.slice(0,1), container, autoAdvance);
   }
 
-  const debouncedFetch = debounce((text)=>{ fetchAndRenderAgentsByText(text); }, 300);
+  const liveResultsEl = document.getElementById('liveAgentResults');
+  const debouncedFetch = debounce((text)=>{ fetchAndRenderAgentsByText(text, liveResultsEl, true); }, 150);
 
   // listeners
   if(locationSelect){
     locationSelect.addEventListener('change', ()=>{
       nextToStep2.disabled = !locationSelect.value;
       const chosenLabel = locationSelect.options[locationSelect.selectedIndex]?.text || '';
-      if(locationSelect.value && chosenLabel){ fetchAndRenderAgentsByText(chosenLabel); step1Content.style.display='none'; step2Content.style.display='block'; }
+      if(locationSelect.value && chosenLabel){
+        if(locationInput) locationInput.value = '';
+        if(liveResultsEl) liveResultsEl.innerHTML = '';
+        window._pe_selectedAgent = null;
+        fetchAndRenderAgentsByText(chosenLabel); step1Content.style.display='none'; step2Content.style.display='block';
+      }
     });
   }
 
   if(locationInput){
-    locationInput.addEventListener('input', (e)=>{ const v=(e.target.value||'').trim(); if(!v) return; debouncedFetch(v); step1Content.style.display='none'; step2Content.style.display='block'; });
+    locationInput.addEventListener('input', (e)=>{
+      const v=(e.target.value||'').trim();
+      window._pe_selectedAgent = null;
+      if(!v){ if(liveResultsEl) liveResultsEl.innerHTML=''; return; }
+      debouncedFetch(v);
+    });
   }
 
   if(nextToStep2){ nextToStep2.addEventListener('click', ()=>{ const chosenLabel = locationSelect.options[locationSelect.selectedIndex]?.text || ''; if(!chosenLabel) return; fetchAndRenderAgentsByText(chosenLabel); step1Content.style.display='none'; step2Content.style.display='block'; }); }
@@ -1330,7 +1390,7 @@ if (finishBtn) {
 
   if(nextToStep3) nextToStep3.addEventListener('click', ()=>{
     const agent = window._pe_selectedAgent || null;
-    step2Content.style.display='none'; step3Content.style.display='block';
+    step1Content.style.display='none'; step2Content.style.display='none'; step3Content.style.display='block';
     const productText = window._pe_lastProductText || '';
     if(agent){
       confirmationTextEl.textContent = 'You are ordering: ' + (productText || '');
@@ -1445,7 +1505,7 @@ const agents = [
   {id:'songea_1', name:'Songea', phone:['+255674113397', '+255678770000'], area:'Songea'},
   {id:'tabora_1', name:'Tabora', phone:['+255757924164', '+255778429915', '+255678770000'], area:'Tabora'},
   {id:'bukoba_1', name:'Wakala Bukoba', phone:['+255714873848', '+255764459291'], area:'Bukoba'},
-  {id:'kibaha_1', name:'Kibaha', phone:['0712064866', '0746255776', area:'Kibaha'},
+  {id:'kibaha_1', name:'Kibaha', phone:['0712064866', '0746255776'], area:'Kibaha'},
   {id:'simiyu_1', name:'Simiyu', phone:['0768165059', '+255755106173'], area:'Simiyu'},
   {id:'singida_1', name:'Singida', phone:['+255786537753'], area:'Singida'},
   {id:'tarime_1', name:'Tarime', phone:['+255759280848', '+255744931500'], area:'Tarime'},
@@ -1461,7 +1521,7 @@ const agents = [
   {id:'temeke_1', name:'Temeke', phone:['+255768177000'], area:'Temeke'},
   {id:'makumbusho_1', name:'Makumbusho', phone:['+255752099413'], area:'Makumbusho'},
   {id:'banana_1', name:'Banana', phone:['+255683064346'], area:'Banana'},
-  {id:'posta_1', name:'Posta', phone:['+255694340688', '+255767501841'], area:'Dar es Salaam'},
+  {id:'posta_1', name:'Posta', phone:['+255682180819', '+255767501841'], area:'Dar es Salaam'},
   {id:'mbweni_1', name:'Mbweni', phone:['+255752275170'], area:'Mbweni'},
   {id:'kinondoni_1', name:'Kinondoni', phone:['+255710940940'], area:'Kinondoni'},
   {id:'upanga_1', name:'Upanga', phone:['+255752275170'], area:'Upanga'},
