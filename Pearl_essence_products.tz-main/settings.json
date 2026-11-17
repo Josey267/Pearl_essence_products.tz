@@ -1,0 +1,20 @@
+{
+    "workbench.editorAssociations": {
+        "*.copilotmd": "vscode.markdown.preview.editor",
+        "*.apk": "default"
+    },
+    "editor.unicodeHighlight.invisibleCharacters": false,
+    "editor.unicodeHighlight.ambiguousCharacters": false,
+    "window.menuBarVisibility": "compact",
+    "chat.editing.alwaysSaveWithGeneratedChanges": true,
+    "security.workspace.trust.untrustedFiles": "open",
+    "workbench.colorTheme": "Default High Contrast",
+    "livePreview.notifyOnOpenLooseFile": false,
+    "editor.cursorBlinking": "smooth",
+    "workbench.editor.empty.hint": "hidden",
+    "github.copilot.nextEditSuggestions.enabled": true,
+    "livePreview.defaultPreviewPath": "d:/pearlessence p4/index.html",
+    "explorer.confirmDelete": false,
+    "files.autoSave": "afterDelay",
+    "chat.viewSessions.orientation": "stacked"
+}
