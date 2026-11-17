@@ -14,6 +14,12 @@
   --glass-text: #ffffff;
   --glass-text-hover: #f4d48b;
 
+  /* Sticky navbar: dark brand tint stays legible over light and dark sections */
+  --nav-bg: rgba(30, 26, 24, 0.78);
+  --nav-bg-scrolled: rgba(30, 26, 24, 0.9);
+  --nav-border: 1px solid rgba(231, 212, 176, 0.22);
+  --nav-shadow: 0 6px 24px rgba(0, 0, 0, 0.18);
+
   /* Layout */
   --nav-height: 72px;
   --hero-height: 100vh;
@@ -23,28 +29,47 @@
   :root { --hero-height: 100svh; }
 }
 
-/* ---------- 1. Hero carousel: full height, starts at the top edge ---------- */
+/* Anchored/scrolled-to targets stop below the sticky navbar */
+html { scroll-padding-top: var(--nav-height); }
+
+/* ---------- 1. Hero carousel: fills the viewport below the sticky nav ---------- */
 .carousel-container {
-  margin-top: 0;                 /* no gap above - image bleeds under the nav */
-  height: var(--hero-height);
-  min-height: 560px;
+  margin-top: 0;
+  height: calc(var(--hero-height) - var(--nav-height));
+  min-height: 520px;
 }
 
-/* Darken the top so white nav text stays readable on bright photos */
+/* High-contrast scrim: dark gradient rising from the bottom (behind the
+   title/text/button) plus the side gradient, leaving the product visible. */
 .carousel-slide::after {
   background:
-    linear-gradient(180deg, rgba(0, 0, 0, 0.45) 0%, rgba(0, 0, 0, 0) 26%),
+    linear-gradient(0deg, rgba(14, 11, 10, 0.9) 0%, rgba(14, 11, 10, 0.62) 38%, rgba(14, 11, 10, 0) 72%),
     linear-gradient(90deg, rgba(19, 17, 16, 0.72), rgba(19, 17, 16, 0.05));
 }
 
 .slide-content { bottom: 20%; }
 
-/* ---------- 2. Frosted glass navbar overlaying the carousel ---------- */
+.slide-title { color: #fff3d6; text-shadow: 0 2px 14px rgba(0, 0, 0, 0.55); }
+.slide-text { color: #fff; text-shadow: 0 1px 8px rgba(0, 0, 0, 0.55); }
+
+/* "Shop Now" is a button now (opens the quick-order modal) */
+button.slide-button {
+  border: 0;
+  font: inherit;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  cursor: pointer;
+}
+
+button.slide-button:focus-visible {
+  outline: 3px solid #fff3d6;
+  outline-offset: 3px;
+}
+
+/* ---------- 2. Sticky frosted navbar ---------- */
 .nav-container {
-  position: fixed;
+  position: sticky;
   top: 0;
-  left: 0;
-  right: 0;
   width: 100%;
   max-width: none;
   margin: 0;
@@ -56,23 +81,27 @@
   justify-content: space-between;
   gap: 20px;
 
-  background: var(--glass-bg);
-  -webkit-backdrop-filter: var(--glass-blur);
-  backdrop-filter: var(--glass-blur);
+  background: var(--nav-bg);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
   border: 0;
-  border-bottom: var(--glass-border);
-  box-shadow: var(--glass-shadow);
+  border-bottom: var(--nav-border);
+  box-shadow: var(--nav-shadow);
   z-index: 1000;
 }
 
-/* Slightly denser glass once the user scrolls past the hero */
+/* Slightly denser once the user scrolls */
 body.is-scrolled .nav-container {
-  background: var(--glass-bg-strong);
+  background: var(--nav-bg-scrolled);
 }
 
 body.dark-mode .nav-container {
-  background: var(--glass-bg);
-  border-bottom: var(--glass-border);
+  background: var(--nav-bg);
+  border-bottom: var(--nav-border);
+}
+
+body.dark-mode.is-scrolled .nav-container {
+  background: var(--nav-bg-scrolled);
 }
 
 .nav-container .nav-logo-img {
@@ -142,10 +171,11 @@ body.dark-mode .nav-container .hamburger span {
     align-items: stretch;
     gap: 0;
     padding: 8px 20px 16px;
-    background: var(--glass-bg-strong);
-    -webkit-backdrop-filter: var(--glass-blur);
-    backdrop-filter: var(--glass-blur);
-    border-bottom: var(--glass-border);
+    background: rgba(30, 26, 24, 0.96);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    border-bottom: var(--nav-border);
+    box-shadow: var(--nav-shadow);
     border-radius: 0 0 18px 18px;
     transform: translateY(-8px);
     opacity: 0;
@@ -169,9 +199,16 @@ body.dark-mode .nav-container .hamburger span {
 
   .nav-container .nav-link:last-child { border-bottom: 0; }
 
-  .carousel-container { height: var(--hero-height); min-height: 520px; }
+  .carousel-container { height: calc(var(--hero-height) - var(--nav-height)); min-height: 520px; }
 
   .slide-content { left: 6%; right: 6%; bottom: 22%; }
+
+  /* Narrow screens: text spans the full width, so the scrim covers more of the slide */
+  .carousel-slide::after {
+    background:
+      linear-gradient(0deg, rgba(14, 11, 10, 0.94) 0%, rgba(14, 11, 10, 0.78) 45%, rgba(14, 11, 10, 0) 85%),
+      linear-gradient(90deg, rgba(19, 17, 16, 0.45), rgba(19, 17, 16, 0.1));
+  }
 
   .owl-indicator { bottom: 84px; }
 }

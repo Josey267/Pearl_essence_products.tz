@@ -443,12 +443,15 @@
     if (direction) body.focus({ preventScroll: true });
   }
 
-  function openModal(card, trigger) {
-    var nameEl = card.querySelector('.product-name');
-    var name = nameEl ? nameEl.textContent.trim() : '';
+  function openModal(name, trigger, imgSrc) {
     state.catalog = collectCatalog();
     var primary = state.catalog.filter(function (p) { return p.name === name; })[0];
-    if (!primary) return;
+    if (!primary) {
+      // Products outside the shop grid (e.g. hero/showcase-only items) join the list on the fly
+      if (!name) return;
+      primary = { id: 'x-' + normalizeArea(name), name: name, img: imgSrc || '', price: null };
+      state.catalog.unshift(primary);
+    }
 
     state.primaryId = primary.id;
     state.qty = {};
@@ -523,15 +526,16 @@
       if (e.key === 'Escape') closeModal();
       else if (e.key === 'Tab') trapFocus(e);
     });
-
-    document.addEventListener('click', function (e) {
-      var btn = e.target.closest && e.target.closest('.add-to-cart');
-      var card = btn && btn.closest('.product-card');
-      if (!card) return;
-      e.preventDefault();
-      openModal(card, btn);
-    });
   }
+
+  // Product CTAs open the quick-order modal (quick-order.js), which hands over here
+  // when the customer wants to order through a delivery partner in their area.
+  window.PearlRegionalOrder = {
+    open: function (name, trigger, imgSrc) {
+      if (!ui.overlay) init();
+      openModal(name, trigger, imgSrc);
+    }
+  };
 
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
   else init();
