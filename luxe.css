@@ -129,7 +129,7 @@ h1, h2, h3 { text-wrap: balance; }
   position: absolute;
   inset: -32px;
   background: var(--carousel-background) center / cover no-repeat;
-  filter: blur(24px) brightness(0.55) saturate(0.9);
+  filter: blur(24px);
 }
 
 .carousel-image {

@@ -39,12 +39,8 @@ html { scroll-padding-top: var(--nav-height); }
   min-height: 520px;
 }
 
-/* High-contrast scrim: dark gradient rising from the bottom (behind the
-   title/text/button) plus the side gradient, leaving the product visible. */
 .carousel-slide::after {
-  background:
-    linear-gradient(0deg, rgba(14, 11, 10, 0.9) 0%, rgba(14, 11, 10, 0.62) 38%, rgba(14, 11, 10, 0) 72%),
-    linear-gradient(90deg, rgba(19, 17, 16, 0.72), rgba(19, 17, 16, 0.05));
+  background: none;
 }
 
 .slide-content { bottom: 20%; }
@@ -202,13 +198,6 @@ body.dark-mode .nav-container .hamburger span {
   .carousel-container { height: calc(var(--hero-height) - var(--nav-height)); min-height: 520px; }
 
   .slide-content { left: 6%; right: 6%; bottom: 22%; }
-
-  /* Narrow screens: text spans the full width, so the scrim covers more of the slide */
-  .carousel-slide::after {
-    background:
-      linear-gradient(0deg, rgba(14, 11, 10, 0.94) 0%, rgba(14, 11, 10, 0.78) 45%, rgba(14, 11, 10, 0) 85%),
-      linear-gradient(90deg, rgba(19, 17, 16, 0.45), rgba(19, 17, 16, 0.1));
-  }
 
   .owl-indicator { bottom: 84px; }
 }
