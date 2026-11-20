@@ -485,6 +485,18 @@ img {
   object-fit: cover;
 }
 
+.product-image.poster {
+  background: #120c09;
+}
+
+.product-image.poster img {
+  height: auto;
+  min-height: 0;
+  max-height: 520px;
+  object-fit: contain;
+  background: #120c09;
+}
+
 .product-text {
   text-align: left;
   padding: 12px 8px;

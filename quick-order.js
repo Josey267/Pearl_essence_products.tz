@@ -14,13 +14,13 @@
   var PRODUCTS = {
     'sunscreen': {
       name: 'Pearl Essence Sunscreen',
-      img: 'images/sunscreen.jpg',
+      img: 'images/pearl-sunscreen.png',
       benefits: ['SPF 50+ broad-spectrum protection', 'Lightweight, non-greasy formula', 'Suitable for all skin types', 'Water-resistant with natural extracts'],
             variants: []
     },
     'vitamin-c': {
       name: 'Vitamin C Serum',
-      img: 'images/vitamin c2.png.jpg',
+      img: 'images/vitamin-c-serum.png',
       benefits: ['Enhances glow & radiance in 7 days', 'Reduces dark spots', 'Leaves skin softer & brighter'],
       variants: []
     },
